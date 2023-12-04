@@ -17,6 +17,7 @@ export default {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
+      'light-blue': '#EAF2F9',
       'white': '#ffffff',
       'purple': '#3f3cbb',
       'midnight': '#121063',

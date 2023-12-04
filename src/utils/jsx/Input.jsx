@@ -1,25 +1,44 @@
-import React, { memo } from 'react'
-import {
-    Input,
-    initTE,
-} from "tw-elements";
+import React, { memo, useState } from 'react'
+import TextField from '@mui/material/TextField';
 
-initTE({ Input });
-const FormInput = ({FormLabel}) => {
-  return (
-    <div class="relative mb-3" data-te-input-wrapper-init>
-                    <input
-                        type="text"
-                        class="peer text-white   w-full block min-h-[auto]  rounded border-1 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-1 transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0  "
-                        id="age"
-                        placeholder="Example label" />
-                    <label
-                        for="age"
-                        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary   "
-                    >{FormLabel}
-                    </label>
-                </div>
-  )
+
+
+const FormInput = ({ FormLabel, type, value, setValue }) => {
+    const handleChange = (e, type) => {
+
+        const v = e.target.value
+        const regex = /^[0-9\b]+$/;
+        if (type === 'number') {
+            if (v.match(regex)) {
+                setValue(v);
+            }
+            return
+        }
+        if (type === 'string') {
+            setValue(v)
+        }
+
+        if (type === 'float') {
+            const regex = /^\d*\.?\d{0,2}$/
+            if (v.match(regex)) {
+                setValue(v)
+            }
+
+        }
+    }
+
+    return (
+
+        <TextField
+            value={value}
+            id="filled-basic"
+            label={FormLabel} variant="filled"
+            onChange={(e) => {
+                handleChange(e)
+
+            }}
+        />
+    )
 }
 
 export default memo(FormInput)

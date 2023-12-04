@@ -9,3 +9,107 @@
 .app{
     background:linear-gradient(90deg, rgba(22, 26, 48, 1) 0%, rgba(49, 48, 77, 1) 33%) !important;
 }
+body {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    /* For Firefox */
+    scrollbar-color: transparent transparent;
+    /* For Firefox */
+}
+
+/* For Webkit browsers like Chrome and Safari */
+body::-webkit-scrollbar {
+    width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+
+.scrolable{
+    scrollbar-width: thin !important;
+}
+
+.scrolable::-webkit-scrollbar{
+    width: 5px !important;
+}
+
+.scrolable::-webkit-scrollbar-thumb {
+    background-color: white !important;
+}
+
+.scrolable::-webkit-scrollbar-track {
+    background-color: transparent !important;
+}
+.calculateurItemTitle{
+    height: 30% !important;
+}
+
+::placeholder,
+::-webkit-input-placeholder,
+::-moz-placeholder{
+    color:'#fff' !important
+}
+
+
+
+/* Input container */
+.input-container {
+    position: relative;
+    margin: 20px;
+}
+
+/* Input field */
+.input-field {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: larger;
+}
+.input-field::placeholder{
+    color: '#fff';
+}
+
+/* Input label */
+.input-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* Input highlight */
+.input-highlight {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: #007bff;
+    transition: all 0.3s ease;
+}
+
+/* Input field:focus styles */
+.input-field:focus+.input-label {
+    top: -20px;
+    font-size: 12px;
+    color: #007bff;
+}
+
+.input-field:focus+.input-label+.input-highlight {
+    width: 100%;
+}

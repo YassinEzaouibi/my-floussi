@@ -1,42 +1,39 @@
-import React from 'react'
-import { Player } from '@lottiefiles/react-lottie-player';
-import { useSwiper } from "swiper/react";
+import { useState } from 'react'
+import QuestionnaireSlider from '../Questionnaire/QuestionnaireSlider';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { Outlet, Link } from "react-router-dom";
+import Container from '@mui/material/Container';
 
-import animation from '../../assets/lotti/finance.json'
-const Home = () => {
-    const swiper = useSwiper()
+
+function Home() {
+
     return (
-        <div className=' w-full h-screen flex flex-col align-middle'>
-            <h1 className=' text-forth text-xl font-bold text-center '>Predict</h1>
 
-            <div className='mt-5 p-3 flex gap-6 justify-center'>
-                <div>
-                    <Player
-                    
-                    autoplay
-                    loop
-                    src={animation}
-                    style={{ height: '300px', width: '300px' ,borderRadius:20,}}
-                >
-                    
-                    </Player>
+
+        <div className=' app min-h-screen '>
+            <div className=" min-w-full  min-h-full p-4 ">
+                <div className=' fixed z-30 start-0 top-0 w-full bg-main  flex justify-between align-middle mb-22  '>
+                    <h1 className='text-gold-500 mb-10 max-w-fit rounded-md  my-2 mx-5 font-bold text-3xl tracking-wide align-middle flex items-center pt-6	'>My Floussy</h1>
+                    <ul className=' flex gap-11 justify-start text-forth mr-8  '>
+                        <Link className='flex items-center' to={'/'}>
+                            <li className='cursor-pointe align-middle	 transition duration-300 ease-in-out hover:scale-105 '>
+                                Independance financiere
+                            </li></Link>
+                        <Link className='flex items-center' to={'/c'}>
+                            <li className='cursor-pointer transition duration-300 ease-in-out hover:scale-105'>Claculateur de budget</li>
+                        </Link >
+                        <Link className='flex items-center' to={'/c'}>
+                            <li className='cursor-pointer transition duration-300 ease-in-out hover:scale-105'>Simulateur de patrimoine</li>
+                        </Link>
+                    </ul>
                 </div>
 
-            <div className='p-3 flex flex-col gap-8 '>
-                <h2 className='text-forth text-2xl font-bold flex align-middle'>
-                    Simuler votre independance financiere comme un pro
-                </h2>
-                <p className='text-forth opacity-60 '>
-                    Simulez votre indépendance financière en établissant un budget, diversifiant vos placements, restant discipliné, et maintenant une éducation financière continue. Adoptez une approche proactive pour assurer le succès.
-                </p>
-              </div>
-            </div>
-
-            <div className='flex justify-center mt-9'>
-                <button
-                    onClick={()=>swiper.slideNext()}
-                    className='text-forth text-2xl font-bold bg-gold-500 from-white	
-                     w-50 h-30 px-4 py-2 rounded-xl hover:bg-gold-400 transition duration-150 ease-in-out'>Demmarer</button>
+                <div className=' mt-36'>
+                    <Outlet />
+                </div>
             </div>
         </div>
     )
