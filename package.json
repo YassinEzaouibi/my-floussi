@@ -28,6 +28,7 @@
     "react-router-dom": "^6.20.0",
     "recharts": "^2.10.3",
     "redux": "^4.2.1",
+    "redux-persist": "^6.0.0",
     "swiper": "^11.0.5",
     "tw-elements": "^1.0.0",
     "uuid": "^9.0.1"

@@ -5,9 +5,10 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import Router from './router/router';
 import { Provider } from 'react-redux'
-import store from './redux/store';
+import store, { persistor } from './redux/store';
 import { ThemeProvider } from '@mui/styles';
 import { createTheme } from '@mui/material';
+import { PersistGate } from 'redux-persist/integration/react';
 
 
 
@@ -47,10 +48,12 @@ function App() {
 
   return (
     <Provider store={store}>
-      <ThemeProvider theme={customTheme} >
-        <Router />
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider theme={customTheme} >
+          <Router />
 
-      </ThemeProvider>
+        </ThemeProvider>
+      </PersistGate>
     </Provider>
   )
 }

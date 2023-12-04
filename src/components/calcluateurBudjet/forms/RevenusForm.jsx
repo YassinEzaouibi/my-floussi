@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef, useEffect } from 'react'
+import React, { useCallback, useState, useRef, useEffect, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteDepences, deleteInvistissements, deleteRevenu, editDepence, editInvistissment, editRevenu } from '../../../redux/calculateurBudjetSlice';
 import { X } from 'react-feather';
@@ -118,7 +118,7 @@ const RevenusForm = ({ groupId, id, dataLength, type }) => {
                         className="input-field placeholder-white"
                         type="text"
                         onChange={handlechange}
-                        value={data.nom}
+                        value={data.nom ?? ''}
 
                     />
                     <label htmlFor="input-field" className="input-label"></label>
@@ -138,7 +138,7 @@ const RevenusForm = ({ groupId, id, dataLength, type }) => {
                         className="input-field placeholder-white"
                         type="text"
                         onChange={handlechange}
-                        value={data.montant}
+                        value={data.montant ?? ''}
 
 
                     />
@@ -157,4 +157,4 @@ const RevenusForm = ({ groupId, id, dataLength, type }) => {
     )
 }
 
-export default RevenusForm
+export default memo(RevenusForm)
