@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Etape from './Etape'
 
 const Etape1 = () => {
@@ -16,4 +16,4 @@ const Etape1 = () => {
     )
 }
 
-export default Etape1
+export default memo(Etape1)

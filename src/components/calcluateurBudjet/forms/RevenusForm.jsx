@@ -2,6 +2,7 @@ import React, { useCallback, useState, useRef, useEffect, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteDepences, deleteInvistissements, deleteRevenu, editDepence, editInvistissment, editRevenu } from '../../../redux/calculateurBudjetSlice';
 import { X } from 'react-feather';
+import GripDots from '../../../utils/svgs/gripDots';
 
 
 const RevenusForm = ({ groupId, id, dataLength, type }) => {
@@ -103,30 +104,34 @@ const RevenusForm = ({ groupId, id, dataLength, type }) => {
 
     }, [data, type, revenus, depences, investissements])
     return (
-        <div className=' flex w-full align-middle justify-center'>
-            <div className=' w-full px-5'>
-                <h6 className='tracking-wide text-forth opacity-50 p-2 font-extrabold text-md'>
+        <div className=' flex w-full align-middle justify-center  mb-2 form-container'>
+            <div className=' w-full px-5 '>
+                <h6 className=' ml-5 tracking-wide text-forth opacity-50 p-2 font-extrabold text-md'>
                     Nom
                 </h6>
 
 
                 <div className="input-container">
-                    <input
-                        style={{ width: '100%' }}
-                        ref={nomRef}
-                        // placeholder={data.nom ? data.nom : ''}
-                        className="input-field placeholder-white"
-                        type="text"
-                        onChange={handlechange}
-                        value={data.nom ?? ''}
 
-                    />
+                    <div className='flex '>
+                        <GripDots />
+                        <input
+                            style={{ width: '100%' }}
+                            ref={nomRef}
+                            // placeholder={data.nom ? data.nom : ''}
+                            className="input-field placeholder-white"
+                            type="text"
+                            onChange={handlechange}
+                            value={data.nom ?? ''}
+
+                        />
+                    </div>
                     <label htmlFor="input-field" className="input-label"></label>
                     <span className="input-highlight"></span>
                 </div>
             </div>
             <div className=' w-full px-5'>
-                <h6 className='tracking-wide text-forth opacity-50 p-2 font-extrabold text-md'>
+                <h6 className=' ml-5 tracking-wide text-forth opacity-50 p-2 font-extrabold text-md'>
                     Montant
                 </h6>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import Input from '../../utils/jsx/Input'
 import Etape from './Etape'
 
@@ -53,4 +53,4 @@ const Etape2 = () => {
     )
 }
 
-export default Etape2
+export default memo(Etape2)

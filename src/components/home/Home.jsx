@@ -1,11 +1,8 @@
-import { useState } from 'react'
-import QuestionnaireSlider from '../Questionnaire/QuestionnaireSlider';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { Outlet, Link } from "react-router-dom";
-import Container from '@mui/material/Container';
 
 
 function Home() {
@@ -25,7 +22,7 @@ function Home() {
                         <Link className='flex items-center' to={'/c'}>
                             <li className='cursor-pointer transition duration-300 ease-in-out hover:scale-105'>Claculateur de budget</li>
                         </Link >
-                        <Link className='flex items-center' to={'/c'}>
+                        <Link className='flex items-center' to={'/s'}>
                             <li className='cursor-pointer transition duration-300 ease-in-out hover:scale-105'>Simulateur de patrimoine</li>
                         </Link>
                     </ul>

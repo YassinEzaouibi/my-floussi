@@ -1,50 +1,201 @@
 import { createSlice } from '@reduxjs/toolkit'
-
-
+import uuid from 'react-uuid';
 
 export const calclulateurBudjetSlice = createSlice({
     name: 'cb',
     initialState: {
         revenus: [
-            { id: '###', nom: 'Salaire', montant: 1000 },
-            { id: '##ß##', nom: 'ecom', montant: 300 },
+            {
+                id: uuid(),
+                nom: 'Salaire et autres revenus', montant: 0
+            },
+            {
+                id: uuid(),
+                nom: 'Pensions (retraite, alimentaires, invalidité)', montant: 0
+            },
+            {
+                id: uuid(),
+                nom: 'Loyers/ Intérêts / Revenus du capital', montant: 0
+            },
+            {
+                id: uuid(),
+                nom: 'Autres', montant: 0
+            },
 
         ],
         investissements: [
             {
-                title: 'bources',
-                id: '0**',
+                id: uuid(),
+                title: 'Marche financiers',
+
                 data: [
-                    { id: '###', nom: 'casa bourse', montant: 200 },
-                    { id: '322w##', nom: 'casa x', montant: 200 }
+                    {
+                        id: uuid(),
+                        nom: 'Epargne (engagements déjà contractés)',
+                        montant: 0
+                    },
+                    {
+                        id: uuid(),
+                        nom: 'Bourse',
+                        montant: 0
+                    },
+                    {
+                        id: uuid(),
+                        nom: 'Assurance (unites de compte)',
+                        montant: 0
+                    },
+
                 ]
             },
             {
-                title: 'jw',
-                id: '**üü*',
+                id: uuid(),
+                title: 'Autres',
+
                 data: [
-                    { id: '##++#', nom: 'cmos', montant: 400 }
+                    {
+                        id: uuid(),
+                        nom: 'Daret',
+                        montant: 0
+                    }
                 ]
             },
+
 
         ],
 
         depences: [
 
             {
-                title: 'vie quotidienne',
-                id: '***',
+                id: uuid(),
+                title: 'Vie quotidienne',
+
                 data: [
-                    { id: '###', nom: 'nourriture', montant: 120 }
+                    {
+                        id: uuid(),
+                        nom: 'Courses / Alimentation',
+                        montant: 0
+                    },
+                    {
+                        id: uuid(),
+                        nom: 'Loyer et charges',
+                        montant: 0
+                    },
+                    {
+                        id: uuid(),
+                        nom: 'Electricité/ Eau',
+                        montant: 0
+                    },
+                    {
+                        id: uuid(),
+                        nom: 'Téléphone / Internet ',
+                        montant: 0
+                    },
+
+
                 ]
             },
-            // {
-            //     title: 'jx',
-            //     id: '*ppp*',
-            //     data: [
-            //         { id: '#ööö##', nom: 'casa bourse', montant: 900 }
-            //     ]
-            // },
+            {
+                id: uuid(),
+                title: 'Habillement',
+
+                data: [
+                    {
+                        id: uuid(),
+                        nom: 'Vêtements',
+                        montant: 0
+                    },
+
+                ]
+            },
+            {
+                id: uuid(),
+                title: 'Frais financiers',
+
+                data: [
+                    {
+                        id: uuid(),
+                        nom: "Remboursement d'emprunt immobilier",
+                        montant: 0
+                    },
+                    {
+                        id: uuid(),
+                        nom: "Remboursement d'emprunt immobilier",
+                        montant: 0
+                    },
+                    {
+                        id: uuid(),
+                        nom: "Remboursements de crédits (consommation, prêts personnels...)",
+                        montant: 0
+                    },
+                    {
+                        id: uuid(),
+                        nom: "Autres assurances",
+                        montant: 0
+                    },
+
+                ]
+            },
+            {
+                id: uuid(),
+                title: 'Loisirs et sport',
+
+                data: [
+                    {
+                        id: uuid(),
+                        nom: "Sorties Resto",
+                        montant: 0
+                    },
+                    {
+                        id: uuid(),
+                        nom: "Vacances",
+                        montant: 0
+                    },
+                    {
+                        id: uuid(),
+                        nom: "Salles de sport",
+                        montant: 0
+                    },
+                ]
+            },
+            {
+                id: uuid(),
+                title: 'Enfants',
+
+                data: [
+                    {
+                        id: uuid(),
+                        nom: "Scolarité",
+                        montant: 0
+                    },
+                    {
+                        id: uuid(),
+                        nom: "Activité",
+                        montant: 0
+                    },
+                    {
+                        id: uuid(),
+                        nom: "Autres frais",
+                        montant: 0
+                    },
+                ]
+            },
+            {
+                id: uuid(),
+                title: 'Transports',
+
+                data: [
+                    {
+                        id: uuid(),
+                        nom: "Voiture",
+                        montant: 0
+                    },
+                    {
+                        id: uuid(),
+                        nom: "Autres",
+                        montant: 0
+                    },
+                ]
+            },
         ]
 
     },
@@ -62,6 +213,9 @@ export const calclulateurBudjetSlice = createSlice({
             const { id } = action.payload
             const revenuIndex = state.revenus.findIndex(r => r.id === id)
             state.revenus.splice(revenuIndex, 1)
+        },
+        setInvestissements(state, action) {
+            state.investissements = action.payload
         },
 
         addInvitissement(state, action) {
@@ -82,6 +236,12 @@ export const calclulateurBudjetSlice = createSlice({
             state.investissements[groupIndex].data[itemIndex].nom = nom
             state.investissements[groupIndex].data[itemIndex].montant = montant
         },
+
+        editInvistissmentElementData(state, action) {
+            const { groupIndex, data } = action.payload
+            state.investissements[groupIndex].data = data
+        },
+
         addGroup(state) {
             state.investissements.push(
                 {
@@ -93,6 +253,10 @@ export const calclulateurBudjetSlice = createSlice({
                 }
             )
 
+        },
+
+        setDepences(state, action) {
+            state.depences = action.payload
         },
 
         addDepence(state, action) {
@@ -147,6 +311,6 @@ export const calclulateurBudjetSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addRevenu, editRevenu, deleteRevenu, addInvitissement, editInvistissment, deleteInvistissements, addGroup, addDepence, deleteDepences, editDepence, addDepencesGroup, changeGroupTitle, deleteGroup } = calclulateurBudjetSlice.actions
+export const { addRevenu, editRevenu, deleteRevenu, addInvitissement, editInvistissment, deleteInvistissements, addGroup, addDepence, deleteDepences, editDepence, addDepencesGroup, changeGroupTitle, deleteGroup, setInvestissements, setDepences, editInvistissmentElementData } = calclulateurBudjetSlice.actions
 
 export default calclulateurBudjetSlice.reducer

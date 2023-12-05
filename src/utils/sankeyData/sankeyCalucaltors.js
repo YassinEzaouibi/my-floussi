@@ -19,15 +19,25 @@ export const getTotalOfCategory = (cat) => {
 export const tauxEpargne = (revenus, investissements) => {
     const totalRev = getTotalOfArrayObject(revenus)
     const totalInv = getTotalOfCategory(investissements)
-    return ((totalInv / totalRev) * 100).toFixed(2) + '%'
+    const t = ((totalInv / totalRev) * 100).toFixed(2) + '%'
+    if (!isNaN(t)) {
+        return t
+    }
+    return 0 + '%'
 }
 
 export const tauxEpargnePossible = (revenus, depences) => {
     const totalRev = getTotalOfArrayObject(revenus)
     const totalDep = getTotalOfCategory(depences)
-    return (
+    const t = (
         ((totalRev - totalDep) / totalRev
         ) * 100).toFixed(2) + '%'
+    if (!isNaN(t)) {
+        return t
+    }
+
+    return 0 + '%'
+
 }
 
 export const rest = (revenus, investissements, depences) => {

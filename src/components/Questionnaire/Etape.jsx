@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Player } from '@lottiefiles/react-lottie-player';
 import { useSwiper } from "swiper/react";
 
@@ -38,4 +38,4 @@ const Etape = ({ title, children, buttonTitle, buttonDisabled }) => {
     )
 }
 
-export default Etape
+export default memo(Etape)

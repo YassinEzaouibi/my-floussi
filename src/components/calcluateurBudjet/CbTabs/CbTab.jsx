@@ -1,10 +1,12 @@
 import TextField from '@mui/material/TextField';
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addDepence, addInvitissement, addRevenu, changeGroupTitle, deleteGroup } from '../../redux/calculateurBudjetSlice'
-import RevenusForm from './forms/RevenusForm'
+import { addDepence, addInvitissement, addRevenu, changeGroupTitle, deleteGroup } from '../../../redux/calculateurBudjetSlice'
+import RevenusForm from '../forms/RevenusForm'
 import { X } from 'react-feather';
-
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { reOrder } from '../../../utils/reorder';
+import GripDots from '../../../utils/svgs/gripDots';
 
 const RevenuTab = ({ data, type, dataLength }) => {
     const _data = type === 'revenus' ? data : data.data
@@ -49,9 +51,10 @@ const RevenuTab = ({ data, type, dataLength }) => {
     }, [])
 
     return (
-        <div className=' w-full h-fit  mt-7 mx-auto flex justify-center align-middle flex-col   '>
+        <div className='  w-full h-fit  mt-7 mx-auto flex justify-center align-middle flex-col   '>
 
-            < div className='w-[60%] scrolable overflow-y-scroll min-h-[300px] h-fit  scroll  bg-metal rounded-md  my-2 mx-auto relative' >
+            < div className='cb-tab w-[60%] scrolable overflow-y-scroll min-h-[300px] h-fit  scroll  bg-metal rounded-md  my-2 mx-auto relative' >
+                {(type === 'investissements' || type === 'depences') && <GripDots />}
 
                 {
                     type !== 'revenus' &&
@@ -77,9 +80,36 @@ const RevenuTab = ({ data, type, dataLength }) => {
                 <h6 className='tracking-wide text-forth text-center p-2 font-extrabold text-md border-b-gold-300 border-b-2 mb-3 opacity-50'>MAD</h6>
 
                 {
-                    _data.map((r) => (
-                        <RevenusForm type={type} key={r.id} groupId={data.id} id={r.id} dataLength={_data.length} />
-                    ))
+                    <Droppable droppableId={data.id ?? '###'} type='form'>
+
+                        {
+                            (provided) => (
+                                <div  {...provided.droppableProps} ref={provided.innerRef}>
+                                    {
+                                        _data.map((r, i) => (
+                                            <Draggable draggableId={r.id} key={r.id} index={i}>
+                                                {
+                                                    (provided) => (
+                                                        <div
+                                                            {...provided.dragHandleProps}
+                                                            {...provided.draggableProps}
+                                                            ref={provided.innerRef}
+                                                        >
+                                                            <RevenusForm type={type} key={r.id} groupId
+                                                                ={data.id} id={r.id} dataLength={_data.length} />
+                                                            {provided.placeholder}
+                                                        </div>
+                                                    )
+                                                }
+                                            </Draggable>
+                                        ))
+                                    }
+                                    {provided.placeholder}
+                                </div>
+                            )
+                        }
+
+                    </Droppable>
                 }
                 <h5 onClick={addItem} className='opacity-50 text-sm tracking-widest text-forth my-5 text-justify p-2 hover:opacity-80 cursor-pointer'>
                     Ajouter une source de revenu  +

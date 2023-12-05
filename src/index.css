@@ -113,3 +113,21 @@ body::-webkit-scrollbar-track {
 .input-field:focus+.input-label+.input-highlight {
     width: 100%;
 }
+
+.grip-dots {
+    opacity: 0.3 ;
+    transition: .3s eas all;
+}
+
+.grip-dots:is(:hover,:focus)
+{
+    opacity: 1;
+}
+
+.cb-tab:is(:hover,:focus) > .grip-dots{
+    opacity: 1;
+}
+
+.form-container:is(:hover, :focus) .grip-dots {
+    opacity: 1;
+}

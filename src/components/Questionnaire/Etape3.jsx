@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import Etape from './Etape'
 
 import TextField from '@mui/material/TextField';
@@ -85,4 +85,4 @@ const Etape3 = () => {
     )
 }
 
-export default Etape3
+export default memo(Etape3)

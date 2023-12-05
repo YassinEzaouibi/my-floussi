@@ -1,8 +1,9 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, HashRouter } from "react-router-dom";
-import CalculateurBudget from '../components/calcluateurBudjet/CalculateurBudget';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CalculateurBudget from '../components/calcluateurBudjet/';
 import Home from '../components/home/Home';
 import QuestionnaireSlider from '../components/Questionnaire/QuestionnaireSlider';
+import SimulateurPatrimoine from '../components/simulateurPatrimoine/Index';
 const RouterProvider = () => {
     return (
         <Router>
@@ -10,6 +11,7 @@ const RouterProvider = () => {
                 <Route path='/' element={<Home />}>
                     <Route element={<QuestionnaireSlider />} path='/' />
                     <Route element={<CalculateurBudget />} path='/c' />
+                    <Route element={<SimulateurPatrimoine />} path='/s' />
                 </Route>
 
             </Routes>

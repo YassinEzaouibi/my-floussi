@@ -1,13 +1,9 @@
-import React from 'react'
-// Import Swiper React components
+import React, { memo } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import Home from '../home/Home';
 import Etape1 from './Etape1';
 import Etape2 from './Etape2';
 import Etape3 from './Etape3';
+import 'swiper/css';
 
 const QuestionnaireSlider = () => {
   return (
@@ -17,9 +13,7 @@ const QuestionnaireSlider = () => {
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      <SwiperSlide
-      // className='eachSlide swiper-no-swiping'
-      >
+      <SwiperSlide>
         <Etape1 />
       </SwiperSlide>
 
@@ -34,4 +28,4 @@ const QuestionnaireSlider = () => {
   )
 }
 
-export default QuestionnaireSlider
+export default memo(QuestionnaireSlider)

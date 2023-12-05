@@ -12,10 +12,10 @@ export const _revenus = [
 
 
 
-export const step1 = (data = [], inv, dep) => {
+export const step1 = (data = []) => {
     const arr = []
     for (const r of data) {
-        if (r.nom && r.montant) {
+        if (r.nom && r.montant && !isNaN(r.montant)) {
             arr.push([r.nom, 'Budget', r.montant])
         }
     }
@@ -33,7 +33,7 @@ export const step2 = (data = {}) => {
         if (Array.isArray(cat)) {
             for (const _ of cat) {
                 const total = getTotalOfArrayObject(_.data)
-                if (_.title !== '' && total !== 0) {
+                if (_.title !== '' && total !== 0 && !isNaN(total)) {
                     arr.push(
                         getRow('Budget', _.title, total)
                     )
@@ -54,7 +54,7 @@ export const step3 = (cats) => {
             for (const _ of cat) {
                 for (const __ of _.data) {
                     // console.log('data: ', __)
-                    if (__.nom && __.montant) {
+                    if (__.nom && __.montant && !isNaN(__.montant)) {
                         arr.push([_.title, __.nom, __.montant])
                     }
                 }
