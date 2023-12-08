@@ -6,19 +6,20 @@ import GripDots from '../../../utils/svgs/gripDots';
 
 
 const RevenusForm = ({ groupId, id, dataLength, type }) => {
+
     const dispatch = useDispatch()
     const nomRef = useRef(null)
     const montantRef = useRef(null)
+    const montantTypeRef = useRef(null)
     const [data, setData] = useState({})
-    const revenus = useSelector(state => state.calculateurBudjet.revenus)
-    const investissements = useSelector(state => state.calculateurBudjet.investissements)
-    const depences = useSelector(state => state.calculateurBudjet.depences)
+    const { revenus, depences, investissements } = useSelector(state => state.calculateurBudjet)
 
 
 
     const handlechange = useCallback(() => {
         const nom = nomRef.current.value
         const montant = +montantRef.current.value
+        const montantType = montantTypeRef.current.value
         switch (type) {
             case 'investissements':
                 if (!isNaN(montant)) {
@@ -26,29 +27,34 @@ const RevenusForm = ({ groupId, id, dataLength, type }) => {
                         groupId,
                         id,
                         nom,
-                        montant
+                        montant: montant,
+                        type: montantType
                     }))
                 }
                 break
             case 'depences':
-
                 if (!isNaN(montant)) {
                     dispatch(editDepence({
                         groupId,
                         id,
                         nom,
-                        montant
+                        montant: montant,
+                        type: montantType
+
                     }))
 
                 }
                 break
             default:
                 if (!isNaN(montant)) {
-                    dispatch(editRevenu({ id, nom, montant }))
+                    dispatch(editRevenu({
+                        id, nom, montant, type: montantType
+                    }))
                 }
                 break;
         }
     }, [])
+
     const deleteItem = useCallback(() => {
         switch (type) {
             case 'investissements':
@@ -75,7 +81,7 @@ const RevenusForm = ({ groupId, id, dataLength, type }) => {
             case 'investissements':
                 for (const item of investissements) {
                     for (const _ of item.data) {
-                        if (_.id == id) {
+                        if (_.id === id) {
                             setData(_)
                         }
                     }
@@ -84,7 +90,7 @@ const RevenusForm = ({ groupId, id, dataLength, type }) => {
             case 'depences':
                 for (const item of depences) {
                     for (const _ of item.data) {
-                        if (_.id == id) {
+                        if (_.id === id) {
                             setData(_)
                         }
                     }
@@ -96,17 +102,20 @@ const RevenusForm = ({ groupId, id, dataLength, type }) => {
 
                     if (item.id === id) {
                         setData(item)
+
                     }
 
                 }
                 break;
         }
 
+
+
     }, [data, type, revenus, depences, investissements])
     return (
-        <div className=' flex w-full align-middle justify-center  mb-2 form-container'>
-            <div className=' w-full px-5 '>
-                <h6 className=' ml-5 tracking-wide text-forth opacity-50 p-2 font-extrabold text-md'>
+        <div className=' flex w-full align-middle justify-start items-center  mb-1 form-container'>
+            <div className='px-5  w-[50%] '>
+                <h6 className=' ml-5 tracking-wide text-forth opacity-50 p-1 font-extrabold text-sm'>
                     Nom
                 </h6>
 
@@ -118,8 +127,7 @@ const RevenusForm = ({ groupId, id, dataLength, type }) => {
                         <input
                             style={{ width: '100%' }}
                             ref={nomRef}
-                            // placeholder={data.nom ? data.nom : ''}
-                            className="input-field placeholder-white"
+                            className="input-field placeholder-white "
                             type="text"
                             onChange={handlechange}
                             value={data.nom ?? ''}
@@ -130,31 +138,45 @@ const RevenusForm = ({ groupId, id, dataLength, type }) => {
                     <span className="input-highlight"></span>
                 </div>
             </div>
-            <div className=' w-full px-5'>
-                <h6 className=' ml-5 tracking-wide text-forth opacity-50 p-2 font-extrabold text-md'>
+
+            <div className=' w-[20%] px-5'>
+                <h6 className=' ml-5 tracking-wide text-forth opacity-50 px-1 font-extrabold '>
                     Montant
                 </h6>
 
-                <div className="input-container">
+                <div className="input-container ">
                     <input
                         style={{ width: '100%' }}
                         ref={montantRef}
-                        placeholder={data.montant ? `${data.montant} M A D` : 'M A D'}
-                        className="input-field placeholder-white"
+                        placeholder={data.montant ? `${data.montant} M A D` : ''}
+                        className="input-field placeholder-white "
                         type="text"
                         onChange={handlechange}
-                        value={data.montant ?? ''}
-
+                        // value={data.montant ? frequence === 12 ? data.montant * 12 : data.montant : 0}
+                        value={data.montant ?? 0}
 
                     />
                     <label htmlFor="input-field" className="input-label"></label>
                     <span className="input-highlight"></span>
+
                 </div>
+
+
+            </div>
+            <div className=' w-[30%] flex items-center justify-center self-end mb-5 h-[100%]'>
+                <select
+                    onChange={handlechange}
+                    value={data.type ?? 'm'}
+                    ref={montantTypeRef}
+                    className=' w-[100%] h-[30px] rounded-md outline-none text-center bg-forth'>
+                    <option value={'m'}>Mensuelle</option>
+                    <option value={'a'}>Annuelle</option>
+                </select>
             </div>
 
             {
                 dataLength !== 1 && <div onClick={deleteItem} className=' cursor-pointer mx-4 my-auto h-full flex align-end justify-end'>
-                    <X style={{ marginTop: 50 }} color="white" size={30} />
+                    <X style={{ marginTop: 40 }} color="white" size={30} />
                 </div>
             }
 
@@ -162,4 +184,4 @@ const RevenusForm = ({ groupId, id, dataLength, type }) => {
     )
 }
 
-export default memo(RevenusForm)
+export default RevenusForm

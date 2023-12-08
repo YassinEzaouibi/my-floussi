@@ -16,7 +16,17 @@ export const step1 = (data = []) => {
     const arr = []
     for (const r of data) {
         if (r.nom && r.montant && !isNaN(r.montant)) {
-            arr.push([r.nom, 'Budget', r.montant])
+            let montant = 0
+            switch (r.type) {
+                case 'a':
+                    montant = r.montant / 12
+                    break;
+
+                default:
+                    montant = r.montant
+                    break;
+            }
+            arr.push([r.nom, 'Budget', +montant.toFixed(2)])
         }
     }
     return arr
@@ -35,7 +45,7 @@ export const step2 = (data = {}) => {
                 const total = getTotalOfArrayObject(_.data)
                 if (_.title !== '' && total !== 0 && !isNaN(total)) {
                     arr.push(
-                        getRow('Budget', _.title, total)
+                        getRow('Budget', _.title, +total.toFixed(2))
                     )
                 }
             }
@@ -55,7 +65,17 @@ export const step3 = (cats) => {
                 for (const __ of _.data) {
                     // console.log('data: ', __)
                     if (__.nom && __.montant && !isNaN(__.montant)) {
-                        arr.push([_.title, __.nom, __.montant])
+                        let total = 0
+                        switch (__.type) {
+                            case 'a':
+                                total = __.montant / 12
+                                break;
+
+                            default:
+                                total = __.montant
+                                break;
+                        }
+                        arr.push([_.title, __.nom, +total.toFixed(2)])
                     }
                 }
             }

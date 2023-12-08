@@ -62,6 +62,7 @@ body::-webkit-scrollbar-track {
 .input-container {
     position: relative;
     margin: 20px;
+    font-size: 13px !important;
 }
 
 /* Input field */
@@ -69,7 +70,7 @@ body::-webkit-scrollbar-track {
     display: block;
     width: 100%;
     padding: 10px;
-    font-size: 16px;
+    font-size: 13px !important;
     border: none;
     border-bottom: 2px solid #ccc;
     outline: none;
@@ -86,7 +87,7 @@ body::-webkit-scrollbar-track {
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 16px;
+    font-size: 13px !important;
     color: #fff;
     pointer-events: none;
     transition: all 0.3s ease;
@@ -106,7 +107,7 @@ body::-webkit-scrollbar-track {
 /* Input field:focus styles */
 .input-field:focus+.input-label {
     top: -20px;
-    font-size: 12px;
+    font-size: 13px;
     color: #007bff;
 }
 
@@ -130,4 +131,7 @@ body::-webkit-scrollbar-track {
 
 .form-container:is(:hover, :focus) .grip-dots {
     opacity: 1;
+}
+select{
+    font-size: 13px !important;
 }

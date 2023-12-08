@@ -12,7 +12,7 @@ function Home() {
 
         <div className=' app min-h-screen '>
             <div className=" min-w-full  min-h-full p-4 ">
-                <div className=' fixed z-30 start-0 top-0 w-full bg-main  flex justify-between align-middle mb-22  '>
+                <div className=' fixed z-[9999] start-0 top-0 w-full bg-main  flex justify-between align-middle mb-22  '>
                     <h1 className='text-gold-500 mb-10 max-w-fit rounded-md  my-2 mx-5 font-bold text-3xl tracking-wide align-middle flex items-center pt-6	'>My Floussy</h1>
                     <ul className=' flex gap-11 justify-start text-forth mr-8  '>
                         <Link className='flex items-center' to={'/'}>

@@ -16,7 +16,13 @@ export default {
     },
     colors: {
       transparent: 'transparent',
+      red: '#D6475D',
+      violet: '#6F50E5',
+      orange: '#F49352',
       current: 'currentColor',
+      blue: '#0074E4',
+      yellow: '#FFEA66',
+      gray: '#B6BBC4',
       'light-blue': '#EAF2F9',
       'white': '#ffffff',
       'purple': '#3f3cbb',

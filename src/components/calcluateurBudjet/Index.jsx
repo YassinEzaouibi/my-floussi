@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import CbTab from './CbTabs/CbTab';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDepencesGroup, addGroup, editInvistissmentElementData, setDepences, setInvestissements } from '../../redux/calculateurBudjetSlice';
+import { addDepencesGroup, addGroup, editDepencesElementData, editInvistissmentElementData, editRevenuGroupItems, setDepences, setInvestissements } from '../../redux/calculateurBudjetSlice';
 import SankeyDiagramme from './chart/SankeyDiagramme';
 import { step1, step2, step3, _revenus } from '../../utils/sankeyData/steps';
 import { getTotalOfCategory, rest, tauxEpargne, tauxEpargnePossible, } from '../../utils/sankeyData/sankeyCalucaltors';
@@ -13,6 +13,7 @@ import a11yProps from '../../utils/styledTabs/a11yProps';
 
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { reOrder } from '../../utils/reorder';
+import { handleDragItemOfGroup } from '../../utils/drag/drop';
 
 
 
@@ -91,19 +92,34 @@ const CalculateurBudget = () => {
         }
 
 
-        const groupSrcIndex = investissements.findIndex(inv => inv.id == srcId)
-        const groupDestIndex = investissements.findIndex(inv => inv.id === destId)
 
-        const srcItems = [...investissements[groupSrcIndex].data]
-        const destItems = srcId === destId ? srcItems : [...investissements[groupDestIndex].data]
-        const draggableItemIndex = srcItems.findIndex(d => d.id === draggableId)
-        const item = srcItems[draggableItemIndex]
+        switch (value) {
+            case 1:
+                const [
+                    invSrcItems,
+                    invDestItems,
+                    invGroupSrcIndex,
+                    invGroupDestIndex
+                ] = handleDragItemOfGroup(investissements, srcId, destId, srcIndex, destIndex, draggableId)
+                dispatch(editInvistissmentElementData({ groupIndex: invGroupSrcIndex, data: invSrcItems }))
+                dispatch(editInvistissmentElementData({ groupIndex: invGroupDestIndex, data: invDestItems }))
+                break;
+            case 2:
+                const [
+                    depSrcItems,
+                    depDestItems,
+                    depGroupSrcIndex,
+                    depGroupDestIndex
+                ] = handleDragItemOfGroup(depences, srcId, destId, srcIndex, destIndex, draggableId)
+                dispatch(editDepencesElementData({ groupIndex: depGroupSrcIndex, data: depSrcItems }))
+                dispatch(editDepencesElementData({ groupIndex: depGroupDestIndex, data: depDestItems }))
+                break
 
-        srcItems.splice(srcIndex, 1)
-        destItems.splice(destIndex, 0, item)
-
-        dispatch(editInvistissmentElementData({ groupIndex: groupSrcIndex, data: srcItems }))
-        dispatch(editInvistissmentElementData({ groupIndex: groupDestIndex, data: destItems }))
+            default:
+                const newRevs = reOrder(revenus, srcIndex, destIndex)
+                dispatch(editRevenuGroupItems(newRevs))
+                break;
+        }
 
 
 
@@ -142,7 +158,7 @@ const CalculateurBudget = () => {
                                         <Draggable draggableId={inv.id} key={inv.id} index={i}>
                                             {
                                                 (provided) => (
-                                                    <div className=''
+                                                    <div
                                                         {...provided.dragHandleProps}
                                                         {...provided.draggableProps}
                                                         ref={provided.innerRef}

@@ -6,15 +6,22 @@ export const removeNonNumericProperties = (obj) => {
     }
 }
 
-// const revenusData = Object.values(_data.revenus)
-// const totalRevenus = revenusData.reduce((prev, cur) => prev + cur)
+
 export const getTotal = (obj) => {
     const _obj = { ...obj }
-    removeNonNumericProperties(_obj)
-    return Object.values(_obj).reduce((prev, cur) => prev + cur)
+    let total = 0
+    switch (_obj.type) {
+        case 'a':
+            total = _obj.montant / 12
+            break;
+
+        default:
+            total = _obj.montant
+            break;
+    }
+    return +total.toFixed(2)
 }
 
-// const totalRevenus = getTotal(_data.revenus)
 
 export const getTotalOfArrayObject = (arr = []) => {
     let total = 0

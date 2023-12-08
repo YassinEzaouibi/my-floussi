@@ -7,21 +7,28 @@ export const calclulateurBudjetSlice = createSlice({
         revenus: [
             {
                 id: uuid(),
-                nom: 'Salaire et autres revenus', montant: 0
+                nom: 'Salaire et autres revenus',
+                montant: 0,
+                type: 'm'
             },
             {
                 id: uuid(),
-                nom: 'Pensions (retraite, alimentaires, invalidité)', montant: 0
+                nom: 'Pensions',
+                montant: 0,
+                type: 'm'
             },
             {
                 id: uuid(),
-                nom: 'Loyers/ Intérêts / Revenus du capital', montant: 0
+                nom: 'Loyers/ Intérêts / Revenus du capital',
+                montant: 0,
+                type: 'm'
             },
             {
                 id: uuid(),
-                nom: 'Autres', montant: 0
-            },
-
+                nom: 'Autres',
+                montant: 0,
+                type: 'm'
+            }
         ],
         investissements: [
             {
@@ -31,21 +38,23 @@ export const calclulateurBudjetSlice = createSlice({
                 data: [
                     {
                         id: uuid(),
-                        nom: 'Epargne (engagements déjà contractés)',
-                        montant: 0
+                        nom: 'Epargne',
+                        montant: 0,
+                        type: 'm'
                     },
                     {
                         id: uuid(),
                         nom: 'Bourse',
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     },
                     {
                         id: uuid(),
-                        nom: 'Assurance (unites de compte)',
-                        montant: 0
-                    },
-
-                ]
+                        nom: 'Assurance',
+                        montant: 0,
+                        type: 'm'
+                    }
+                ],
             },
             {
                 id: uuid(),
@@ -55,7 +64,8 @@ export const calclulateurBudjetSlice = createSlice({
                     {
                         id: uuid(),
                         nom: 'Daret',
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     }
                 ]
             },
@@ -73,25 +83,27 @@ export const calclulateurBudjetSlice = createSlice({
                     {
                         id: uuid(),
                         nom: 'Courses / Alimentation',
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     },
                     {
                         id: uuid(),
                         nom: 'Loyer et charges',
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     },
                     {
                         id: uuid(),
                         nom: 'Electricité/ Eau',
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     },
                     {
                         id: uuid(),
                         nom: 'Téléphone / Internet ',
-                        montant: 0
-                    },
-
-
+                        montant: 0,
+                        type: 'm'
+                    }
                 ]
             },
             {
@@ -102,7 +114,8 @@ export const calclulateurBudjetSlice = createSlice({
                     {
                         id: uuid(),
                         nom: 'Vêtements',
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     },
 
                 ]
@@ -115,24 +128,27 @@ export const calclulateurBudjetSlice = createSlice({
                     {
                         id: uuid(),
                         nom: "Remboursement d'emprunt immobilier",
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     },
                     {
                         id: uuid(),
                         nom: "Remboursement d'emprunt immobilier",
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     },
                     {
                         id: uuid(),
-                        nom: "Remboursements de crédits (consommation, prêts personnels...)",
-                        montant: 0
+                        nom: "Remboursements de crédits ",
+                        montant: 0,
+                        type: 'm'
                     },
                     {
                         id: uuid(),
                         nom: "Autres assurances",
-                        montant: 0
-                    },
-
+                        montant: 0,
+                        type: 'm'
+                    }
                 ]
             },
             {
@@ -143,18 +159,21 @@ export const calclulateurBudjetSlice = createSlice({
                     {
                         id: uuid(),
                         nom: "Sorties Resto",
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     },
                     {
                         id: uuid(),
                         nom: "Vacances",
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     },
                     {
                         id: uuid(),
                         nom: "Salles de sport",
-                        montant: 0
-                    },
+                        montant: 0,
+                        type: 'm'
+                    }
                 ]
             },
             {
@@ -165,18 +184,21 @@ export const calclulateurBudjetSlice = createSlice({
                     {
                         id: uuid(),
                         nom: "Scolarité",
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     },
                     {
                         id: uuid(),
                         nom: "Activité",
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     },
                     {
                         id: uuid(),
                         nom: "Autres frais",
-                        montant: 0
-                    },
+                        montant: 0,
+                        type: 'm'
+                    }
                 ]
             },
             {
@@ -187,13 +209,15 @@ export const calclulateurBudjetSlice = createSlice({
                     {
                         id: uuid(),
                         nom: "Voiture",
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     },
                     {
                         id: uuid(),
                         nom: "Autres",
-                        montant: 0
-                    },
+                        montant: 0,
+                        type: 'm'
+                    }
                 ]
             },
         ]
@@ -204,24 +228,29 @@ export const calclulateurBudjetSlice = createSlice({
             state.revenus.push(action.payload)
         },
         editRevenu(state, action) {
-            const { id, nom, montant } = action.payload
+            const { id, nom, montant, type } = action.payload
             const revenuIndex = state.revenus.findIndex(r => r.id === id)
             state.revenus[revenuIndex].nom = nom
             state.revenus[revenuIndex].montant = montant
+            state.revenus[revenuIndex].type = type
         },
         deleteRevenu(state, action) {
             const { id } = action.payload
             const revenuIndex = state.revenus.findIndex(r => r.id === id)
             state.revenus.splice(revenuIndex, 1)
         },
+        editRevenuGroupItems(state, action) {
+            state.revenus = action.payload
+        }
+        ,
         setInvestissements(state, action) {
             state.investissements = action.payload
         },
 
         addInvitissement(state, action) {
-            const { groupId, id, nom, montant } = action.payload
+            const { groupId, id, nom, montant, type } = action.payload
             const groupIndex = state.investissements.findIndex(g => g.id === groupId)
-            state.investissements[groupIndex].data.push({ id, nom, montant })
+            state.investissements[groupIndex].data.push({ id, nom, montant, type })
         },
         deleteInvistissements(state, action) {
             const { groupId, id, } = action.payload
@@ -230,11 +259,12 @@ export const calclulateurBudjetSlice = createSlice({
             state.investissements[groupIndex].data.splice(itemIndex, 1)
         },
         editInvistissment(state, action) {
-            const { groupId, id, nom, montant } = action.payload
+            const { groupId, id, nom, montant, type } = action.payload
             const groupIndex = state.investissements.findIndex(g => g.id === groupId)
             const itemIndex = state.investissements[groupIndex].data.findIndex(inv => inv.id === id)
             state.investissements[groupIndex].data[itemIndex].nom = nom
             state.investissements[groupIndex].data[itemIndex].montant = montant
+            state.investissements[groupIndex].data[itemIndex].type = type
         },
 
         editInvistissmentElementData(state, action) {
@@ -242,13 +272,14 @@ export const calclulateurBudjetSlice = createSlice({
             state.investissements[groupIndex].data = data
         },
 
+
         addGroup(state) {
             state.investissements.push(
                 {
                     title: '',
                     id: Math.random() * Math.random() / Math.random(),
                     data: [
-                        { id: Math.random() * Math.random() / Math.random(), nom: '', montant: 0 },
+                        { id: Math.random() * Math.random() / Math.random(), nom: '', montant: 0, type: 'm' },
                     ]
                 }
             )
@@ -260,9 +291,9 @@ export const calclulateurBudjetSlice = createSlice({
         },
 
         addDepence(state, action) {
-            const { groupId, id, nom, montant } = action.payload
+            const { groupId, id, nom, montant, type } = action.payload
             const groupIndex = state.depences.findIndex(g => g.id === groupId)
-            state.depences[groupIndex].data.push({ id, nom, montant })
+            state.depences[groupIndex].data.push({ id, nom, montant, type })
         },
         deleteDepences(state, action) {
             const { groupId, id, } = action.payload
@@ -271,11 +302,12 @@ export const calclulateurBudjetSlice = createSlice({
             state.depences[groupIndex].data.splice(itemIndex, 1)
         },
         editDepence(state, action) {
-            const { groupId, id, nom, montant } = action.payload
+            const { groupId, id, nom, montant, type } = action.payload
             const groupIndex = state.depences.findIndex(g => g.id === groupId)
             const itemIndex = state.depences[groupIndex].data.findIndex(inv => inv.id === id)
             state.depences[groupIndex].data[itemIndex].nom = nom
             state.depences[groupIndex].data[itemIndex].montant = montant
+            state.depences[groupIndex].data[itemIndex].type = type
         },
         addDepencesGroup(state) {
             state.depences.push(
@@ -283,11 +315,15 @@ export const calclulateurBudjetSlice = createSlice({
                     title: 'Nouveau group',
                     id: Math.random() * Math.random() / Math.random(),
                     data: [
-                        { id: Math.random() * Math.random() / Math.random(), nom: '', montant: 0 }
+                        { id: Math.random() * Math.random() / Math.random(), nom: '', montant: 0, type: 'm' }
                     ]
                 }
             )
 
+        },
+        editDepencesElementData(state, action) {
+            const { groupIndex, data } = action.payload
+            state.depences[groupIndex].data = data
         },
 
         changeGroupTitle(state, action) {
@@ -311,6 +347,6 @@ export const calclulateurBudjetSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addRevenu, editRevenu, deleteRevenu, addInvitissement, editInvistissment, deleteInvistissements, addGroup, addDepence, deleteDepences, editDepence, addDepencesGroup, changeGroupTitle, deleteGroup, setInvestissements, setDepences, editInvistissmentElementData } = calclulateurBudjetSlice.actions
+export const { addRevenu, editRevenu, deleteRevenu, addInvitissement, editInvistissment, deleteInvistissements, addGroup, addDepence, deleteDepences, editDepence, addDepencesGroup, changeGroupTitle, deleteGroup, setInvestissements, setDepences, editInvistissmentElementData, editRevenuGroupItems, editDepencesElementData } = calclulateurBudjetSlice.actions
 
 export default calclulateurBudjetSlice.reducer

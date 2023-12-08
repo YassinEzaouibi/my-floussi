@@ -22,7 +22,8 @@ const RevenuTab = ({ data, type, dataLength }) => {
                         groupId: data.id,
                         id: Math.random() * Math.random(),
                         nom: '',
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     }
                 ))
                 break;
@@ -32,12 +33,13 @@ const RevenuTab = ({ data, type, dataLength }) => {
                         groupId: data.id,
                         id: Math.random() * Math.random(),
                         nom: '',
-                        montant: 0
+                        montant: 0,
+                        type: 'm'
                     }
                 ))
                 break;
             default:
-                dispatch(addRevenu({ id: Math.random(), nom: '', montant: 0 }))
+                dispatch(addRevenu({ id: Math.random(), nom: '', montant: 0, type: 'm' }))
                 break;
         }
     }, [type])
@@ -46,21 +48,19 @@ const RevenuTab = ({ data, type, dataLength }) => {
         dispatch(deleteGroup({ type, groupId: data.id }))
     }
 
-    useEffect(() => {
-        // console.log(data.id)
-    }, [])
+
 
     return (
-        <div className='  w-full h-fit  mt-7 mx-auto flex justify-center align-middle flex-col   '>
+        <div className=' w-full h-fit  mt-7 mx-auto flex justify-center align-middle flex-col   '>
 
-            < div className='cb-tab w-[60%] scrolable overflow-y-scroll min-h-[300px] h-fit  scroll  bg-metal rounded-md  my-2 mx-auto relative' >
+            < div className='cb-tab w-[60%] scrolable overflow-y-scroll min-h-[100px] h-fit  scroll  bg-metal rounded-md  my-2 mx-auto relative' >
                 {(type === 'investissements' || type === 'depences') && <GripDots />}
 
                 {
                     type !== 'revenus' &&
                     <div className='flex justify-center items-center'>
                         <input
-                            placeholder='New group'
+                            placeholder='Group sans nom'
                             ref={titleRef}
                             value={title}
                             autoFocus={title === 'Group sans nom' || title === 'Nouveau Group'}
@@ -75,9 +75,9 @@ const RevenuTab = ({ data, type, dataLength }) => {
                                     type
                                 }))
                             }}
-                            className=' outline-none bg-transparent align-middle capitalize tracking-wide text-forth text-center pt-5 font-extrabold text-3xl' />
+                            className=' outline-none bg-transparent align-middle capitalize tracking-wide text-forth text-center pt-1 font-extrabold text-xl' />
                     </div>}
-                <h6 className='tracking-wide text-forth text-center p-2 font-extrabold text-md border-b-gold-300 border-b-2 mb-3 opacity-50'>MAD</h6>
+                <h6 className='tracking-wide text-forth text-center font-extrabold text-sm border-b-gold-300 border-b-2 mb-2 opacity-50'>MAD</h6>
 
                 {
                     <Droppable droppableId={data.id ?? '###'} type='form'>
@@ -108,16 +108,15 @@ const RevenuTab = ({ data, type, dataLength }) => {
                                 </div>
                             )
                         }
-
                     </Droppable>
                 }
-                <h5 onClick={addItem} className='opacity-50 text-sm tracking-widest text-forth my-5 text-justify p-2 hover:opacity-80 cursor-pointer'>
+                <h5 onClick={addItem} className='opacity-50 text-sm tracking-widest text-forth my-2 text-justify p-1 ml-5 hover:opacity-80 cursor-pointer'>
                     Ajouter une source de revenu  +
                 </h5>
                 {dataLength > 1 &&
                     <div onClick={_deleteGroup}
                         className=' absolute top-0 right-0 cursor-pointer   '>
-                        <X color="white" size={30} />
+                        <X color="white" size={25} />
                     </div>}
             </ div>
 
