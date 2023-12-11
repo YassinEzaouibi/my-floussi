@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useCallback } from 'react'
-import { plusValueNetteCalc } from '../../utils/smPatrimoine/plusValueNette'
+import { plusValueNetteCalc } from '../../utils/smPatrimoine/plusValue'
 import { autreCalc, autreFisrtCalc, investAutreCalc, investAutreFisrtCalc, pmvAutreCalc, pmvAutreNetteCalc, versAutreCalc, versAutreCumuleCalc } from '../../utils/smPatrimoine/pmvAutre'
 import { investBourseCalc, pmvBourseCalc, pmvBourseNetteCalc, repBourseCalc, versBourseCalc, versBourseCumuleCalc } from '../../utils/smPatrimoine/pmvBourse'
 import { revenuMensuelCalc, valeurNetteCalc } from '../../utils/smPatrimoine/revenueNette'
@@ -15,6 +15,8 @@ import Slider from './Slider'
 
 const SimulateurPatrimoine = () => {
     const currentDate = new Date();
+
+
 
     const [repInv, setRepInv] = useState(50)
     const [repPI, setRepPI] = useState(50)

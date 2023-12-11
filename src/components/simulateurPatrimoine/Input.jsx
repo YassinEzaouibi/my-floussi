@@ -6,7 +6,7 @@ const Input = ({ title, v, onChange }) => {
             <input
                 style={{ width: '100%' }}
 
-                className="input-field placeholder-white "
+                className="input-field placeholder-white  "
                 type="text"
                 onChange={onChange}
 

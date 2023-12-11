@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors')
 
+const defaultTheme = require("tailwindcss/defaultTheme");
+
+
 export default {
   content: [
     "./index.html",
@@ -9,14 +12,33 @@ export default {
 
   ],
   theme: {
+
     extend: {
+      fontFamily: {
+        sans: ["Segoe UI", ...defaultTheme.fontFamily.sans],
+      },
       backgroundImage: {
+
         'main-gradient': "linear-gradient(90deg, rgba(22,26,48,1) 0%, rgba(49,48,77,1) 33%)",
       }
     },
     colors: {
+      headerLight: '#FBFBFB',
+      bodyLight: '#FCFBFB',
+      mainLight: '#009AD5',
+      secondaryLight: '#EBF0F6',
+      darkBlue: '#023B6E',
+      lightBlue: '#E61C0E',
+      mdBlue: '#003371',
+      red: '#E61C0E',
+      black: '#151516',
+      grayLight: '#707070',
+      graySecondary: '#5E5E5E',
+      grayExtraLight: 'rgba(20,21,21,0.1)',
+      borderBlue: '#3178B7',
+
+
       transparent: 'transparent',
-      red: '#D6475D',
       violet: '#6F50E5',
       orange: '#F49352',
       current: 'currentColor',
@@ -64,4 +86,7 @@ export default {
   darkMode: "class"
 
 }
+
+
+
 

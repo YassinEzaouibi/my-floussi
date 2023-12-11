@@ -277,9 +277,9 @@ export const calclulateurBudjetSlice = createSlice({
             state.investissements.push(
                 {
                     title: '',
-                    id: Math.random() * Math.random() / Math.random(),
+                    id: uuid(),
                     data: [
-                        { id: Math.random() * Math.random() / Math.random(), nom: '', montant: 0, type: 'm' },
+                        { id: uuid(), nom: '', montant: 0, type: 'm' },
                     ]
                 }
             )
@@ -313,9 +313,9 @@ export const calclulateurBudjetSlice = createSlice({
             state.depences.push(
                 {
                     title: 'Nouveau group',
-                    id: Math.random() * Math.random() / Math.random(),
+                    id: uuid(),
                     data: [
-                        { id: Math.random() * Math.random() / Math.random(), nom: '', montant: 0, type: 'm' }
+                        { id: uuid(), nom: '', montant: 0, type: 'm' }
                     ]
                 }
             )

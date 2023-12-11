@@ -147,7 +147,6 @@ const CalculateurBudget = () => {
 
                 <DragDropContext onDragEnd={handleDragEnd}>
                     {value === 0 && <CbTab type='revenus' data={revenus} />}
-                    {/* {value === 1 && <CbTab type='invistissements' data={inverstissements} />} */}
                     {value === 1
                         &&
                         <Droppable droppableId={'ROOT_invs'} type='investissement'>

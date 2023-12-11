@@ -1,11 +1,22 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700;800;900&family=Poppins:ital,wght@0,100;0,300;0,600;1,800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    font-size: 16px !important;
+}
+.logo-text{
+    font-weight: 700 !important;
+}
 
-
-
+*{
+    font-family: 'Noto Sans', 'Poppins', sans-serif !important;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 .app{
     background:linear-gradient(90deg, rgba(22, 26, 48, 1) 0%, rgba(49, 48, 77, 1) 33%) !important;
 }
@@ -61,7 +72,6 @@ body::-webkit-scrollbar-track {
 /* Input container */
 .input-container {
     position: relative;
-    margin: 20px;
     font-size: 13px !important;
 }
 
@@ -75,11 +85,13 @@ body::-webkit-scrollbar-track {
     border-bottom: 2px solid #ccc;
     outline: none;
     background-color: transparent;
-    color: #fff;
+    color: #000;
     font-size: larger;
 }
+
+
 .input-field::placeholder{
-    color: '#fff';
+    color: '#000';
 }
 
 /* Input label */
@@ -88,7 +100,7 @@ body::-webkit-scrollbar-track {
     top: 0;
     left: 0;
     font-size: 13px !important;
-    color: #fff;
+    color: #000;
     pointer-events: none;
     transition: all 0.3s ease;
 }
@@ -134,4 +146,24 @@ body::-webkit-scrollbar-track {
 }
 select{
     font-size: 13px !important;
+}
+.content-container{
+    margin: 0 auto !important;
+}
+.header{
+    z-index: 999999 !important;
+}
+
+
+
+.input-field-smPatrimoine {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 13px !important;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #000;
+    font-size: larger;
 }

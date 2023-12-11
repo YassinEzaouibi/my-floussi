@@ -43,10 +43,10 @@ export const tauxEpargnePossible = (revenus, depences) => {
 export const rest = (revenus, investissements, depences) => {
     const r = (revenus - investissements - depences).toFixed(2)
     if (r < 0) {
-        return `vous dépassez votre budget de ${r} M A D`
+        return `vous dépassez votre budget de ${r} MAD`
     }
     else if (r > 0) {
-        return `il vous reste ${r} M A D  disponible`
+        return `il vous reste ${r} MAD  disponible`
     }
     else {
         return ''
