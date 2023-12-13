@@ -7,10 +7,10 @@ const formatter = (value) => ` ${(value > 1000 && value < 1000000) ? `${value / 
 
 const Graph = ({ data }) => {
     return (
-        <ResponsiveContainer width="100%" height="25%">
+        <ResponsiveContainer width="100%" height={400}>
             <AreaChart
                 width={500}
-                height={300}
+                height={600}
                 data={data}
                 margin={{
                     top: 20,

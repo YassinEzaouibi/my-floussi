@@ -26,91 +26,84 @@ export const smPatrimoineSlice = createSlice({
             const value = action.payload
 
             state.repInv = +value
-
         },
         setRepPI(state, action) {
             const value = action.payload
 
             state.repPI = +value
-
         },
         setPActuel(state, action) {
             const value = action.payload
-            if (isNumeric(value)) {
-                state.pActuel = +value
-            }
+
+            state.pActuel = +value
         },
         setInvAnnuel(state, action) {
             const value = action.payload
-            if (isNumeric(value)) {
-                state.invAnnuel = +value
-            }
+
+            state.invAnnuel = +value
+
         },
         setNbrAnnesEpargne(state, action) {
             const value = action.payload
-            if (isNumeric(value)) {
-                state.nbrAnnesEpargne = +value
-            }
+
+            state.nbrAnnesEpargne = +value
+
         },
         setRendBourse(state, action) {
             const value = action.payload
-            if (isNumeric(value)) {
-                state.rendBourse = +value
-            }
+
+            state.rendBourse = +value
+
         },
         setRendAutre(state, action) {
             const value = action.payload
-            if (isNumeric(value)) {
-                state.rendAutre = +value
-            }
+
+            state.rendAutre = +value
+
         },
         setTxImpositionBourse(state, action) {
             const value = action.payload
-            if (isNumeric(value)) {
-                state.txImpositionBourse = +value
-            }
+
+            state.txImpositionBourse = +value
+
         },
         setTxImpositionAutre(state, action) {
             const value = action.payload
-            if (isNumeric(value)) {
-                state.txImpositionAutre = +value
-            }
+
+            state.txImpositionAutre = +value
+
         },
         setTxRetrait(state, action) {
             const value = action.payload
-            if (isNumeric(value)) {
-                state.txRetrait = +value
-            }
+
+            state.txRetrait = +value
+
         },
         setTxInflation(state, action) {
             const value = action.payload
-            if (isNumeric(value)) {
-                state.txInflation = +value
-            }
+
+            state.txInflation = +value
+
         },
         setRevenuParMois(state, action) {
             const value = action.payload
 
             state.revenuParMois = +value
-
         },
         setValeurNette(state, action) {
             const value = action.payload
 
             state.valeurNette = +value
-
         },
         setPlusValueNette(state, action) {
             const value = action.payload
 
             state.plusValueNette = +value
-
         },
         setVersementCumule(state, action) {
             const value = action.payload
 
             state.versementCumule = +value
-
         },
         setSmPatrimoineData(state, action) {
             state.smPatrimoineData = action.payload

@@ -23,12 +23,13 @@ export default {
       }
     },
     colors: {
+      limeLight: 'rgb(190 242 100)',
       headerLight: '#FBFBFB',
       bodyLight: '#FCFBFB',
       mainLight: '#009AD5',
       secondaryLight: '#EBF0F6',
       darkBlue: '#023B6E',
-      lightBlue: '#E61C0E',
+      lightBlue: '#AACEEC',
       mdBlue: '#003371',
       red: '#E61C0E',
       black: '#151516',

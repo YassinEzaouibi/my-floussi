@@ -79,7 +79,7 @@ const Index = () => {
 
 
     return (
-        <div className=' w-[40%]  h-full px-4 border-r border-r-grayLight'>
+        <div className=' w-[40%] max-[640px]:w-full  h-full px-4 border-r border-r-grayLight'>
             {/* paatrimoineActuel  mad */}
             <Input title={'Patrimoine actuel'}
                 v={pActuel}
@@ -92,7 +92,8 @@ const Index = () => {
                 v={repPI}
 
                 onChange={handleRepPI}
-                title={"Répartition de votre patrimoine initial"} t1="Bourse"
+                title={"Répartition de votre patrimoine initial"}
+                t1="Bourse"
                 t2="Autre" />
 
             {/* Investissements annuels mad */}

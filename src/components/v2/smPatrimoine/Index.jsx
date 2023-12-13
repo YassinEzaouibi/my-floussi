@@ -5,7 +5,7 @@ import Main from './Main'
 const Index = () => {
     return (
         <div className=' h-fit w-full'>
-            <div className=' h-fit pb-7 w-full border-mainLight border'>
+            <div className=' h-fit pb-7 w-full'>
 
 
                 <Header />

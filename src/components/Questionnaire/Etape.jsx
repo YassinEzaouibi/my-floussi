@@ -6,7 +6,7 @@ import animation from '../../assets/lotti/finance.json'
 const Etape = ({ title, children, buttonTitle, buttonDisabled }) => {
     const swiper = useSwiper()
     return (
-        <div className=' w-full h-screen flex flex-col align-middle '>
+        <div className=' w-full flex flex-col align-middle bg-black '>
             <h1 className=' text-forth text-xl font-bold text-center '> {title}</h1>
 
             <div className='mt-5 p-3 flex gap-6 justify-center'>

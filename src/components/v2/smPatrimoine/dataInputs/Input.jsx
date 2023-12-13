@@ -12,9 +12,10 @@ const Input = ({ title, v, onChange, mad }) => {
                     <input
                         style={{ width: '100%' }}
                         className="input-field-smPatrimoine placeholder-white border-b-0 "
-                        type="text"
+                        type="number"
                         onChange={onChange}
-                        value={v}
+                        value={v?.toString()}
+
                     />
                     <span className=' text-grayLight self-center'>
                         {mad ? 'MAD' : '%'}

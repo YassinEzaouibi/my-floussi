@@ -4,7 +4,9 @@ import DataProcessor from './dataProcessor'
 
 const Main = () => {
     return (
-        <div className=' w-[95%] h-[2000px] bg-white rounded-xl shadow-sm borderborder-grayExtraLight my-3 mx-auto flex'>
+        <div
+            className=' w-[95%] h-fit 
+             bg-white rounded-xl shadow-sm borderborder-grayExtraLight my-3 mx-auto flex max-[640px]:flex-col'>
             <DataInputs />
             <DataProcessor />
         </div>

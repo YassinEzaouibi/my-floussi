@@ -31,7 +31,7 @@ const Index = () => {
     const [revenuParMois, setRevenuParMois] = useState(0)
     const [valeurNette, setValeurNette] = useState(0)
     const [plusValueNette, setPlusValueNette] = useState(0)
-    const [plusValueBrutte, setPlusValueBrutte] = useState(0)
+    // const [plusValueBrutte, setPlusValueBrutte] = useState(0)
     const [versementCumule, setVersementCumule] = useState(0)
 
     const [data, setData] = useState(smPatrimoineData)
@@ -180,7 +180,7 @@ const Index = () => {
     }, [repInv, repPI, pActuel, invAnnuel, nbrAnnesEpargne, rendBourse, rendAutre, txImpositionBourse, txImpositionAutre, txRetrait, txInflation,])
 
     return (
-        <div className=' w-[65%]  h-full  px-4'>
+        <div className=' w-[65%] max-[640px]:w-full max-[640px]:mt-12 pb-12  h-full  px-4'>
             <TopParagraphe years={nbrAnnesEpargne} revenuParMois={revenuParMois} capitalFinal={valeurNette} />
             <Graph data={data} />
             <GraphYearsIndicator years={nbrAnnesEpargne} />

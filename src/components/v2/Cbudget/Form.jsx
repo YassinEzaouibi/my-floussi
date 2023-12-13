@@ -148,13 +148,13 @@ const Form = ({ groupId, id, dataLength, type }) => {
                         </h6>
                         <input
                             ref={montantRef}
-                            placeholder={data.montant ? `${data.montant} M A D` : ''}
+                            placeholder={data?.montant ? `${data?.montant} M A D` : ''}
                             onChange={handlechange}
-                            value={data.montant ?? 0}
+                            value={data.montant?.toString() ?? 0}
 
                             style={{ width: '100%' }}
                             className="input-field placeholder-white "
-                            type="text"
+                            type="number"
                         />
                     </div>
                     <span className="input-highlight"></span>

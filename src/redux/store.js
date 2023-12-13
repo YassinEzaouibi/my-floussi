@@ -1,6 +1,7 @@
 import { configureStore, } from '@reduxjs/toolkit'
 import calclulateurBudjetReducer from './calculateurBudjetSlice'
 import smPatrimoineReducer from './smPatrimoineSlice'
+import questionnaireReducer from './questionnaireSlice'
 import { persistReducer, persistStore } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
@@ -17,7 +18,8 @@ const persistedSmPatrimoineReducer = persistReducer(persistConfig, smPatrimoineR
 const store = configureStore({
     reducer: {
         calculateurBudjet: persistedCbudgetReducer,
-        smPatrioine: persistedSmPatrimoineReducer
+        smPatrioine: persistedSmPatrimoineReducer,
+        questionnaire: questionnaireReducer
 
     },
     middleware: [thunk]
