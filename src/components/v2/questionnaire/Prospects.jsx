@@ -3,7 +3,7 @@ import Message from './Message';
 import { useSwiperSlide } from 'swiper/react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { setUserHasSelectedChoice } from '../../../redux/questionnaireSlice';
+import { setTempUserResponses, setUserHasSelectedChoice } from '../../../redux/questionnaireSlice';
 
 
 const chars = [
@@ -22,7 +22,7 @@ const bgColors = {
     2: 'rgb(229 231 235)'
 }
 
-const Prospects = ({ prospects }) => {
+const Prospects = ({ prospects, question }) => {
     const swiperSlide = useSwiperSlide();
     const [selected, setSelected] = useState(false)
     const [id, setId] = useState(null)
@@ -38,13 +38,31 @@ const Prospects = ({ prospects }) => {
     const dispatch = useDispatch()
 
 
-    const handleSelect = (type, id, message) => {
+    const handleSelect = (type, id, message, response) => {
+
         setSelected(type)
         setId(id)
         setBorderColor(bdColors[type])
         setBgColor(bgColors[type])
         setMessage(message)
         dispatch(setUserHasSelectedChoice(true))
+
+        let score = 0
+        if (type === 0) {
+            score = 1
+        }
+        else if (type === 1) {
+            score = 0
+        }
+        else {
+            score = -1
+        }
+
+        dispatch(setTempUserResponses({
+            question,
+            response,
+            score
+        }))
         setDisabled(true)
     }
     useEffect(() => {
@@ -57,7 +75,6 @@ const Prospects = ({ prospects }) => {
     return (
 
         <>
-
             {
                 prospects.map((p, i) => (
                     <button
@@ -69,7 +86,7 @@ const Prospects = ({ prospects }) => {
                             backgroundColor: id === p.id ? bgColor : 'white'
 
                         }}
-                        onClick={() => handleSelect(p.type, p.id, p.message)}
+                        onClick={() => handleSelect(p.type, p.id, p.message, p.name)}
                         className={
                             `
                 cursor-pointer rounded-md px-5 py-3  w-full my-5 shadow-md transition-all duration-100  flex gap-x-6

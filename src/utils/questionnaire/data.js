@@ -123,12 +123,12 @@ export const questions = [
                 inputs: [
                     {
                         id: uuid(),
-                        label: 'Votre revenu net annuel :',
+                        label: 'Revenu net annuel :',
                         value: 0
                     },
                     {
                         id: uuid(),
-                        label: 'Celui de votre conjoint(e): ',
+                        label: 'Revenu de votre conjoint(e): ',
                         value: 0
                     },
 
@@ -237,14 +237,15 @@ export const questions = [
                 binaryChoices: [
                     {
                         id: uuid(),
-                        name: 'Oui',
-                        status: true
-                    },
-                    {
-                        id: uuid(),
                         name: "Non",
                         status: false
                     },
+                    {
+                        id: uuid(),
+                        name: 'Oui',
+                        status: true
+                    },
+
 
                 ],
 
@@ -443,3 +444,40 @@ export const questions = [
         ]
     }
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

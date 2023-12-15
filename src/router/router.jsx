@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from '../components/home/Home';
+import Home from '../components/v2/home/Home';
 // import QuestionnaireSlider from '../components/Questionnaire/QuestionnaireSlider';
 
 import Index from '../components/v2'
@@ -11,26 +11,11 @@ const RouterProvider = () => {
     return (
         <Router>
             <Routes>
-                {
-                    /* <Route path='/' element={<Home />}>
-                        <Route element={<QuestionnaireSlider />} path='/' />
-                    </Route> */
-                }
-                <Route path='/' element={<Index />}>
-                    <Route element={<CBudget />} path='/c' />
-                    <Route element={<SmPatrimoine />} path='/s' />
-                    <Route element={<Questionnaire />} path='/q' />
-                </Route>
-
-
-
+                <Route path='/' element={<Home />} />
+                <Route element={<CBudget />} path='/calculateur_de_budget' />
+                <Route element={<SmPatrimoine />} path='/simulateur_de_patrimoine' />
+                <Route element={<Questionnaire />} path='/questionnaire' />
             </Routes>
-
-
-
-
-
-
         </Router>
     )
 }

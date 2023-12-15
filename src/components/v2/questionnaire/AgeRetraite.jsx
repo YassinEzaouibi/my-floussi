@@ -6,7 +6,7 @@ import { isValidDate } from '../../../utils/isValidDate';
 import { generateDate } from '../../../utils/generateDate';
 import Validation from './Validation';
 import { useDispatch } from 'react-redux';
-import { setUserHasSelectedChoice } from '../../../redux/questionnaireSlice';
+import { setTempUserResponses, setUserHasSelectedChoice } from '../../../redux/questionnaireSlice';
 
 const AgeRetraite = () => {
     const dispatch = useDispatch()
@@ -25,7 +25,18 @@ const AgeRetraite = () => {
 
         if (isValidDate(dateNaissance) && retraite) {
             dispatch(setUserHasSelectedChoice(true))
+
+            dispatch(setTempUserResponses({
+                question: 'Age de retraite',
+                response: retraite,
+
+            }))
         }
+        dispatch(setTempUserResponses({
+            question: 'Age de retraite',
+            response: retraite,
+
+        }))
 
         // console.log(typeof dateNaissance)
 

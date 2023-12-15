@@ -14,6 +14,11 @@ export default {
   theme: {
 
     extend: {
+
+      backgroundImage: {
+        'home': "url('./src/assets/imgs/homebg.png')",
+        // 'footer-texture': "url('/img/footer-texture.png')",
+      },
       fontFamily: {
         sans: ["Segoe UI", ...defaultTheme.fontFamily.sans],
       },

@@ -1,11 +1,19 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useDispatch } from 'react-redux';
-import { addEmprunt } from '../../redux/questionnaireSlice';
+import { addEmprunt, fillEmprunts, setTempUserResponses } from '../../redux/questionnaireSlice';
 import uuid from 'react-uuid';
+
+
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { isValidDate } from '../../utils/isValidDate';
+import { generateDate } from '../../utils/generateDate';
+import calculateDateDifference, { getDateDifference } from '../../utils/calculateDiffDates';
+import dayjs from 'dayjs';
+import { useSelector } from 'react-redux';
 
 
 const style = {
@@ -15,25 +23,35 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
-
     boxShadow: 24,
     p: 4,
 };
 
 export default function EmpruntModal({ open, setOpen, categorieId, questionId }) {
     const dispatch = useDispatch()
+    const today = new Date()
+
 
     const [monthly, setMonthly] = useState('')
     const [yearsLeft, setYearsLeft] = useState('')
     const [name, setName] = useState('')
-    const empruntDataFilled = monthly && yearsLeft && name
+    const [date, setDate] = useState('')
+    const [dateEcheance, setDateEcheance] = useState('')
+    const [rest, setRest] = useState('')
+    const [error, setError] = useState(null)
+    const empruntDataFilled = monthly && name && !(error)
+    const { emprunts } = useSelector(state => state.questionnaire)
 
 
     const handleClose = () => {
-        setMonthly(0)
-        setYearsLeft(0)
+        setMonthly('')
+        setYearsLeft('')
         setName('')
+        setDate('')
         setOpen(false);
+    }
+    const handleDate = (newDate) => {
+        setDate(newDate)
     }
 
 
@@ -45,24 +63,46 @@ export default function EmpruntModal({ open, setOpen, categorieId, questionId })
                 id: uuid(),
                 name,
                 monthly,
-                yearsLeft
+                rest
             }
         }))
+
+        dispatch(fillEmprunts())
+
+        // dispatch(setTempUserResponses({
+        //     question: 'emprunts',
+        //     emprunts
+        // }))
+
+        setMonthly('')
+        setYearsLeft('')
+        setName('')
         setOpen(false)
+
     }
+
+    useEffect(() => {
+
+        setDateEcheance(generateDate(date))
+        const rest = getDateDifference(today, date)
+        setRest(rest)
+        dispatch(setTempUserResponses({
+            question: 'emprunts',
+            emprunts
+        }))
+    }, [date, error, dateEcheance, emprunts])
     return (
-        <div>
+        <div className=''>
             <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={{ ...style, borderRadius: 2 }}>
+                <Box sx={{ ...style, borderRadius: 2, marginTop: 10 }}>
                     <div className=' flex border border-grayLight px-5 py-2 bg-white mb-5 rounded-md'>
                         <input
                             value={name}
-
                             onChange={(e) => setName(e.target.value)}
                             type={'text'}
                             placeholder='Nom'
@@ -78,16 +118,20 @@ export default function EmpruntModal({ open, setOpen, categorieId, questionId })
                         <h6 className=' text-grayLight text-sm text-center w-fit  bg-white'>mad</h6>
                     </div>
 
-                    <div className=' flex border border-grayLight px-5 py-2 bg-white mb-5 rounded-md'>
-                        <input
-                            value={yearsLeft}
+                    <div className=' flex justify-center my-6  '>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DatePicker
+                                onError={(e) => {
+                                    setError(e)
+                                }}
+                                value={date}
+                                label="La date d'échéance"
+                                format='DD/MM/YYYY'
+                                onChange={handleDate}
+                                minDate={dayjs(today)}
+                            />
 
-                            onChange={(e) => setYearsLeft(e.target.value)}
-                            type={'number'}
-                            placeholder='Années restantes'
-                            className=' w-[95%] outline-none bg-transparent'
-                        />
-                        <h6 className=' text-grayLight text-sm text-center w-fit  bg-white'>ans</h6>
+                        </LocalizationProvider>
                     </div>
 
                     <div className=' flex justify-center gap-4'>

@@ -11,7 +11,7 @@ export default function RetraiteSlider({ t1, t2, onChange, v }) {
         <div className=' w-[100%]  my-6'>
 
             <div className=' text-black flex justify-center gap-x-6 opacity-70'>
-                <h6 className=' text-center '>Je prevois de prendre ma retraite a </h6>
+                <h6 className=' text-center '>Je prévois de prendre ma retraite à</h6>
 
                 <h6 className=' text-center '> <span className=' text-red'>{v}</span> ans</h6>
             </div>
@@ -20,8 +20,8 @@ export default function RetraiteSlider({ t1, t2, onChange, v }) {
                     aria-label="Temperature"
                     defaultValue={51}
                     getAriaValueText={valuetext}
-                    min={50}
-                    max={65}
+                    min={45}
+                    max={70}
                     size='small'
                     value={v}
                     onChange={onChange}

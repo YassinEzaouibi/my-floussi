@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { setUserHasSelectedChoice } from '../../../redux/questionnaireSlice'
+import { setTempUserResponses, setUserHasSelectedChoice } from '../../../redux/questionnaireSlice'
 import { useSwiperSlide } from 'swiper/react';
 import { useSelector } from 'react-redux';
 
-const BinaryChoices = ({ choices, setShow }) => {
+const BinaryChoices = ({ onNo, choices, setShow, question }) => {
     const dispatch = useDispatch()
     const [selected, setSelected] = useState(false)
     const swiperSlide = useSwiperSlide();
@@ -41,7 +41,16 @@ const BinaryChoices = ({ choices, setShow }) => {
                     choices.map((c) => (
                         <div
                             style={{ backgroundColor: selected === c.id ? '#AACEEC' : '#fff' }}
-                            onClick={() => selectChoice(c.id, c.status)}
+                            onClick={() => {
+                                selectChoice(c.id, c.status)
+                                dispatch(setTempUserResponses({
+                                    question,
+                                    score: c.status === false ? 0 : 1,
+                                    response: c.name
+                                }))
+
+                                c.status === false ? onNo() : null
+                            }}
                             key={c.id}
                             className=' bg-secondaryLight shadow-sm transition-all duration-300 hover:shadow-sm rounded-md cursor-pointer py-3 px-3 h-[50px]'>
 

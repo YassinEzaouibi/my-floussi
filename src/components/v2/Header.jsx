@@ -9,8 +9,12 @@ const Header = () => {
         <div className=' w-full h-[90px]  border-borderBlue border-b-4 flex items-center justify-between bg-headerLight fixed top-0 left-0 header px-7 py-10 '>
 
             <div className=' flex items-center justify-start h-full w-1/3 gap-3 cursor-pointer' >
-                <ArrowLeft color="#707070" size={30} />
-                <h6 className=' font-semibold text-3xl text-left text-grayLight'>Retour</h6>
+                <Link to={'/'}>
+                    <ArrowLeft color="#707070" size={30} />
+                </Link >
+                <h6 className=' font-semibold text-3xl text-left text-grayLight'>
+                    <Link to={'/'}>Retour</Link>
+                </h6>
             </div>
 
             <div className=' flex items-center justify-start h-full w-1/3 gap-8' >

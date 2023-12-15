@@ -1,13 +1,27 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { deleteEmprunt, setUserHasSelectedChoice } from '../../../redux/questionnaireSlice'
+import { deleteEmprunt, fillEmprunts, pushEmprunts, resetEmprunts, setTempUserResponses, setUserHasSelectedChoice } from '../../../redux/questionnaireSlice'
 import Trash from '../../../utils/svgs/Trash'
 import EmpruntModal from '../../modal/EmpruntModal'
 import AddEmprunt from './AddEmprunt'
 import BinaryChoices from './BinaryChoices'
 
-const Emprunts = ({ emprunts, binaryChoices, open, setOpen, categorieId, questionId }) => {
+const Emprunts = ({ emprunts, binaryChoices, open, setOpen, categorieId, questionId, question }) => {
     const [showEmprunts, setShowEmprunts] = useState(false)
+    // const { emprunts: _emprunts } = useSelector(state => state.questionnaire)
+
+
+
+
+    const onNo = () => {
+        dispatch(resetEmprunts({
+            categorieId,
+            questionId
+        }))
+        dispatch(fillEmprunts())
+    }
+
     const dispatch = useDispatch()
     const _deleteEmprunt = (id) => {
         dispatch(deleteEmprunt({
@@ -15,6 +29,14 @@ const Emprunts = ({ emprunts, binaryChoices, open, setOpen, categorieId, questio
             questionId,
             id
         }))
+
+        dispatch(fillEmprunts())
+
+
+        // dispatch(setTempUserResponses({
+        //     question: 'emprunts',
+        //     emprunts
+        // }))
     }
 
     useEffect(() => {
@@ -25,6 +47,11 @@ const Emprunts = ({ emprunts, binaryChoices, open, setOpen, categorieId, questio
             dispatch(setUserHasSelectedChoice(false))
 
         }
+        // dispatch(setTempUserResponses({
+        //     question: 'emprunts',
+        //     emprunts
+        // }))
+        // dispatch(pushEmprunts())
     }, [emprunts.length])
 
 
@@ -32,7 +59,7 @@ const Emprunts = ({ emprunts, binaryChoices, open, setOpen, categorieId, questio
     return (
 
         <>
-            <BinaryChoices dataLength={emprunts.length} show={showEmprunts} setShow={setShowEmprunts} choices={binaryChoices} />
+            <BinaryChoices onNo={onNo} question={question} dataLength={emprunts.length} show={showEmprunts} setShow={setShowEmprunts} choices={binaryChoices} />
             {showEmprunts &&
                 <EmpruntModal
                     categorieId={categorieId}
@@ -58,14 +85,9 @@ const Emprunts = ({ emprunts, binaryChoices, open, setOpen, categorieId, questio
                             </div>
 
                             <div className=' flex border border-grayLight px-5 py-2 bg-white mb-5 rounded-md'>
-                                <input
-                                    value={e.yearsLeft}
-                                    readOnly
-                                    type={'number'}
-                                    placeholder='Années restantes'
-                                    className=' w-[95%] outline-none bg-transparent cursor-default'
-                                />
-                                <h6 className=' text-grayLight text-sm text-center w-fit  bg-white'>ans</h6>
+                                <h6 className=' text-grayLight text-sm text-center w-fit  bg-white'>Il vous rest encore {e.rest}</h6>
+
+
                             </div>
                         </div>
 
