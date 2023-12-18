@@ -1,13 +1,14 @@
 import React from 'react'
 import Header from './header/Header'
-import Hero from './hero/Hero'
+import { Outlet } from 'react-router-dom'
 
 const Home = () => {
     return (
         <div className=" home min-h-screen min-w-screen  h-fit " >
             <Header />
-
-            <Hero />
+            <div className='w-full h-full'>
+                <Outlet />
+            </div>
         </div>
     )
 }

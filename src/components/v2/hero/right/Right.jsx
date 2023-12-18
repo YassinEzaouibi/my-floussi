@@ -1,5 +1,5 @@
 import React from 'react'
-import hero from '../../../../../assets/imgs/hero.svg'
+import hero from '../../../../assets/imgs/hero.svg'
 
 const Right = () => {
     return (

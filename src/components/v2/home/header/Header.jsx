@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../../../../assets/imgs/logo.svg'
 import BurgerMenuBtn from './BurgerMenuBtn'
 import LoginBtn from './LoginBtn'
@@ -13,8 +14,8 @@ const Header = () => {
     }
     return (
         <>
-            <div className=' flex items-center justify-between gap-x-5 px-3 py-5'>
-                <img src={logo} alt="ida tech logo" />
+            <div className=' flex items-center justify-between gap-x-5 px-3 py-5 sticky top-0 z-50 shadow-md bg-secondaryLight'>
+                <Link to='/'><img src={logo} alt="ida tech logo" /></Link>
                 <BurgerMenuBtn onClick={showSmMenu} />
                 <MenuMdLg />
                 <LoginBtn />

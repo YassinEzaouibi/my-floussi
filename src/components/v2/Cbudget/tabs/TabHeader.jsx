@@ -3,7 +3,6 @@ import { X } from 'react-feather';
 import GripDots from '../../../../utils/svgs/gripDots';
 
 const TabHeader = ({ type, title, onChange, onKeyUp, titleRef, deleteGroup, dataLength }) => {
-    console.log(dataLength)
     return (
         <div className=' px-4 py-6 flex justify-between h-[80px] items-center border-b border-b-grayExtraLight '>
 

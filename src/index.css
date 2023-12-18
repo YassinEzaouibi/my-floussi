@@ -251,7 +251,7 @@ input[type=number] {
     background-image: url('./assets/imgs/homebg.png') !important;
 }
 
-.home button {
+.home .loginBtn {
     padding: 15px 30px;
     color: #009AD5;
     /* border: none; */
@@ -266,13 +266,13 @@ input[type=number] {
     cursor: pointer;
 }
 
-.home button>span {
+.home .loginBtn>span {
     z-index: 2;
 }
 
 
 
-.home button::before {
+.home .loginBtn::before {
     content: '';
     position: absolute;
     top: 0;
@@ -294,11 +294,11 @@ input[type=number] {
     transition: transform 0.2s ease-in;
 }
 
-.home button:hover {
+.home .loginBtn:hover {
     color: #e8e8e8;
 }
 
-.home button:hover::before {
+.home .loginBtn:hover::before {
     -webkit-transform: scaleX(1);
     -ms-transform: scaleX(1);
     transform: scaleX(1);
@@ -557,3 +557,62 @@ input[type=number] {
         transform: translateY(3rem) scale(0.2);
     }
 }
+
+
+
+
+.main-tarif .MuiSlider-valueLabelLabel {
+    color: #000000 !important;
+}
+
+.main-tarif .MuiSlider-valueLabel {
+    /* top: px !important; */
+}
+
+.main-tarif .MuiSlider-valueLabel:before {
+    /* top: -6px; */
+}
+
+
+.main-tarif .MuiSlider-valueLabelOpen,
+ .main-tarif .MuiSlider-valueLabel ,
+ .main-tarif .css-nnid7-MuiSlider-valueLabel{
+background-color: #009AD5 !important;
+ }
+
+ .frais > div{
+    padding: 10px;
+    border-left: 2px solid #e0c8b3;
+ }
+
+ .calc-slider .MuiSlider-rail ,
+  .calc-slider .css-14pt78w-MuiSlider-rail
+
+ {
+    display: none;
+
+ } 
+ 
+ .calc-slider .MuiSlider-track ,
+  .calc-slider .css-1gv0vcd-MuiSlider-track{
+display: none;
+ }
+ 
+
+ .calc-slider .MuiSlider-thumb ,
+ .calc-slider .MuiSlider-thumbSizeMedium ,
+ .calc-slider .MuiSlider-thumbColorPrimary ,
+ .calc-slider .MuiSlider-thumb,
+ .calc-slider .MuiSlider-thumbSizeMedium ,
+ .calc-slider .MuiSlider-thumbColorPrimary,
+ .calc-slider .css-eg0mwd-MuiSlider-thumb{
+
+        padding: 20px;
+        /* display: block; */
+        background: transparent;
+        border: 1px solid rgb(0, 0, 0);
+        width: 130px;
+        /* width: fit-content; */
+        border-radius: 5px;
+        scale: 0.8;
+ }

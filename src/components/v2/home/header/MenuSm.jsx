@@ -8,7 +8,7 @@ const MenuSm = () => {
 
             <li className=' opacity-80 h-full w-fit  ease-in-out transition-all duration-300 hover:opacity-100 '><Link to={'#'}>Pourquoi RoboAdvisorX ?</Link>
             </li>
-            <li className=' opacity-80 h-full w-fit  ease-in-out transition-all duration-300 hover:opacity-100 '><Link to={'#'}>Tarifs</Link>
+            <li className=' opacity-80 h-full w-fit  ease-in-out transition-all duration-300 hover:opacity-100 '><Link to={'/tarifs'}>Tarifs</Link>
             </li>
             <li className=' opacity-80 h-full w-fit  ease-in-out transition-all duration-300 hover:opacity-100 '><Link to={'#'}>Éducation financière</Link>
             </li>
