@@ -13,13 +13,13 @@ const InvestSlider = ({ v, setV }) => {
     }
 
     return (
-        <div className='  my-10'>
+        <div className='  my-6'>
             <Slider
                 aria-label="Always visible"
                 defaultValue={0}
                 min={0}
                 step={1}
-                max={200}
+                max={2000}
                 size='medium'
                 // valueLabelDisplay="on"
                 value={v}

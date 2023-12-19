@@ -4,7 +4,7 @@ import CTABtn from './CTABtn'
 const Left = () => {
     return (
         <div className=' flex flex-col gap-y-10'>
-            <h1 className=' text-7xl' >Investissez sans
+            <h1 className=' text-5xl lg:text-7xl' >Investissez sans
                 y penser
             </h1>
             <p className=' text-md text-grayLight'>

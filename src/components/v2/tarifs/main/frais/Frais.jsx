@@ -31,7 +31,7 @@ const Frais = () => {
     }, [fraisMoyens, fraisRoboAdvisorX, economieAnnuelle, economieParAns, typeTarifs, sommePlacee])
 
     return (
-        <div className='frais w-[80%] mx-auto my-5 flex gap-x-5 justify-center'>
+        <div className='frais w-[80%] mx-auto my-5 flex-col lg:flex-row flex gap-5 justify-center'>
             <FrMoyensGerantsPrvs />
             <FraisRoboAdviser />
             <EconomiesFraisAnnes />

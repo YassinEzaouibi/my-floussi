@@ -15,7 +15,7 @@ export const _revenus = [
 export const step1 = (data = []) => {
     const arr = []
     for (const r of data) {
-        if (r.nom && r.montant && !isNaN(r.montant)) {
+        if (r.nom.trim() && r.montant && !isNaN(r.montant)) {
             let montant = 0
             switch (r.type) {
                 case 'a':

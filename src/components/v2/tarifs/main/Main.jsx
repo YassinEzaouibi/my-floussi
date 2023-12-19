@@ -9,7 +9,7 @@ const Main = () => {
             <h2 className=' text-center text-darkBlue text-4xl'> Économisez pour prospérer</h2>
 
             <p className=' text-grayLight text-center text-xl mb-10 '>Regagnez des milliers d'euros : Robot Advisor X, la solution où votre épargne prospère sans tomber dans la poche du géran</p>
-            <div className=' mb-20 w-[40%] mx-auto'><TypeTarifsSelect /></div>
+            <div className=' w-full mb-20 lg:w-[40%] mx-auto'><TypeTarifsSelect /></div>
 
 
 

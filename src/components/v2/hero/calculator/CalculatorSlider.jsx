@@ -1,27 +1,27 @@
 import React from 'react'
 
 import Slider from '@mui/material/Slider';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+
+// calc - slider
 
 
 const CalculatorSlider = ({ v, setV }) => {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
     const handleChange = (e, v) => {
         setV(v)
     }
 
     return (
-        <div className=' calc-slider ml-14 my-5'>
+        <div className=' calc-slider ml-0 my-8 '>
             <Slider
                 aria-label="Always visible"
                 defaultValue={0}
-                min={0}
+                min={1}
                 step={1}
                 max={10}
                 size='medium'
-                // valueLabelDisplay="on"
+                valueLabelDisplay="on"
                 value={v}
                 onChange={handleChange}
             />
@@ -30,4 +30,4 @@ const CalculatorSlider = ({ v, setV }) => {
     )
 }
 
-export default CalculatorSlider
+export default CalculatorSlider 

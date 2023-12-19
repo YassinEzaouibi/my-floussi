@@ -21,7 +21,7 @@ const Header = () => {
                 <LoginBtn />
             </div>
             <div
-                className=' lg:hidden'
+                className=' lg:hidden sticky top-28 z-40 bg-bodyLight '
                 style={{
                     display: toggleMenu ? 'block' : 'none',
                     opacity: toggleMenu ? 1 : 0,
@@ -29,7 +29,7 @@ const Header = () => {
                     transitionDuration: 0.5
                 }}
             >
-                <MenuSm />
+                <MenuSm setToggleMenu={setToggleMenu} />
             </div>
         </>
     )

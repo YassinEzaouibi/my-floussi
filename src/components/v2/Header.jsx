@@ -12,17 +12,17 @@ const Header = () => {
                 <Link to={'/'}>
                     <ArrowLeft color="#707070" size={30} />
                 </Link >
-                <h6 className=' font-semibold text-3xl text-left text-grayLight'>
+                <h6 className=' font-semibold sm:text-lg md:text-3xl text-left text-grayLight'>
                     <Link to={'/'}>Retour</Link>
                 </h6>
             </div>
 
-            <div className=' flex items-center justify-start h-full w-1/3 gap-8' >
-                <img src={lamp} className=' font-semibold text-3xl text-left text-grayLight'></img>
-                <h5 className=' text-4xl text-black logo-text'>RoboAdvisorX</h5>
+            <div className='hidden lg:flex items-center justify-start h-full w-1/3 gap-8' >
+                <img src={lamp} className='font-semibold text-xl lg:text-2xl text-left text-grayLight' />
+                <h5 className=' text-xl lg:text-2xl text-black logo-text'>RoboAdvisorX</h5>
             </div>
 
-            <div className=' flex items-center justify-end h-full w-1/3 gap-3 cursor-pointer' >
+            <div className=' w-full scale-75 md:scale-100 flex items-center justify-end h-full md:w-1/3 gap-3 cursor-pointer' >
                 <div className=' flex items-center h-full gap-2 text-sm font-bold text-mdBlue'>
                     <Calendar color="#003371" size={22} />
                     <h5 className=' hover:text-darkBlue whitespace-no-wrap '>Prendre rendez-vous</h5>

@@ -61,11 +61,6 @@ const Tab = ({ data, type, dataLength }) => {
         <div className=' h-fit w-full rounded-2xl bg-white border border-grayExtraLight shadow-sm mt-3'>
 
             <TabHeader dataLength={dataLength} deleteGroup={_deleteGroup} titleRef={titleRef} type={type} title={title} onChange={changeTitle} onKeyUp={onKeyUpGrpTitleChange} />
-            {/* <Form /> */}
-
-
-
-
 
             {
                 <Droppable droppableId={data.id ?? '###'} type='form'>
@@ -99,7 +94,7 @@ const Tab = ({ data, type, dataLength }) => {
                 </Droppable>
             }
 
-            <TabFooter addItem={addItem} />
+            <TabFooter type={type} addItem={addItem} />
 
         </div>
     )

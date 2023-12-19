@@ -5,7 +5,7 @@ import Right from './Right'
 const Hero = () => {
     return (
         <div className=' mx-auto h-fit bg-secondaryLight'>
-            <div className=' flex'>
+            <div className='flex-col lg:flex-row flex'>
                 <Left />
                 <Right />
 

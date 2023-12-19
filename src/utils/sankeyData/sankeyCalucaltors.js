@@ -41,14 +41,24 @@ export const tauxEpargnePossible = (revenus, depences) => {
 }
 
 export const rest = (revenus, investissements, depences) => {
-    const r = (revenus - investissements - depences).toFixed(2)
+    const r = (revenus - investissements - depences)
     if (r < 0) {
         return `vous dépassez votre budget de ${r} MAD`
     }
     else if (r > 0) {
-        return `il vous reste ${r} MAD  disponible`
+        return `il vous reste ${addSpacesToNumber(r)} MAD  disponible`
     }
     else {
         return ''
     }
+}
+
+export function addSpacesToNumber(number) {
+    // Convert the number to a string
+    let numberString = number.toString();
+
+    // Use a regular expression to insert spaces
+    numberString = numberString.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+    return numberString;
 }

@@ -565,13 +565,7 @@ input[type=number] {
     color: #000000 !important;
 }
 
-.main-tarif .MuiSlider-valueLabel {
-    /* top: px !important; */
-}
 
-.main-tarif .MuiSlider-valueLabel:before {
-    /* top: -6px; */
-}
 
 
 .main-tarif .MuiSlider-valueLabelOpen,
@@ -607,11 +601,13 @@ display: none;
  .calc-slider .MuiSlider-thumbColorPrimary,
  .calc-slider .css-eg0mwd-MuiSlider-thumb{
 
-        padding: 20px;
+        padding: 20px ;
+        font-size: 15px;
+        cursor: grab;
         /* display: block; */
         background: transparent;
         border: 1px solid rgb(0, 0, 0);
-        width: 130px;
+        width: 120px;
         /* width: fit-content; */
         border-radius: 5px;
         scale: 0.8;

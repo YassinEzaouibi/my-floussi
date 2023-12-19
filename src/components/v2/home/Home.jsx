@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <div className=" home min-h-screen min-w-screen  h-fit " >
             <Header />
-            <div className='w-full h-full'>
+            <div className='w-full h-full overflow-hidden'>
                 <Outlet />
             </div>
         </div>

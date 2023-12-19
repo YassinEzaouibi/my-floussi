@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { getTotalOfArrayObject } from '../../../utils/sankeyData/getTotalOfData'
-import { getTotalOfCategory, rest, tauxEpargne, tauxEpargnePossible } from '../../../utils/sankeyData/sankeyCalucaltors'
+import { addSpacesToNumber, getTotalOfCategory, rest, tauxEpargne, tauxEpargnePossible } from '../../../utils/sankeyData/sankeyCalucaltors'
 import { step1, step2, step3 } from '../../../utils/sankeyData/steps'
 import SankeyDiagramme from './diagramme/Sankey'
 import Header from './Header'
@@ -39,11 +39,15 @@ const Index = () => {
 
 
 
-                    <div className=' w-[100%] my-10 mx-auto '>
+                    <div className=' w-[90%] my-10 mx-auto '>
                         <p className=' text-black text-center text-lg'>
                             {
                                 `
-                                Votre taux d'épargne est de ${tauxEpargne(revenus, investissements)} (taux d'épargne possible: ${tauxEpargnePossible(revenus, depences)} ). Vous avez un revenu total de ${totalRev} MAD, des dépenses de ${totalDep} MAD et investissez ${totalInv} MAD tous les mois, ${rest(totalRev, totalInv, totalDep)}.
+                                Votre taux d'épargne est de ${tauxEpargne(revenus, investissements)} (taux d'épargne possible: ${tauxEpargnePossible(revenus, depences)} ).
+                                 Vous avez un revenu total de ${addSpacesToNumber(parseInt(totalRev))} MAD,
+                                  des dépenses de ${addSpacesToNumber(parseInt(totalDep))} MAD \n
+                                 et investissez
+                                 ${addSpacesToNumber(parseInt(totalInv))} MAD tous les mois, ${rest(totalRev, totalInv, totalDep)}.
                             `
                             }
                         </p>

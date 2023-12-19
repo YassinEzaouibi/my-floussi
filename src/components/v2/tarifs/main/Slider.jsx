@@ -4,12 +4,13 @@ import Slider from '@mui/material/Slider';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { setSommePlacee } from '../../../../redux/tarifsSlice';
+import { addSpacesToNumber } from '../../../../utils/sankeyData/sankeyCalucaltors';
 
 function valuetext(value) {
     return (
-        <div className=' w-[200px] h-fit p-5'>
-            <h6 className=' text-white text-lg text-center'>somme placée</h6>
-            <p className='  text-center flex items-center justify-center text-white text-2xl'>{`${value} MAD`}</p>
+        <div className=' w-[100px] lg:w-[200px] h-fit p-2 lg:p-5'>
+            <h6 className=' text-white text-sm lg:text-lg text-center'>somme placée</h6>
+            <p className='  text-center flex items-center justify-center text-white text-md lg:text-2xl'>{`${addSpacesToNumber(value)} MAD`}</p>
         </div>)
         ;
 }

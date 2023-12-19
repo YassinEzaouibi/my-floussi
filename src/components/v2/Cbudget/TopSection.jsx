@@ -7,7 +7,7 @@ const TopSection = ({ sankeyRef }) => {
 
 
     return (
-        <div className=' flex flex-col justify-center  w-[70%] mx-auto '>
+        <div className=' w-full flex flex-col justify-center  lg:w-[70%] mx-auto overflow-hidden '>
 
             <Header />
             <Tabs sankeyRef={sankeyRef} />

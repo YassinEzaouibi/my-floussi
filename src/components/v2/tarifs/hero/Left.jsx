@@ -13,8 +13,8 @@ const Left = () => {
                 Les supports d'investissement présentent un risque de perte en capital.
             </p>
 
-            <div className='flex gap-10'>
-                <button className=' bg-mainLight text-white text-center text-lg px-5 py-5 transition-all duration-300 capitalize rounded-md hover:bg-darkBlue'>
+            <div className=' flex-col lg:flex-row flex gap-10'>
+                <button className='  bg-mainLight text-white text-center text-lg px-5 py-5 transition-all duration-300 capitalize rounded-md hover:bg-darkBlue'>
                     Simuler votre projet
                 </button>
                 <button className=' text-mainLight bg-transparent border-2 border-mainLight text-center text-lg px-5 py-5 transition-all duration-300 capitalize rounded-md hover:bg-darkBlue hover:text-white hover:border-darkBlue'>

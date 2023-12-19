@@ -71,9 +71,11 @@ import { _revenus, step1, step2, step3 } from '../../../../utils/sankeyData/step
 
 const colors = ['#F49352', '#D6475D', '#85357D', '#6F50E5', '#3C898E', '#F08696']
 export const options = {
+    tooltip: { isHtml: true, trigger: 'selection' },
+
     sankey: {
-        // link: { color: { fill: "#F49352" } },
         link: {
+
             // colors,
             // color: {
             //     stroke: 'black', strokeWidth: 1
@@ -81,7 +83,7 @@ export const options = {
             colorMode: 'target',
             color: {
                 // fill: '#efd',     // Color of the link.
-                fillOpacity: 1, // Transparency of the link.
+                fillOpacity: 0.5, // Transparency of the link.
                 // Thickness of the link border (default 0).
             },
 
@@ -90,14 +92,14 @@ export const options = {
             colors,
             label: {
                 fontName: 'Times-Roman',
-                fontSize: 11,
+                // fontSize: 11,
                 color: '#000',
-                bold: true,
+                // bold: true,
 
             },
             color: {
                 // fill: '#efd',     // Color of the link.
-                fillOpacity: 0.8, // Transparency of the link.
+                fillOpacity: 0.5, // Transparency of the link.
                 // Thickness of the link border (default 0).
             },
 
@@ -105,16 +107,30 @@ export const options = {
     },
 };
 
+const CustomTooltip = ({ row, column, data }) => {
+    // Customize the tooltip content based on the data
+    const tooltipContent = `From: ${data[row + 1][0]}, To: ${data[row + 1][1]}, Weight: ${data[row + 1][2]}`;
+
+    return (
+        <div style={{ padding: '10px', backgroundColor: '#ff0000', border: '1px solid #ccc' }}>
+            {tooltipContent}
+        </div>
+    );
+};
+
 const SankeyDiagramme = ({ data }) => {
     // console.log(stepe2(_data))
     return (
         <Chart
+
             chartType="Sankey"
             width="100%"
             height="400px"
             data={data}
-            style
+
             options={options}
+        // tooltip={{ isHtml: true, trigger: 'selection', textStyle: { color: '#333' } }}
+
 
         />
     )

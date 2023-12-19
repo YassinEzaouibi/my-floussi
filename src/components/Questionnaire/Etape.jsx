@@ -12,7 +12,6 @@ const Etape = ({ title, children, buttonTitle, buttonDisabled }) => {
             <div className='mt-5 p-3 flex gap-6 justify-center'>
                 <div>
                     <Player
-
                         autoplay
                         loop
                         src={animation}
