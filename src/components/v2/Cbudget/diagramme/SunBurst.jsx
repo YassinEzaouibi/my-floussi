@@ -89,7 +89,7 @@ const SunBurst = ({ data, total }) => {
                 borderColor: '#fff'
             },
             label: {
-                show: true,
+                show: false,
                 fontSize: 10,
                 rotate: 'tangential',
                 color: '#000',
@@ -151,7 +151,7 @@ const SunBurst = ({ data, total }) => {
                         ])
                     },
                     label: {
-                        rotate: 'radial'
+                        rotate: 'tangential'
                     }
                 }
             ]
