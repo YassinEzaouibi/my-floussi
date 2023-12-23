@@ -162,7 +162,7 @@ const SunBurst = ({ data, total }) => {
         <div className={'echarts-demo'}>
             <div className='w-full'>
                 <ReactECharts
-                    style={{ height: 500 }}
+                    style={{ height: 400 }}
                     option={options}
                     notMerge={true}
                     lazyUpdate={true}
