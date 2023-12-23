@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import Input from './Input'
 import Slider from './Slider'
-import { setRepInv, setRepPI, setInvAnnuel, setNbrAnnesEpargne, setPActuel, setPlusValueNette, setRendAutre, setRendBourse, setTxImpositionAutre, setTxImpositionBourse, setTxInflation, setTxRetrait, } from '../../../../redux/smPatrimoineSlice';
+import { setRepInv, setRepPI, setInvAnnuel, setNbrAnnesEpargne, setPActuel, setRendAutre, setRendBourse, setTxImpositionAutre, setTxImpositionBourse, setTxInflation, setTxRetrait, } from '../../../../redux/smPatrimoineSlice';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
@@ -26,54 +26,54 @@ const Index = () => {
 
     }, [repPI])
 
-    const handlePActuel = useCallback((e) => {
+    const handlePActuel = useCallback((e, v) => {
 
-        dispatch(setPActuel(e.target.value))
+        dispatch(setPActuel(v))
 
     }, [pActuel])
 
-    const handleInvAnnuel = useCallback((e) => {
+    const handleInvAnnuel = useCallback((e, v) => {
 
-        dispatch(setInvAnnuel(e.target.value))
+        dispatch(setInvAnnuel(v))
 
     }, [invAnnuel])
 
-    const handleNbrAnnesEpargne = useCallback((e) => {
+    const handleNbrAnnesEpargne = useCallback((e, v) => {
 
 
-        dispatch(setNbrAnnesEpargne(e.target.value))
+        dispatch(setNbrAnnesEpargne(v))
     }, [nbrAnnesEpargne])
 
-    const handleRendBourse = useCallback((e) => {
+    const handleRendBourse = useCallback((e, v) => {
 
-        dispatch(setRendBourse(e.target.value))
+        dispatch(setRendBourse(v))
 
     }, [rendBourse])
 
-    const handleRendAutre = useCallback((e) => {
+    const handleRendAutre = useCallback((e, v) => {
 
-        dispatch(setRendAutre(e.target.value))
+        dispatch(setRendAutre(v))
 
     }, [rendAutre])
-    const handleTxImpositionBourse = useCallback((e) => {
+    const handleTxImpositionBourse = useCallback((e, v) => {
 
-        dispatch(setTxImpositionBourse(e.target.value))
+        dispatch(setTxImpositionBourse(v))
 
     }, [txImpositionBourse])
-    const handleTxImpositionAutre = useCallback((e) => {
+    const handleTxImpositionAutre = useCallback((e, v) => {
 
-        dispatch(setTxImpositionAutre(e.target.value))
+        dispatch(setTxImpositionAutre(v))
 
     }, [txImpositionAutre])
 
-    const handleTxRetrait = useCallback((e) => {
+    const handleTxRetrait = useCallback((e, v) => {
 
-        dispatch(setTxRetrait(e.target.value))
+        dispatch(setTxRetrait(v))
 
     }, [txRetrait])
-    const handleTxInflation = useCallback((e) => {
+    const handleTxInflation = useCallback((e, v) => {
 
-        dispatch(setTxInflation(e.target.value))
+        dispatch(setTxInflation(v))
 
     }, [txInflation])
 
@@ -81,7 +81,14 @@ const Index = () => {
     return (
         <div className=' w-[40%] max-[640px]:w-full  h-full px-4 border-r border-r-grayLight'>
             {/* paatrimoineActuel  mad */}
-            <Input title={'Patrimoine actuel'}
+            <Slider
+                setV={setPActuel}
+                unit={"MAD"}
+                montant
+                step={1000}
+                min={0}
+                max={10000000}
+                title={'Patrimoine actuel'}
                 v={pActuel}
                 onChange={handlePActuel}
                 mad
@@ -89,15 +96,23 @@ const Index = () => {
 
             {/* Répartition de votre patrimoine initial  %*/}
             <Slider
+                setV={setRepPI}
                 v={repPI}
-
                 onChange={handleRepPI}
                 title={"Répartition de votre patrimoine initial"}
                 t1="Bourse"
-                t2="Autre" />
+                t2="Autre"
+            />
 
             {/* Investissements annuels mad */}
-            <Input title={'Investissements annuels'}
+            <Slider
+                setV={setInvAnnuel}
+                unit={"MAD"}
+                montant
+                min={0}
+                max={200000}
+                step={2000}
+                title={'Investissements annuels'}
                 v={invAnnuel}
                 onChange={handleInvAnnuel}
                 mad
@@ -105,6 +120,7 @@ const Index = () => {
 
             {/* Répartition des investissements % */}
             <Slider
+                setV={setRepInv}
                 v={repInv}
                 title={" Répartition des investissements"}
                 t1="Bourse"
@@ -114,44 +130,75 @@ const Index = () => {
             />
 
             {/* Nombre d’années d’épargne ans */}
-            <Input title={"Nombre d'années d'épargne"}
+            <Slider
+                setV={setNbrAnnesEpargne}
+                unit={"ANS"}
+                montant
+                min={0}
+
+                max={50}
+                title={"Nombre d'années d'épargne"}
                 v={nbrAnnesEpargne}
                 onChange={handleNbrAnnesEpargne}
             />
 
 
-            {/* Rendement autre % */}
-            <Input title={'Rendement bourse'}
+            {/* Rendement bourse % */}
+            <Slider
+                setV={setRendBourse}
+                min={0}
+                max={25}
+                title={'Rendement bourse'}
                 v={rendBourse}
                 onChange={handleRendBourse}
             />
 
             {/* Rendement autre % */}
-            <Input title={'Rendement autre'}
+            <Slider
+                setV={setRendAutre}
+                min={0}
+                max={10}
+                title={'Rendement autre'}
                 v={rendAutre}
                 onChange={handleRendAutre}
             />
 
             {/* Taux d’imposition bourse % */}
-            <Input title={"Taux d'imposition bourse"}
+            <Slider
+                setV={setTxImpositionBourse}
+                min={0}
+                max={40}
+                title={"Taux d'imposition bourse"}
                 v={txImpositionBourse}
                 onChange={handleTxImpositionBourse}
             />
 
             {/* Taux d’imposition autre % */}
-            <Input title={"Taux d'imposition autre"}
+            <Slider
+                setV={setTxImpositionAutre}
+                min={0}
+                max={40}
+                title={"Taux d'imposition autre"}
                 v={txImpositionAutre}
                 onChange={handleTxImpositionAutre}
             />
 
             {/* Taux de retrait % */}
-            <Input title={'Taux de retrait'}
+            <Slider
+                setV={setTxRetrait}
+                min={0}
+                max={25}
+                title={'Taux de retrait'}
                 v={txRetrait}
                 onChange={handleTxRetrait}
             />
 
             {/* Taux d’inflation % */}
-            <Input title={"Taux d'inflation"}
+            <Slider
+                setV={setTxInflation}
+                min={0}
+                max={10}
+                title={"Taux d'inflation"}
                 v={txInflation}
                 onChange={handleTxInflation}
             />

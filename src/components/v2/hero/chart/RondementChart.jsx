@@ -1,24 +1,21 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useEffect } from 'react';
 import data from '../../../../utils/json/rondementChartData.json'
+const postertext = {
+    title: "Une stratégie d'investissement à long terme qui a fait ses preuves",
+    paragraphe: "Optez pour la sagesse plutôt que les conjectures : investissez tôt, régulièrement et de manière systématique avec un portefeuille de fonds indiciels, une stratégie d'investissement qui a fait ses preuves.",
+}
 
-// const dataReformed = data.map((d) => {
-//     return {
-//         "date": d.date,
-//         "Masi Rtb Brut": d['Masi Rtb Brut'].toFixed(2),
-//         "model": d.model.toFixed(2)
-//     }
-// }
-// )
 import {
     LineChart,
     Line,
     XAxis,
     YAxis,
-    CartesianGrid,
     Tooltip,
     Legend,
     ResponsiveContainer
 } from "recharts";
+import PosterText from '../poster/PosterText';
+import AOS from 'aos'
 
 
 class CustomizedAxisTick extends PureComponent {
@@ -37,7 +34,7 @@ class CustomizedAxisTick extends PureComponent {
 
 class CustomizedYAxisTick extends PureComponent {
     render() {
-        const { x, y, stroke, payload } = this.props;
+        const { x, y, payload } = this.props;
 
         return (
             <g transform={`translate(${x},${y})`}>
@@ -51,39 +48,49 @@ class CustomizedYAxisTick extends PureComponent {
 
 
 const RondementChart = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 500
+        })
+    }, [])
     return (
-        <ResponsiveContainer width="100%" height={400}>
-            <LineChart
+        <div data-aos="zoom-in" className=' flex flex-col lg:flex-row w-[95%] bg-bodyLight lg:w-[100%] mx-auto  p-3 lg:p-10 my-5  transition-all duration-300 gap-x-11'>
 
-                data={data}
-            >
-                <CartesianGrid strokeDasharray="1 1" />
-                <XAxis
-                    tick={<CustomizedAxisTick />}
-                    dataKey="date"
-                // tickMargin={20}
-                />
+            <PosterText title={postertext.title} paragraphe={postertext.paragraphe} />
+            <div className='w-full h-full'>
+                <h1 className=' text-mdBlue text-3xl text-center my-5 '> Rendement annuel Moyen de 12% </h1>
+                <ResponsiveContainer width="100%" height={500}>
+                    <LineChart
 
-                <YAxis
-                    tick={<CustomizedYAxisTick />}
-                />
-                <Tooltip />
-                <Legend
-                    wrapperStyle={{
-                        paddingTop: 40
-                    }}
-                // style={{ marginTop: 40 }}
-                />
-                <Line
-                    dot={false}
-                    type="monotone"
-                    dataKey="Masi Rtb Brut"
-                    stroke="#009AD5"
-                />
-                <Line dot={false}
-                    type="monotone" dataKey="model" stroke="#F49352" />
-            </LineChart>
-        </ResponsiveContainer >
+                        data={data}
+                    >
+                        {/* <CartesianGrid strokeDasharray="1 1" /> */}
+                        <XAxis
+                            tick={<CustomizedAxisTick />}
+                            dataKey="date"
+                        />
+
+                        <YAxis
+                            tick={<CustomizedYAxisTick />}
+                        />
+                        <Tooltip />
+                        <Legend
+                            wrapperStyle={{
+                                paddingTop: 40
+                            }}
+                        />
+                        <Line
+                            dot={false}
+                            type="monotone"
+                            dataKey="Masi Rtb Brut"
+                            stroke="#009AD5"
+                        />
+                        <Line dot={false}
+                            type="monotone" dataKey="model" stroke="#F49352" />
+                    </LineChart>
+                </ResponsiveContainer >
+            </div>
+        </div>
     )
 }
 

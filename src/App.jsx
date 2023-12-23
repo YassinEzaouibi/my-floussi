@@ -9,7 +9,8 @@ import store, { persistor } from './redux/store';
 import { ThemeProvider } from '@mui/styles';
 import { createTheme } from '@mui/material';
 import { PersistGate } from 'redux-persist/integration/react';
-
+import AOS from 'aos';
+AOS.init();
 
 
 const customTheme = createTheme({

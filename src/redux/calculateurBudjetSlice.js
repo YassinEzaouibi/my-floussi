@@ -25,7 +25,7 @@ export const calclulateurBudjetSlice = createSlice({
             },
             {
                 id: uuid(),
-                nom: 'Autres',
+                nom: 'Autres Revenus',
                 montant: 0,
                 type: 'm'
             }
@@ -58,7 +58,7 @@ export const calclulateurBudjetSlice = createSlice({
             },
             {
                 id: uuid(),
-                title: 'Autres',
+                title: 'Autres investissements',
 
                 data: [
                     {

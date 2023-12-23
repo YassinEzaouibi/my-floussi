@@ -48,7 +48,7 @@ const IconChoices = ({ choices, question }) => {
                         className={`w-full h-fit py-8 px-5 my-7 rounded-md shadow-sm duration-300 transition-all hover:shadow-lg active:bg-lightBlue cursor-pointer bg-${selected === c.id ? 'lightBlue' : 'white'} border border-lightBlue`}
                     >
                         <div className=' flex gap-x-5 items-center text-grayLight'>
-                            <c.icon />
+                            {c?.icon && <c.icon />}
                             <h5 className=' align-middle'>{c.name}</h5>
                         </div>
                     </div>

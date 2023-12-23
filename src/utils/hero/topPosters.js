@@ -3,11 +3,7 @@ import p2 from '../../assets/imgs/hero-posters/2-m.png'
 import p3 from '../../assets/imgs/hero-posters/3-m.png'
 
 export const topPosters = [
-    {
-        title: "Une stratégie d'investissement à long terme qui a fait ses preuves",
-        paragraphe: "Optez pour la sagesse plutôt que les conjectures : investissez tôt, régulièrement et de manière systématique avec un portefeuille de fonds indiciels, une stratégie d'investissement qui a fait ses preuves.",
-        img: p1
-    },
+
     {
         title: "Chaque centime compte : l'impact crucial des frais",
         paragraphe: "Lorsque vous investissez dans votre avenir, les frais, ça compte. De nombreux fonds communs de placement imposent des frais de 2 %, et de nombreux conseillers financiers facturent des frais de 1 %. Cela semble peut-être peu, mais sur un horizon d'investissement à long terme, ce pourcentage de frais s’accumulera et réduira de beaucoup la valeur de votre rendement.",

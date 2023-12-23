@@ -73,7 +73,6 @@ const Calculator = () => {
                 <div className=' w-fit mx-auto text-center border rounded-md text-grayLight p-5 my-4'>
                     <h3>Investissez {addSpacesToNumber(invest)} MAD par semaine</h3>
                 </div>
-                <InvestSlider v={invest} setV={setInvest} />
 
                 <div className=' flex flex-col gap-9 text-grayLight'>
                     <div className=' text-mainLight'>
@@ -94,20 +93,8 @@ const Calculator = () => {
                     <img src={svgs[imgSrc]} />
                 </div>
                 <CalculatorSlider v={imgSrc} setV={setImageSrc} />
-
-
             </div>
-            <div className=' text-left px-5'>
-                <h5
-                    className=' text-2xl text-mainLight my-5  '
-                >Retraite inatteignable pour de nombreux Marocains : la réalité financière qui persiste</h5>
-                <p className=' text-sm text-grayLight my-2 font-light'>
-                    62 % des Marocains craignent de ne pas avoir suffisamment d'argent pour prendre leur retraite, et ce graphique en illustre la raison. Les Marocains ont investi plus de 2 billions de dirhams en fonds communs de placement, et la majorité d'entre eux paient des frais moyens d'environ 2 %, ce qui nuit sérieusement au rendement de leur investissement. Comparativement, le même investissement à long terme peut générer près du double d'argent avec Moka, en raison des frais associés aux fonds communs de placement
-                </p>
-                <p className=' text-xs italic text-grayLight my-5'>
-                    Cet outil actuel est uniquement destiné à des fins illustratives et ne préjuge en rien du rendement réel des portefeuilles Moka, des fonds communs de placement ou des comptes d'épargne
-                </p>
-            </div>
+
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { addSpacesToNumber } from '../../../../utils/sankeyData/sankeyCalucaltors'
 const Results = ({ results }) => {
 
 
@@ -8,7 +9,7 @@ const Results = ({ results }) => {
                 results.map((e, i) => (
                     <div key={e.name} className=' flex flex-col gap-y-4 mt-10 w-1/4 text-center'>
                         <h6 className=' text-grayLight opacity-80 text-sm'>{e.name}</h6>
-                        <h5 className=' font-bold text-black'>{parseInt(e.value)}</h5>
+                        <h5 className=' font-bold text-black'>{addSpacesToNumber(parseInt(e.value))}</h5>
                     </div>
                 ))
             }

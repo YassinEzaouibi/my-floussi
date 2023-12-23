@@ -163,7 +163,7 @@ select{
     display: block;
     width: 100%;
     padding: 10px;
-    font-size: 13px !important;
+    font-size: 16px !important;
     border: none;
     outline: none;
     background-color: transparent;
@@ -612,3 +612,75 @@ display: none;
         border-radius: 5px;
         scale: 0.8;
  }
+
+
+ .invest-slider .MuiSlider-rail,
+ .invest-slider .css-14pt78w-MuiSlider-rail{
+    height: 20px ;
+    background-color: rgb(164, 164, 164);
+    /* border: 1px solid; */
+ }
+
+ .invest-slider .MuiSlider-track,
+ .invest-slider .css-1gv0vcd-MuiSlider-track{
+    height: 20px;
+ }
+
+ .smp-Slider .MuiSlider-rail,
+ .smp-Slider .css-14pt78w-MuiSlider-rail {
+     height: 10px;
+     background-color: rgb(164, 164, 164);
+     /* border: 1px solid; */
+ }
+
+ .smp-Slider .MuiSlider-track,
+ .smp-Slider .css-1gv0vcd-MuiSlider-track {
+     height: 10px;
+ }
+
+
+ 
+  .main-tarif .MuiSlider-rail,
+  .main-tarif .css-14pt78w-MuiSlider-rail {
+      height: 10px;
+      background-color: rgb(164, 164, 164);
+      /* border: 1px solid; */
+  }
+
+  .main-tarif .MuiSlider-track,
+  .main-tarif .css-1gv0vcd-MuiSlider-track {
+      height: 10px;
+  }
+  .smp-Slider .MuiSlider-track,
+  .smp-Slider .css-1gv0vcd-MuiSlider-track {
+      height: 10px;
+  }
+
+.invest-slider .MuiSlider-thumb ,
+.invest-slider .MuiSlider-thumbSizeMedium,
+.invest-slider .MuiSlider-thumbColorPrimary ,
+.invest-slider .MuiSlider-thumb ,
+.invest-slider .MuiSlider-thumbSizeMedium ,
+.invest-slider .MuiSlider-thumbColorPrimary ,
+.invest-slider .css-eg0mwd-MuiSlider-thumb,
+
+.main-tarif .MuiSlider-thumb,
+.main-tarif .MuiSlider-thumbSizeMedium,
+.main-tarif .MuiSlider-thumbColorPrimary,
+.main-tarif .MuiSlider-thumb,
+.main-tarif .MuiSlider-thumbSizeMedium,
+.main-tarif .MuiSlider-thumbColorPrimary,
+.main-tarif .css-eg0mwd-MuiSlider-thumb,
+
+.smp-Slider .MuiSlider-thumb,
+.smp-Slider .MuiSlider-thumbSizeMedium,
+.smp-Slider .MuiSlider-thumbColorPrimary,
+.smp-Slider .MuiSlider-thumb,
+.smp-Slider .MuiSlider-thumbSizeMedium,
+.smp-Slider .MuiSlider-thumbColorPrimary,
+.smp-Slider .css-eg0mwd-MuiSlider-thumb
+{
+    width: 30px;
+    border: 2px solid #595959;
+    height: 30px;
+}

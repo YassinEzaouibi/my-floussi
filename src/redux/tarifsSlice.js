@@ -14,7 +14,7 @@ export const fraisSlice = createSlice({
         economieAnnuelle: 0,
         economieParAns: 0,
         typeTarifs: 1.8,
-        sommePlacee: 0,
+        sommePlacee: 250000,
 
     },
     reducers: {

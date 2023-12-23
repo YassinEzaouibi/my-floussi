@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { User } from 'react-feather';
 
 // import 'swiper/css';
@@ -8,20 +8,19 @@ import 'swiper/css/navigation';
 import 'swiper/css';
 import 'swiper/css/pagination'
 import Choices from './Choices';
-import RadioChoices from './RadioChoices';
+
 import Inputs from './Inputs';
-import IconChoices from './IconChoices';
 import Validation from './Validation';
 import Cancel from './Cancel';
-import Emprunts from './Emprunts';
 
 import Prospects from './Prospects';
-import AgeRetraite from './AgeRetraite';
+import Age from './Age';
 import Header from '../Header';
+import BinaryChoices from './BinaryChoices';
 
 const Index = () => {
-    const [open, setOpen] = useState(false)
-    const { questions } = useSelector(state => state.questionnaire)
+    // const [open, setOpen] = useState(false)
+    const { questions } = useSelector(state => state.smProjetQuestionnaire)
     // console.log(questions)
     return (
         <>
@@ -40,7 +39,7 @@ const Index = () => {
                     <SwiperSlide
                         className=' eachSlide swiper-no-swiping'
                     >
-                        <AgeRetraite />
+                        <Age />
                     </SwiperSlide>
                     {
                         questions.map((q, j) => (
@@ -67,13 +66,13 @@ const Index = () => {
 
                                                     <div className=' w-[90%] my-1 mx-auto h-fit '>
                                                         {
-                                                            e?.choices && <Choices choices={e?.choices} question={e.question} />
+                                                            e?.choices && <Choices
+                                                                categorieId={q.id}
+                                                                questionId={e.id}
+                                                                choices={e?.choices}
+                                                                question={e.question} />
                                                         }
-                                                        {
-                                                            e?.radioStyleChoices && <div className=' mt-10'>
-                                                                <RadioChoices choices={e?.radioStyleChoices} question={e.question} />
-                                                            </div>
-                                                        }
+
 
                                                         {
                                                             e?.inputs
@@ -85,27 +84,15 @@ const Index = () => {
                                                                 question={e.question}
                                                             />
                                                         }
-
                                                         {
-                                                            e?.iconChoices &&
-                                                            <IconChoices
-                                                                choices={e?.iconChoices}
+                                                            e?.binaryChoices
+                                                            &&
+                                                            <BinaryChoices
+                                                                categorieId={q.id}
+                                                                questionId={e.id}
+                                                                choices={e?.binaryChoices}
                                                                 question={e.question}
-
                                                             />
-                                                        }
-                                                        {
-                                                            e?.emprunts && <>
-                                                                <Emprunts
-                                                                    question={e.question}
-                                                                    binaryChoices={e.binaryChoices}
-                                                                    categorieId={q.id}
-                                                                    questionId={e.id}
-                                                                    open={open}
-                                                                    setOpen={setOpen}
-                                                                    emprunts={e?.emprunts} />
-
-                                                            </>
                                                         }
                                                         {
 

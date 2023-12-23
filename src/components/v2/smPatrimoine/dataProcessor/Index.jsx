@@ -186,7 +186,7 @@ const Index = () => {
             <GraphYearsIndicator years={nbrAnnesEpargne} />
             <GraphColorsIndicator />
 
-            <MainParagraphe versementsCumule={versementCumule} plusValueNette={plusValueNette} years={nbrAnnesEpargne} />
+            <MainParagraphe versementsCumule={versementCumule} revenuMensuel={revenuParMois} plusValueNette={plusValueNette} years={nbrAnnesEpargne} />
             <Results results={results} />
 
             <EndSection />

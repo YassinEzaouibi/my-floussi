@@ -107,16 +107,7 @@ export const options = {
     },
 };
 
-const CustomTooltip = ({ row, column, data }) => {
-    // Customize the tooltip content based on the data
-    const tooltipContent = `From: ${data[row + 1][0]}, To: ${data[row + 1][1]}, Weight: ${data[row + 1][2]}`;
 
-    return (
-        <div style={{ padding: '10px', backgroundColor: '#ff0000', border: '1px solid #ccc' }}>
-            {tooltipContent}
-        </div>
-    );
-};
 
 const SankeyDiagramme = ({ data }) => {
     // console.log(stepe2(_data))

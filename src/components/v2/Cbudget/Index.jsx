@@ -1,14 +1,23 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { getTotalOfArrayObject } from '../../../utils/sankeyData/getTotalOfData'
 import { addSpacesToNumber, getTotalOfCategory, rest, tauxEpargne, tauxEpargnePossible } from '../../../utils/sankeyData/sankeyCalucaltors'
 import { step1, step2, step3 } from '../../../utils/sankeyData/steps'
 import SankeyDiagramme from './diagramme/Sankey'
-import Header from './Header'
 import HeaderTop from '../Header'
 import TopSection from './TopSection'
+import AOS from 'aos'
+import 'aos/dist/aos.css';
+import SunBurst from './diagramme/SunBurst'
+import { sunBuerstInvestDepData, sunburstRevenuData } from '../../../utils/sunburst/data'
+
 
 const Index = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 300
+        })
+    }, [])
     const sankeyRef = useRef(null)
 
 
@@ -20,12 +29,17 @@ const Index = () => {
         ...step2({ investissements, depences }),
         ...step3({ investissements, depences })
     ]
+    // console.log(data)
 
 
     const totalRev = getTotalOfArrayObject(revenus)
     const totalInv = getTotalOfCategory(investissements)
     const totalDep = getTotalOfCategory(depences)
     const atLeastOneItemIsFilled = (totalRev > 0) || (totalInv > 0) || (totalDep > 0)
+
+    const sunBurstRevenusData = sunburstRevenuData(revenus)
+    const sunBurstInvsData = sunBuerstInvestDepData(investissements, "Investissement")
+    const sunBurstDepData = sunBuerstInvestDepData(depences, "Depences")
 
 
     return (
@@ -53,12 +67,40 @@ const Index = () => {
                         </p>
                     </div>
 
-                    {atLeastOneItemIsFilled
-                        &&
-                        <div className=' w-[100%] h-full my-4 mx-auto p-10' ref={sankeyRef}>
-                            <SankeyDiagramme data={data} />
+                    <div data-aos="zoom-in">
+                        {atLeastOneItemIsFilled
+                            &&
+                            <div className=' w-[100%] h-full my-4 mx-auto p-10' ref={sankeyRef}>
+                                <SankeyDiagramme data={data} />
+                            </div>
+                        }
+                    </div>
+
+
+
+                    <div className='flex-col md:flex-row flex justify-between my-5 '>
+                        <div className=' flex flex-col gap-1 flex-1'>
+                            <div>
+                                <h4 className=' text-mainLight text-xl text-center '>Revenus</h4>
+                            </div>
+                            <SunBurst data={sunBurstRevenusData} total={totalRev} />
                         </div>
-                    }
+
+                        <div className=' flex flex-col gap-1 flex-1'>
+                            <div>
+                                <h4 className=' text-mainLight text-xl text-center '>Investissements</h4>
+                            </div>
+                            <SunBurst data={sunBurstInvsData} total={totalInv} />
+                        </div>
+
+                        <div className=' flex flex-col gap-1 flex-1'>
+                            <div>
+                                <h4 className=' text-mainLight text-xl text-center '>Depences</h4>
+                            </div>
+                            <SunBurst data={sunBurstDepData} total={totalDep} />
+                        </div>
+
+                    </div>
 
 
 

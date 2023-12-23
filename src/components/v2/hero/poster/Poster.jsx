@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useElementOnScreen from '../../../../hooks/useElementOnScreen'
 import PosterImage from './PosterImage'
 import PosterText from './PosterText'
+import AOS from 'aos'
 
 
 const Poster = ({ poster, title, paragraphe, imgDir }) => {
-
+    useEffect(() => {
+        AOS.init({
+            duration: 500, // Animation duration
+            offset: 100,    // Offset (in pixels) from the top of the element
+            easing: 'ease-in-out', // Easing type
+        });
+    }, [])
     const [containerRef, isVisible] = useElementOnScreen()
-    React.useEffect(() => {
-        // console.log(containerRef.current)
-        // console.log(isVisible)
 
-    }, [isVisible, containerRef])
     return (
         <div
+            data-aos="fade-left"
+
 
             ref={containerRef}
             style={{
@@ -29,7 +34,7 @@ const Poster = ({ poster, title, paragraphe, imgDir }) => {
             </div>}
             <PosterText title={title} paragraphe={paragraphe} />
             {imgDir === "l" && <div className=' hidden lg:block w-full'>
-                <PosterImage poster={poster} />
+                <PosterImage imgDir={imgDir} poster={poster} />
             </div>}
 
 

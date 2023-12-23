@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { useDispatch } from 'react-redux';
-import { setTempUserResponses, setUserHasSelectedChoice } from '../../../redux/questionnaireSlice';
-import { calculateAge } from '../../../utils/calculateAge';
 import "dayjs/locale/fr";
+import { useDispatch } from 'react-redux';
+import { setTempUserResponses, setUserHasSelectedChoice } from '../../../redux/smProjectSlice';
+import { calculateAge } from '../../../utils/calculateAge';
 
 const AgeInput = ({ date, setDate }) => {
     const dispatch = useDispatch()
@@ -20,8 +20,9 @@ const AgeInput = ({ date, setDate }) => {
         setDate(newDate)
     }
     useEffect(() => {
-        if (error) {
+        if (error || !date) {
             dispatch(setUserHasSelectedChoice(false))
+
         }
         if (!error) {
             setAge(calculateAge(date))
@@ -50,6 +51,7 @@ const AgeInput = ({ date, setDate }) => {
                 score
             }))
         }
+
     }, [error, age, score])
 
 
@@ -58,6 +60,7 @@ const AgeInput = ({ date, setDate }) => {
             <h5>Votre date de naissance</h5>
             <LocalizationProvider adapterLocale='fr' dateAdapter={AdapterDayjs}>
                 <DatePicker
+
                     onError={(e) => {
                         setError(e)
                     }}
