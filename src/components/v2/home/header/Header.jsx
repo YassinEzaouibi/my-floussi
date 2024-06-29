@@ -1,38 +1,45 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import logo from '../../../../assets/imgs/logo.svg'
-import BurgerMenuBtn from './BurgerMenuBtn'
-import LoginBtn from './LoginBtn'
-import MenuMdLg from './MenuMdLg'
-import MenuSm from './MenuSm'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../../../../assets/imgs/Hikma-v2.svg";
+import BurgerMenuBtn from "./BurgerMenuBtn";
+import LoginBtn from "./LoginBtn";
+import MenuMdLg from "./MenuMdLg";
+import MenuSm from "./MenuSm";
 
 const Header = () => {
+  const [toggleMenu, setToggleMenu] = useState(false);
+  const showSmMenu = () => {
+    setToggleMenu(!toggleMenu);
+  };
+  return (
+    <header className="relative">
+      <nav className="bg-gray-700 px-4 lg:px-6 pt-4">
+        <div className="flex justify-between items-center mx-auto w-[95%]">
+          <Link to="/">
+            <img src={logo} alt="ida tech logo" className="w-40" />
+          </Link>
+          <MenuMdLg />
+          <div className="flex items-center lg:order-2">
+            <LoginBtn />
+          </div>
+          <div className="flex items-center">
+            <BurgerMenuBtn onClick={showSmMenu} />
+          </div>
+        </div>
+        <div
+          className=" lg:hidden sticky top-28 z-40 bg-bodyLight "
+          style={{
+            display: toggleMenu ? "block" : "none",
+            opacity: toggleMenu ? 1 : 0,
+            transition: "ease",
+            transitionDuration: 0.5,
+          }}
+        >
+          <MenuSm setToggleMenu={setToggleMenu} />
+        </div>
+      </nav>
+    </header>
+  );
+};
 
-    const [toggleMenu, setToggleMenu] = useState(false)
-    const showSmMenu = () => {
-        setToggleMenu(!toggleMenu)
-    }
-    return (
-        <>
-            <div className=' flex items-center justify-between gap-x-5 px-3 py-5 sticky top-0 z-50 shadow-md bg-secondaryLight'>
-                <Link to='/'><img src={logo} alt="ida tech logo" /></Link>
-                <BurgerMenuBtn onClick={showSmMenu} />
-                <MenuMdLg />
-                <LoginBtn />
-            </div>
-            <div
-                className=' lg:hidden sticky top-28 z-40 bg-bodyLight '
-                style={{
-                    display: toggleMenu ? 'block' : 'none',
-                    opacity: toggleMenu ? 1 : 0,
-                    transition: 'ease',
-                    transitionDuration: 0.5
-                }}
-            >
-                <MenuSm setToggleMenu={setToggleMenu} />
-            </div>
-        </>
-    )
-}
-
-export default Header
+export default Header;

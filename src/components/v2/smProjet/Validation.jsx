@@ -26,7 +26,7 @@ const Validation = () => {
                 dispatch(clearTempUserResponses())
                 swiper.slideNext()
             }}
-            className=' bg-mainLight w-full text-white text-xl text-center mt-5 rounded-md shadow-sm px-5 py-3 transition-all duration-300 hover:shadow-md '>
+            className=' bg-blue-300 w-full text-white text-xl text-center mt-5 rounded-md shadow-sm px-5 py-3 transition-all duration-300 hover:shadow-md '>
             Valider
         </button>
     )

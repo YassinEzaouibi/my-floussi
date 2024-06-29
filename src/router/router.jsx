@@ -1,14 +1,15 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from '../components/v2/home/Home';
+import Hero from "../components/v2/hero/Hero.jsx";
+import Tarifs from "../components/v2/tarifs/Tarifs.jsx";
 // import QuestionnaireSlider from '../components/Questionnaire/QuestionnaireSlider';
 
-import CBudget from '../components/v2/Cbudget'
-import SmPatrimoine from '../components/v2/smPatrimoine'
-import Questionnaire from '../components/v2/questionnaire'
-import Hero from '../components/v2/hero/Hero';
-import Tarifs from '../components/v2/tarifs/Tarifs';
-import SmProjet from '../components/v2/smProjet'
+import CBudget from '../components/v2/Cbudget/Index.jsx'
+import SmPatrimoine from '../components/v2/smPatrimoine/Index.jsx'
+import Questionnaire from '../components/v2/questionnaire/Index.jsx'
+import SmProjet from '../components/v2/smProjet/Index.jsx'
+
 const RouterProvider = () => {
     return (
         <Router>

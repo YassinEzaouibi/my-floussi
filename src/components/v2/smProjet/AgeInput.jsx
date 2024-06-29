@@ -56,7 +56,7 @@ const AgeInput = ({ date, setDate }) => {
 
 
     return (
-        <div className=' w-full flex justify-center items-center   gap-x-5 px-4 py-6'>
+        <div className=' w-full flex justify-center items-center  gap-x-5 px-4 py-6'>
             <h5>Votre date de naissance</h5>
             <LocalizationProvider adapterLocale='fr' dateAdapter={AdapterDayjs}>
                 <DatePicker

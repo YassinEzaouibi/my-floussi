@@ -3,14 +3,41 @@ import { Link } from 'react-router-dom'
 
 const MenuMdLg = () => {
     return (
-        <ul className=' hidden   text-black text-center font-semibold text-sm lg:flex gap-x-12 '>
+        <div className="hidden justify-between order-2 w-full lg:flex lg:w-auto"
+             id="mobile-menu-2">
+            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                <li>
+                    <Link
+                       className="text-base font-medium text-white hover:text-gray-300"
+                    to={"/#"}
+                    >
+                        Hikma invest
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        className="text-base font-medium text-white hover:text-gray-300"
+                        to={'/tarifs'}>
+                        Tarifs
+                    </Link>
 
-            <li className=' opacity-80 h-full  ease-in-out transition-all duration-300 hover:opacity-100 '><Link to={'#'}>Pourquoi RoboAdvisorX ?</Link></li>
-            <li className=' opacity-80 h-full  ease-in-out transition-all duration-300 hover:opacity-100 '><Link to={'/tarifs'}>Tarifs</Link></li>
-            <li className=' opacity-80 h-full  ease-in-out transition-all duration-300 hover:opacity-100 '><Link to={'#'}>Éducation financière</Link></li>
-            <li className=' opacity-80 h-full  ease-in-out transition-all duration-300 hover:opacity-100 '><Link to={'/calculateur_de_budget'}>Calculateur de budget</Link></li>
-            <li className=' opacity-80 h-full  ease-in-out transition-all duration-300 hover:opacity-100 '><Link to={'/simulateur_de_patrimoine'}>Simulateur de patrimoine</Link></li>
-        </ul>
+                </li>
+                <li>
+                    <Link to={'/questionnaire'}
+                       className="text-base font-medium text-white hover:text-gray-300">Questionnaire
+                    </Link>
+                </li>
+                <li>
+                    <Link to={'/calculateur_de_budget'}
+                       className="text-base font-medium text-white hover:text-gray-300">budget
+                    </Link>
+                </li>
+                <li>
+                    <Link to={'/simulateur_de_patrimoine'}
+                       className="text-base font-medium text-white hover:text-gray-300">Simulateur</Link>
+                </li>
+            </ul>
+        </div>
     )
 }
 

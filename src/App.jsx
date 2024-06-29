@@ -52,7 +52,6 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={customTheme} >
           <Router />
-
         </ThemeProvider>
       </PersistGate>
     </Provider>

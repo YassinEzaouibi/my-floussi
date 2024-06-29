@@ -1,41 +1,44 @@
 import React, { useState } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { User } from 'react-feather';
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { User } from 'react-feather';
 
 // import 'swiper/css';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import 'swiper/css/navigation';
 import 'swiper/css';
 import 'swiper/css/pagination'
-import Choices from './Choices';
-import RadioChoices from './RadioChoices';
-import Inputs from './Inputs';
-import IconChoices from './IconChoices';
-import Validation from './Validation';
-import Cancel from './Cancel';
-import Emprunts from './Emprunts';
-
-import Prospects from './Prospects';
-import AgeRetraite from './AgeRetraite';
-import Header from '../Header';
+// import Choices from './Choices';
+// import RadioChoices from './RadioChoices';
+// import Inputs from './Inputs';
+// import IconChoices from './IconChoices';
+// import Validation from './Validation';
+// import Cancel from './Cancel';
+// import Emprunts from './Emprunts';
+//
+// import Prospects from './Prospects';
+// import AgeRetraite from './AgeRetraite';
+// import Header from '../Header';
+import Header from '../../../components/v2/home/header/Header.jsx';
+import QuestionnaireContent from "./v3-yassin/QuestionnaireContent.jsx";
 
 const Index = () => {
-    const [open, setOpen] = useState(false)
-    const { questions } = useSelector(state => state.questionnaire)
+    // const [open, setOpen] = useState(false)
+    // const { questions } = useSelector(state => state.questionnaire)
     // console.log(questions)
     return (
         <>
+
             <Header />
+            <QuestionnaireContent />
 
 
-            <div className=' w-screen h-full  top-24 absolute'>
+           {/* <div className=' w-full h-full  top-24 absolute'>
                 <Swiper
 
                     spaceBetween={0}
                     slidesPerView={1}
                     onSlideChange={() => { }}
                     onSwiper={(swiper) => { }}
-
                 >
                     <SwiperSlide
                         className=' eachSlide swiper-no-swiping'
@@ -123,9 +126,7 @@ const Index = () => {
                         ))
                     }
                 </Swiper>
-
-
-            </div>
+            </div>*/}
         </>
     )
 }

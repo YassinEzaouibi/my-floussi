@@ -1,6 +1,6 @@
 import React from 'react'
-import DataInputs from './dataInputs'
-import DataProcessor from './dataProcessor'
+import DataInputs from './dataInputs/Index.jsx'
+import DataProcessor from './dataProcessor/Index.jsx'
 
 const Main = () => {
     return (

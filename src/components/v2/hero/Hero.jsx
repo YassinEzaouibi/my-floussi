@@ -4,32 +4,39 @@ import { topPosters } from '../../../utils/hero/topPosters.js'
 import BottomSection from './bottom-section/BottomSection.jsx'
 import Calculator from './calculator/Calculator'
 import RondementChart from './chart/RondementChart.jsx'
-import Left from './Left/Left'
+import HeroSection from './Sections/HeroSection.jsx'
 import Posters from './poster/Potsers'
-import Right from './right/Right'
 import Video from './video/Video.jsx'
 import 'aos/dist/aos.css';
+import SecondSection from "./Sections/SecondSection.jsx";
+import ThirdSection from "./Sections/ThirdSection.jsx";
+import Footer from "./Sections/Footer.jsx";
+import TestimonialSection from "./Sections/TestimonialSection.jsx";
+import ContactSection from "./Sections/ContactSection.jsx";
+import BlogSection from "./Sections/BlogSection.jsx";
 
 
 
 const Hero = () => {
     return (
-        <div>
-            <div className=' w-[90%] my-12 mx-auto h-fit sm:block md:flex'>
-                <Left />
-                <Right />
-            </div>
+        <div className="w-full-">
+            <HeroSection />
+            <SecondSection />
+            <ThirdSection />
+            <TestimonialSection />
+            <BlogSection />
+            <ContactSection />
 
-            <Calculator />
+            {/*<Calculator/>*/}
 
+            {/*<RondementChart/>*/}
+            {/*<Posters posters={topPosters}/>*/}
 
-            <RondementChart />
-            <Posters posters={topPosters} />
+            {/*<Video/>*/}
 
-            <Video />
-
-            <Posters posters={mainPosters} />
-            <BottomSection />
+            {/*<Posters posters={mainPosters}/>*/}
+            {/*<BottomSection/>*/}
+            <Footer />
         </div>
     )
 }

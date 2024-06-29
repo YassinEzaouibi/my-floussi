@@ -1,27 +1,22 @@
 import React from 'react'
 
 import Slider from '@mui/material/Slider';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 
 
-const InvestSlider = ({ v, setV }) => {
-    const dispatch = useDispatch()
-
+const InvestYearsSlider = ({ v, setV }) => {
     const handleChange = (e, v) => {
         setV(v)
     }
 
     return (
-        <div className=' invest-slider  my-6'>
+        <div className='nvest-slider  my-6'>
             <Slider
                 aria-label="Always visible"
                 defaultValue={0}
                 min={0}
-                step={10}
-                max={2000}
+                step={1}
+                max={50}
                 size='medium'
-                // valueLabelDisplay="on"
                 value={v}
                 onChange={handleChange}
             />
@@ -30,4 +25,4 @@ const InvestSlider = ({ v, setV }) => {
     )
 }
 
-export default InvestSlider
+export default InvestYearsSlider

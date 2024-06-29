@@ -2,8 +2,6 @@ import React from 'react'
 
 import Slider from '@mui/material/Slider';
 
-// calc - slider
-
 
 const CalculatorSlider = ({ v, setV }) => {
     // const dispatch = useDispatch()
@@ -13,7 +11,7 @@ const CalculatorSlider = ({ v, setV }) => {
     }
 
     return (
-        <div className=' calc-slider ml-0 my-8 '>
+        <div className='calc-slider ml-0 my-8 '>
             <Slider
                 aria-label="Always visible"
                 defaultValue={0}
