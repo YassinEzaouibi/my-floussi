@@ -1,3 +1,14 @@
+/**
+ * This function calculates a score based on the provided prudent, moderate, and aggressive values.
+ * It uses a reference data set and calculates correlations with the provided data.
+ * The score is determined by the index of the highest correlation in the data set.
+ *
+ * @param {number} predunt - The prudent value.
+ * @param {number} modere - The moderate value.
+ * @param {number} agressif - The aggressive value.
+ * @returns {number} The calculated score, rounded up to the nearest integer.
+ */
+
 function dataUserScore(predunt, modere, agressif) {
   // Reference data
   const referenceData = [
@@ -68,15 +79,6 @@ function dataUserScore(predunt, modere, agressif) {
       (row.length - 1);
     return covariance(referenceData, row) / Math.sqrt(variance1 * variance2);
   });
-
-  // console.log(
-  //   correlations.reduce(
-  //     (maxIndex, current, index) =>
-  //       current > correlations[maxIndex] ? index : maxIndex,
-  //     0,
-  //   ),
-  // );
-  //
 
   let score = correlations.reduce(
     (max, current, index) => (current > correlations[max] ? index : max),

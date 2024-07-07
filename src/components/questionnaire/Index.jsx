@@ -1,5 +1,5 @@
 import Header from "../../components/home/header/Header.jsx";
-import QuestionnaireContent from "./v3-yassin/QuestionnaireContent.jsx";
+import QuestionnaireContent from "./questionnaire/QuestionnaireContent.jsx";
 
 const Index = () => {
   return (
