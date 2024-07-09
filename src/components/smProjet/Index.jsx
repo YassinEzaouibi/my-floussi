@@ -13,7 +13,7 @@ import Cancel from "./Cancel";
 
 import Prospects from "./Prospects";
 import Age from "./Age";
-import Header from "../home/header/Header.jsx";
+import Header from "../home/Sections/header/Header.jsx";
 import BinaryChoices from "./BinaryChoices";
 
 const Index = () => {

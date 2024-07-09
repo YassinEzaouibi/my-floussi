@@ -10,7 +10,7 @@ import {
 } from "../../utils/sankeyData/sankeyCalucaltors";
 import { step1, step2, step3 } from "../../utils/sankeyData/steps";
 import SankeyDiagramme from "./diagramme/Sankey";
-import HeaderTop from "../home/header/Header.jsx";
+import HeaderTop from "../home/Sections/header/Header.jsx";
 import TopSection from "./TopSection";
 import AOS from "aos";
 import "aos/dist/aos.css";

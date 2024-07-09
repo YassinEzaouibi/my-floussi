@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Main from "./Main";
-import HeaderTop from "../../components/home/header/Header.jsx";
+import HeaderTop from "../home/Sections/header/Header.jsx";
 
 const Index = () => {
   return (

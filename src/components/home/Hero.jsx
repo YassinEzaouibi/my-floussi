@@ -1,6 +1,6 @@
 import HeroSection from "./Sections/HeroSection.jsx";
 import "aos/dist/aos.css";
-import ThirdSection from "./Sections/ThirdSection.jsx";
+import OurService from "./Sections/OurService.jsx";
 import Footer from "./Sections/Footer.jsx";
 import TestimonialSection from "./Sections/TestimonialSection.jsx";
 import ContactSection from "./Sections/ContactSection.jsx";
@@ -10,21 +10,10 @@ const Hero = () => {
   return (
     <div className="w-full-">
       <HeroSection />
-      {/*<SecondSection />*/}
-      <ThirdSection />
+      <OurService />
       <TestimonialSection />
       <BlogSection />
       <ContactSection />
-
-      {/*<Calculator/>*/}
-
-      {/*<RondementChart/>*/}
-      {/*<Posters posters={topPosters}/>*/}
-
-      {/*<Video/>*/}
-
-      {/*<Posters posters={mainPosters}/>*/}
-      {/*<BottomSection/>*/}
       <Footer />
     </div>
   );

@@ -1,8 +1,8 @@
 import revenueExample from "../../../assets/imgs/hero-posters/3-m.png";
 
-const ThirdSection = () => {
+const OurService = () => {
   return (
-    <div className="overflow-hidden bg-gray-50 py-16 lg:py-24">
+    <div id="service" className="overflow-hidden bg-gray-50 py-16 lg:py-24">
       <div className="relative mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <div>
           <h2 className="text-center text-3xl font-bold text-gray-900 sm:text-4xl">
@@ -198,4 +198,4 @@ const ThirdSection = () => {
     </div>
   );
 };
-export default ThirdSection;
+export default OurService;

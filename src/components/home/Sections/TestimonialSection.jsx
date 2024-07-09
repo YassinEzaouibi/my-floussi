@@ -1,6 +1,9 @@
 const TestimonialSection = () => {
   return (
-    <div className="bg-gradient-to-r from-cyan-300 to-cyan-600 pb-16 lg:relative lg:z-10 lg:pb-0 pt-6">
+    <div
+      id="testimonial"
+      className="bg-gradient-to-r from-cyan-300 to-cyan-600 pb-16 lg:relative lg:z-10 lg:pb-0 pt-6"
+    >
       <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-8">
         <div className="relative lg:-my-8">
           <div

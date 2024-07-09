@@ -1,4 +1,4 @@
-import Header from "../../components/home/header/Header.jsx";
+import Header from "../home/Sections/header/Header.jsx";
 import QuestionnaireContent from "./questionnaire/QuestionnaireContent.jsx";
 
 const Index = () => {
