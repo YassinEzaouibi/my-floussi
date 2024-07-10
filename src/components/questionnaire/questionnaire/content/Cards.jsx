@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { personalityAnalysis } from "../../../assets/data/personalityAnalysis.js";
+import { personalityAnalysis } from "../../../../assets/data/personalityAnalysis.js";
 
 // eslint-disable-next-line react/prop-types
 const Cards = ({ personType, scoreLevel }) => {

@@ -1,18 +1,24 @@
 import { useState } from "react";
-import ChartLineCompo from "../charts/ChartLineCompo.jsx";
-import chart1 from "../../../assets/imgs/chart1.svg";
-import chart2 from "../../../assets/imgs/chart2.svg";
-import chart3 from "../../../assets/imgs/chart3.svg";
-import ChartBarCompo from "../charts/ChartBarCompo.jsx";
-import ChartLinesCompo from "../charts/ChartLinesCompo.jsx";
+import ChartLineCompo from "../../charts/ChartLineCompo.jsx";
+import chart1 from "../../../../assets/imgs/chart1.svg";
+import chart2 from "../../../../assets/imgs/chart2.svg";
+import chart3 from "../../../../assets/imgs/chart3.svg";
+import chartPie1 from "../../../../assets/imgs/chart-pie1.svg";
+import chartPie2 from "../../../../assets/imgs/chart-pie2.svg";
+import chartPie3 from "../../../../assets/imgs/chart-pie3.svg";
+import ChartBarCompo from "../../charts/ChartBarCompo.jsx";
+import ChartLinesCompo from "../../charts/ChartLinesCompo.jsx";
+import ChartPieSG from "../../charts/pie/ChartPieSG.jsx";
+import ChartPieT from "../../charts/pie/ChartPieT.jsx";
+import ChartPieC from "../../charts/pie/ChartPieC.jsx";
 
 // eslint-disable-next-line react/prop-types
 const DropDownDetailsCharts = ({ personType }) => {
   const colorTextTypePerson = {
-    Prudent: "bg-green-500",
-    Modere: "bg-cyan-400",
-    Dynamic: "bg-cyan-500",
-    Agressif: "bg-red-500",
+    Prudent: "bg-green-300",
+    Modere: "bg-cyan-200",
+    Dynamic: "bg-cyan-300",
+    Agressif: "bg-red-300",
   };
 
   const [items, setItems] = useState([
@@ -75,6 +81,64 @@ const DropDownDetailsCharts = ({ personType }) => {
         </div>
       ),
       content: <ChartLinesCompo personType={personType} />,
+    },
+    {
+      id: 4,
+      title: (
+        <div className="flex">
+          <div className="px-2 py-2 flex">
+            <div
+              className={`flex justify-center items-center w-16 h-16 ${colorTextTypePerson[personType]} rounded-full`}
+            >
+              <img src={chartPie1} alt="chart 1" className="h-10 w-10" />
+            </div>
+          </div>
+          <div className="p-6">
+            <h5 className="mb-2 text-xl font-medium leading-tight">
+              Societe de Gestion
+            </h5>
+          </div>
+        </div>
+      ),
+      content: <ChartPieSG personType={personType} />,
+    },
+    {
+      id: 5,
+      title: (
+        <div className="flex">
+          <div className="px-2 py-2 flex">
+            <div
+              className={`flex justify-center items-center w-16 h-16 ${colorTextTypePerson[personType]} rounded-full`}
+            >
+              <img src={chartPie2} alt="chart 2" className="h-10 w-10" />
+            </div>
+          </div>
+          <div className="p-6">
+            <h5 className="mb-2 text-xl font-medium leading-tight">
+              Classification
+            </h5>
+          </div>
+        </div>
+      ),
+      content: <ChartPieT personType={personType} />,
+    },
+    {
+      id: 6,
+      title: (
+        <div className="flex">
+          <div className="px-2 py-2 flex">
+            <div
+              className={`flex justify-center items-center w-16 h-16 ${colorTextTypePerson[personType]} rounded-full`}
+            >
+              <img src={chartPie3} alt="chart 3" className="h-10 w-10" />
+            </div>
+          </div>
+          <div className="p-6">
+            <h5 className="mb-2 text-xl font-medium leading-tight">Titre</h5>
+          </div>
+        </div>
+      ),
+      content: <ChartPieC personType={personType} />,
     },
   ]);
 
