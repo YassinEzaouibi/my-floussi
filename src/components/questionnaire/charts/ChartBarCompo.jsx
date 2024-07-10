@@ -2,9 +2,9 @@ import ReactApexChart from "react-apexcharts";
 import { chartBarData } from "../../../assets/data/chart/chartBarData.js";
 import { useState } from "react";
 
-const ChartBarCompo = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const [situation] = useState(props.situation);
+// eslint-disable-next-line react/prop-types
+const ChartBarCompo = ({ personType }) => {
+  const [personality] = useState(personType);
 
   const options = {
     chart: {
@@ -79,7 +79,7 @@ const ChartBarCompo = (props) => {
       <div id="column-chart">
         <ReactApexChart
           options={options}
-          series={chartBarData[situation]}
+          series={chartBarData[personality]}
           type="bar"
           height="350"
         />

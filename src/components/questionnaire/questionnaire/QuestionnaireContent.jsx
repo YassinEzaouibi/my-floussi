@@ -6,9 +6,6 @@ import Prudent from "../../../assets/imgs/vectors/Prudent.svg";
 import Modere from "../../../assets/imgs/vectors/Moderate.svg";
 import Dynamic from "../../../assets/imgs/vectors/Dynamic.svg";
 import Agressif from "../../../assets/imgs/vectors/Aggressive.svg";
-import ChartBarCompo from "../charts/ChartBarCompo.jsx";
-import ChartLinesCompo from "../charts/ChartLinesCompo.jsx";
-import ChartLineCompo from "../charts/ChartLineCompo.jsx";
 import DropDownDetailsCharts from "./DropDownDetailsCharts.jsx";
 import Cards from "./Cards.jsx";
 
@@ -29,7 +26,7 @@ const QuestionnaireContent = () => {
   const scoreLevel = dataUserScore(score.Prudent, score.modere, score.Agressif);
   const personType = statusCalculator(scoreLevel);
   const options = useRef([]);
-  const progress = (index / 32) * 100;
+  const progress = (index / data.length) * 100;
 
   /**
    * @function checkAns
@@ -231,15 +228,27 @@ const QuestionnaireContent = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2  p-8 gap-x-4 gap-y-3">
+              <h1
+                className={`text-2xl flex items-center pl-4   underline underline-offset-4 `}
+              >
+                <i>Analyse de Hikma:</i>
+              </h1>
               <Cards personType={personType} scoreLevel={scoreLevel} />
-
-              <ChartBarCompo situation={personType} />
-              <ChartLineCompo situation={personType} />
-              <div className="lg:col-span-2">
-                <ChartLinesCompo situation={personType} />
+              <div className="lg:col-span-2 ">
+                <h1
+                  className={`text-2xl flex items-center pl-4 pb-2 underline underline-offset-4 `}
+                >
+                  <i>Charts:</i>
+                </h1>
+                <DropDownDetailsCharts personType={personType} />
               </div>
               <div className="lg:col-span-2 ">
-                <DropDownDetailsCharts situation={personType} />
+                <h1
+                  className={`text-2xl flex items-center pl-4 pb-2 underline underline-offset-4 `}
+                >
+                  <i>Charts:</i>
+                </h1>
+                <DropDownDetailsCharts personType={personType} />
               </div>
             </div>
           </div>
