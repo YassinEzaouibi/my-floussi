@@ -34,7 +34,7 @@ const DropDownDetailsCharts = ({ personType }) => {
             </div>
           </div>
           <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">
+            <h5 className="mb-2 text-start text-xl font-medium leading-tight">
               Rendement Annuel
             </h5>
           </div>
@@ -54,7 +54,7 @@ const DropDownDetailsCharts = ({ personType }) => {
             </div>
           </div>
           <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">
+            <h5 className="mb-2 text-start text-xl font-medium leading-tight">
               Simulation sur 6 ans
             </h5>
           </div>
@@ -74,7 +74,7 @@ const DropDownDetailsCharts = ({ personType }) => {
             </div>
           </div>
           <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">
+            <h5 className="mb-2 text-start text-xl font-medium leading-tight">
               Backtest Historique
             </h5>
           </div>
@@ -94,7 +94,7 @@ const DropDownDetailsCharts = ({ personType }) => {
             </div>
           </div>
           <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">
+            <h5 className="mb-2 text-start text-xl font-medium leading-tight">
               Societe de Gestion
             </h5>
           </div>
@@ -114,13 +114,13 @@ const DropDownDetailsCharts = ({ personType }) => {
             </div>
           </div>
           <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">
+            <h5 className="mb-2 text-start text-xl font-medium leading-tight">
               Classification
             </h5>
           </div>
         </div>
       ),
-      content: <ChartPieT personType={personType} />,
+      content: <ChartPieC personType={personType} />,
     },
     {
       id: 6,
@@ -134,11 +134,13 @@ const DropDownDetailsCharts = ({ personType }) => {
             </div>
           </div>
           <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">Titre</h5>
+            <h5 className="mb-2 text-start text-xl font-medium leading-tight">
+              Titre
+            </h5>
           </div>
         </div>
       ),
-      content: <ChartPieC personType={personType} />,
+      content: <ChartPieT personType={personType} />,
     },
   ]);
 
@@ -150,7 +152,7 @@ const DropDownDetailsCharts = ({ personType }) => {
     );
   };
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="bg-white col-span-2 rounded-lg shadow-lg overflow-hidden">
       {items.map((item) => (
         <div key={item.id} className="border-b border-gray-200">
           <button

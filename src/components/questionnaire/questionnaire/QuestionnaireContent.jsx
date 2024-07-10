@@ -183,76 +183,98 @@ const QuestionnaireContent = () => {
       )}
       {result ? (
         <div className="m-2 bg-gray-50 rounded-lg">
-          <div className="mx-auto py-16 px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 items-center">
-              <div className="flex justify-center">
-                <img
-                  className="mb-4"
-                  src={personTypeImages[personType]}
-                  alt="User"
-                />
-              </div>
-
-              {/* Score details */}
-              <div className="lg:pl-8 col-span-2">
-                <div className=" text-center ">
-                  <p className="text-xl font-medium  text-gray-900">
-                    Hikma Invest
-                    <br />
-                    <i className="text-gray-700">
-                      rêves, notre expertise. Investissons ensemble pour un
-                      avenir réussi.
-                    </i>
-                  </p>
-                </div>
-
-                <div className="mt-6 text-xl grid grid-cols-2 font-medium text-center place-item-center">
-                  <p className="text-gray-800">
-                    le score: &nbsp;
-                    <i
-                      className={`${colorTextTypePerson[personType]} underline underline-offset-2`}
-                    >
-                      {scoreLevel}
-                    </i>
-                  </p>
-                  <p className="text-gray-800">
-                    le Type: &nbsp;
-                    <span
-                      className={`${colorTextTypePerson[personType]} underline underline-offset-2`}
-                    >
-                      {personType}
-                    </span>
-                  </p>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 items-center">
+            <div className="flex justify-center">
+              <img
+                className="mb-4"
+                src={personTypeImages[personType]}
+                alt="User"
+              />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2  p-8 gap-x-4 gap-y-3">
-              <h1
-                className={`text-2xl flex items-center pl-4   underline underline-offset-4 `}
-              >
-                <i>Analyse de Hikma:</i>
-              </h1>
-              <Cards personType={personType} scoreLevel={scoreLevel} />
-              <div className="lg:col-span-2 ">
-                <h1
-                  className={`text-2xl flex items-center pl-4 pb-2 underline underline-offset-4 `}
-                >
-                  <i>Charts:</i>
-                </h1>
-                <DropDownDetailsCharts personType={personType} />
+            <div className="lg:pl-8 col-span-2">
+              <div className=" text-center ">
+                <p className="text-xl font-medium  text-gray-900">
+                  Hikma Invest
+                  <br />
+                  <i className="text-gray-700">
+                    rêves, notre expertise. Investissons ensemble pour un avenir
+                    réussi.
+                  </i>
+                </p>
+              </div>
+
+              <div className="mt-6 text-xl grid grid-cols-2 font-medium text-center place-item-center">
+                <p className="text-gray-800">
+                  le score: &nbsp;
+                  <i
+                    className={`${colorTextTypePerson[personType]} underline underline-offset-2`}
+                  >
+                    {scoreLevel}
+                  </i>
+                </p>
+                <p className="text-gray-800">
+                  le Type: &nbsp;
+                  <span
+                    className={`${colorTextTypePerson[personType]} underline underline-offset-2`}
+                  >
+                    {personType}
+                  </span>
+                </p>
               </div>
             </div>
           </div>
-          <div className="mt-10 flex items-center justify-center">
+
+          <div className="grid grid-cols-1 lg:grid-cols-2  p-4 gap-x-4 gap-y-3">
+            <h1
+              className={`text-2xl flex items-center pl-4   underline underline-offset-4 `}
+            >
+              <i>Analyse de Hikma:</i>
+            </h1>
+            <Cards personType={personType} scoreLevel={scoreLevel} />
+            <div className="lg:col-span-2 ">
+              <h1
+                className={`text-2xl flex items-center pl-4 pb-2 underline underline-offset-4 `}
+              >
+                <i>Charts:</i>
+              </h1>
+            </div>
+            <DropDownDetailsCharts personType={personType} />
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0 items-center justify-center px-4 sm:px-12">
             <button
               type="button"
               onClick={reset}
-              className="flex w-1/2 items-center justify-center rounded-md border border-transparent bg-cyan-600 py-3 px-8 text-base font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-2"
+              className="w-full sm:w-1/2 flex items-center justify-center rounded-md border border-transparent bg-cyan-600 py-3 px-8 text-base font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-2"
             >
               Répéter
             </button>
+            <button
+              type="button"
+              onClick={reset}
+              className="w-full sm:w-1/2 flex items-center justify-center rounded-md border border-transparent bg-cyan-600 py-3 px-8 text-base font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-2"
+            >
+              Télécharger ma simulation
+            </button>
           </div>
+
+          {/*<div className="flex items-center justify-center space-x-2 px-12">*/}
+          {/*  <button*/}
+          {/*    type="button"*/}
+          {/*    onClick={reset}*/}
+          {/*    className="flex w-1/2 items-center justify-center rounded-md border border-transparent bg-cyan-600 py-3 px-8 text-base font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-2"*/}
+          {/*  >*/}
+          {/*    Répéter*/}
+          {/*  </button>*/}
+          {/*  <button*/}
+          {/*    type="button"*/}
+          {/*    onClick={reset}*/}
+          {/*    className="flex w-1/2 items-center justify-center rounded-md border border-transparent bg-cyan-600 py-3 px-8 text-base font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-2"*/}
+          {/*  >*/}
+          {/*    Télécharger ma simulation*/}
+          {/*  </button>*/}
+          {/*</div>*/}
 
           <div className="mt-10 border-t border-gray-200 pt-10">
             <h3 className="text-sm font-medium text-gray-900">Investir</h3>

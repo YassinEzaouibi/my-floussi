@@ -10,6 +10,9 @@ const ChartPieC = ({ personType }) => {
       height: 420,
       width: "100%",
       type: "pie",
+      toolbar: {
+        show: true,
+      },
     },
     stroke: {
       colors: ["white"],
@@ -60,10 +63,10 @@ const ChartPieC = ({ personType }) => {
   };
 
   return (
-    <div className="w-full  bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+    <div className="w-full  bg-gray-100 rounded-lg dark:bg-gray-800 p-4 md:p-6">
       <div className="flex justify-between items-start w-full">
         <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white me-1">
-          Societe de gestion
+          Classification
         </h5>
       </div>
       <div className="py-6" id="pie-chart">

@@ -26,7 +26,7 @@ const Cards = ({ personType, scoreLevel }) => {
             </div>
           </div>
           <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">
+            <h5 className="mb-2 text-xl text-start font-medium leading-tight">
               Tolérance au risque
             </h5>
           </div>
@@ -64,7 +64,7 @@ const Cards = ({ personType, scoreLevel }) => {
             </div>
           </div>
           <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">
+            <h5 className="mb-2 text-start text-xl font-medium leading-tight">
               Objectifs
             </h5>
           </div>
@@ -93,7 +93,7 @@ const Cards = ({ personType, scoreLevel }) => {
             </div>
           </div>
           <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">
+            <h5 className="mb-2 text-start text-xl font-medium leading-tight">
               Stratégie d'investissement
             </h5>
           </div>
@@ -122,7 +122,7 @@ const Cards = ({ personType, scoreLevel }) => {
             </div>
           </div>
           <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">
+            <h5 className="mb-2 text-start text-xl font-medium leading-tight">
               Horizon d'investissement
             </h5>
           </div>
@@ -150,6 +150,7 @@ const Cards = ({ personType, scoreLevel }) => {
                 strokeLinejoin="round"
                 className="icon icon-tabler icons-tabler-outline icon-tabler-user-scan w-8 h-8"
               >
+                h5
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M10 9a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
                 <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
@@ -161,7 +162,9 @@ const Cards = ({ personType, scoreLevel }) => {
             </div>
           </div>
           <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">Profil</h5>
+            <h5 className="mb-2 text-start text-xl font-medium leading-tight">
+              Profil
+            </h5>
           </div>
         </div>
       ),
@@ -198,7 +201,7 @@ const Cards = ({ personType, scoreLevel }) => {
             </div>
           </div>
           <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">
+            <h5 className="mb-2 text-start text-xl font-medium leading-tight">
               L'analyse Générale de Hikma Invest
             </h5>
           </div>
