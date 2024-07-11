@@ -1,9 +1,4 @@
 # example netlify.toml
-#[build]
-#base = "/opt/build/repo"
-#command = "npm install --force && npm run build"
-#functions = "netlify/functions"
-#publish = "dist"
 [build]
 base = "."
 command = "npm install --force && npm run build"
