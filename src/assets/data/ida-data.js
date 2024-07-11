@@ -191,7 +191,7 @@ export const idaData = [
       4: { Prudent: 30, modere: 15, Agressif: 5 },
       5: { Prudent: 50, modere: 0, Agressif: 0 },
     },
-  // },
+  },
   // {
   //   question_number: 11,
   //   group: "Situation patrimoniale",
