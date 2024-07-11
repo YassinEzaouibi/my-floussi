@@ -45,18 +45,18 @@ const BlogSection = () => {
                     <img
                       className="h-10 w-10 rounded-full"
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt="Roel Aufderehar"
+                      alt="Mohmed Mohmed"
                     />
                   </a>
                 </div>
                 <div className="ml-3">
                   <p className="text-sm font-medium text-gray-900">
                     <a href="#" className="hover:underline">
-                      Roel Aufderehar
+                      Mohmed Mohmed
                     </a>
                   </p>
                   <div className="flex space-x-1 text-sm text-gray-500">
-                    <time dateTime="2020-03-16">16 Mars 2020</time>
+                    <time dateTime="2020-03-16">16 Mars 2024</time>
                     <span aria-hidden="true">·</span>
                     <span>6 min de lecture</span>
                   </div>
@@ -95,18 +95,18 @@ const BlogSection = () => {
                     <img
                       className="h-10 w-10 rounded-full"
                       src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt="Brenna Goyette"
+                      alt="Mouna Mouna"
                     />
                   </a>
                 </div>
                 <div className="ml-3">
                   <p className="text-sm font-medium text-gray-900">
                     <a href="#" className="hover:underline">
-                      Brenna Goyette
+                      Mouna Mouna
                     </a>
                   </p>
                   <div className="flex space-x-1 text-sm text-gray-500">
-                    <time dateTime="2020-03-10">10 Mars 2020</time>
+                    <time dateTime="2020-03-10">10 Mars 2024</time>
                     <span aria-hidden="true">·</span>
                     <span>4 min de lecture</span>
                   </div>
@@ -145,18 +145,18 @@ const BlogSection = () => {
                     <img
                       className="h-10 w-10 rounded-full"
                       src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt="Daniela Metz"
+                      alt="Sofia Sofia"
                     />
                   </a>
                 </div>
                 <div className="ml-3">
                   <p className="text-sm font-medium text-gray-900">
                     <a href="#" className="hover:underline">
-                      Daniela Metz
+                      Sofia Sofia
                     </a>
                   </p>
                   <div className="flex space-x-1 text-sm text-gray-500">
-                    <time dateTime="2020-02-12">12 Février 2020</time>
+                    <time dateTime="2020-02-12">12 Février 2024</time>
                     <span aria-hidden="true">·</span>
                     <span>11 min de lecture</span>
                   </div>

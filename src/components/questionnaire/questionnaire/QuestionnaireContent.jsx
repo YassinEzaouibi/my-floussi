@@ -108,6 +108,30 @@ const QuestionnaireContent = () => {
     Agressif: Agressif,
   };
 
+  /**
+   * @function setScoreLevel
+   * @description This function sets the score level directly based on the person type.
+   * @param {string} personType - The type of the person.
+   */
+  const setScoreLevel = (personType) => {
+    const newScorePrudent = { Prudent: 165, modere: 145, Agressif: 140 };
+    const newScoreModere = { Prudent: 30, modere: 300, Agressif: 400 };
+    const newScoreDynamic = { Prudent: 600, modere: 300, Agressif: 900 };
+    const newScoreAgressif = { Prudent: 20, modere: 50, Agressif: 400 };
+    if (personType === "Prudent") {
+      return setScore(newScorePrudent);
+    }
+    if (personType === "Modere") {
+      return setScore(newScoreModere);
+    }
+    if (personType === "Dynamic") {
+      return setScore(newScoreDynamic);
+    }
+    if (personType === "Agressif") {
+      return setScore(newScoreAgressif);
+    }
+  };
+
   return (
     <div className="container mx-auto text-black flex flex-col space-y-4 p-2 mt-6 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 font-poppins text-sm">
       {result ? (
@@ -222,6 +246,51 @@ const QuestionnaireContent = () => {
                   </span>
                 </p>
               </div>
+
+              <div className=" mt-12 text-center ">
+                <p
+                  className={`${colorTextTypePerson[personType]} text-xl font-medium  text-gray-900`}
+                >
+                  Pour Tester click sur les types suivants
+                </p>
+
+                <div className="mt-4">
+                  {/* when I click on this I want the score level to b e 4 */}
+                  <button
+                    type="button"
+                    className="text-white bg-green-700 hover:bg-green-800  font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    onClick={() => setScoreLevel("Prudent")}
+                  >
+                    Prudent
+                  </button>
+
+                  {/* when I click on this I want the score level to b e 9 */}
+                  <button
+                    type="button"
+                    className="text-white bg-cyan-500 hover:bg-cyan-600  font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    onClick={() => setScoreLevel("Modere")}
+                  >
+                    Modere
+                  </button>
+
+                  {/* when I click on this I want the score level to b e 14 */}
+                  <button
+                    type="button"
+                    className="text-white bg-cyan-700 hover:bg-cyan-800  font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    onClick={() => setScoreLevel("Dynamic")}
+                  >
+                    Dynamic
+                  </button>
+
+                  {/* when I click on this I want the score level to b e 19 */}
+                  <button
+                    type="button"
+                    className="text-white bg-red-700 hover:bg-red-800  font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Agressif
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -251,30 +320,14 @@ const QuestionnaireContent = () => {
               Répéter
             </button>
             <button
+              disabled="true"
               type="button"
               onClick={reset}
-              className="w-full sm:w-1/2 flex items-center justify-center rounded-md border border-transparent bg-cyan-600 py-3 px-8 text-base font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-2"
+              className="w-full sm:w-1/2 flex items-center justify-center rounded-md border border-transparent bg-cyan-600 py-3 px-8 text-base font-medium text-white"
             >
               Télécharger ma simulation
             </button>
           </div>
-
-          {/*<div className="flex items-center justify-center space-x-2 px-12">*/}
-          {/*  <button*/}
-          {/*    type="button"*/}
-          {/*    onClick={reset}*/}
-          {/*    className="flex w-1/2 items-center justify-center rounded-md border border-transparent bg-cyan-600 py-3 px-8 text-base font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-2"*/}
-          {/*  >*/}
-          {/*    Répéter*/}
-          {/*  </button>*/}
-          {/*  <button*/}
-          {/*    type="button"*/}
-          {/*    onClick={reset}*/}
-          {/*    className="flex w-1/2 items-center justify-center rounded-md border border-transparent bg-cyan-600 py-3 px-8 text-base font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-2"*/}
-          {/*  >*/}
-          {/*    Télécharger ma simulation*/}
-          {/*  </button>*/}
-          {/*</div>*/}
 
           <div className="mt-10 border-t border-gray-200 pt-10">
             <h3 className="text-sm font-medium text-gray-900">Investir</h3>

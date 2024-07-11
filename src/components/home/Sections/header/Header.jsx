@@ -6,8 +6,6 @@ import { useState } from "react";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropDownOpen, setDropDownOpen] = useState(false);
-  const isHomePage = location.pathname === "/";
-  console.log(location.pathname);
 
   return (
     <header className="inset-x-0 top-0 z-50">
@@ -149,13 +147,13 @@ const Header = () => {
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end space-x-4 items-center">
           <Link
-            to="/login"
+            to="/"
             className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-600"
           >
             Connexion
           </Link>
           <Link
-            to="/sign-up"
+            to="/"
             className="rounded-md bg-cyan-600 py-2 px-3 text-sm font-semibold leading-6 text-white hover:bg-cyan-700"
           >
             Inscription
@@ -288,13 +286,13 @@ const Header = () => {
                 </div>
                 <div className="py-6">
                   <Link
-                    to="/login"
+                    to="/"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Connexion
                   </Link>
                   <Link
-                    to="/sign-up"
+                    to="/"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Inscription
