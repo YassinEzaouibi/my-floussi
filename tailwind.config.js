@@ -1,4 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+// const defaultTheme = require('tailwindcss/defaultTheme')
+// const plugin = require('tailwindcss/plugin')
+
+// import plugin from 'tailwindcss/plugin';
 
 export default {
   content: [
@@ -10,9 +14,6 @@ export default {
   ],
   theme: {
     extend: {
-      // fontFamily: {
-      //   'poppins': ['Raleway','Poppins', 'sans-serif'],
-      // },
       fontFamily: {
         body: [
           "Inter",
@@ -58,8 +59,53 @@ export default {
     xl: "1280px",
     "2xl": "1536px",
   },
+  variants: {
+    backgroundColor: [
+      'hover',
+      'focus',
+      'active',
+      'odd',
+      'dark',
+      'dark:hover',
+      'dark:focus',
+      'dark:active',
+      'dark:odd',
+    ],
+    display: ['responsive', 'dark'],
+    textColor: [
+      'focus-within',
+      'hover',
+      'active',
+      'dark',
+      'dark:focus-within',
+      'dark:hover',
+      'dark:active',
+    ],
+    placeholderColor: ['focus', 'dark', 'dark:focus'],
+    borderColor: ['focus', 'hover', 'dark', 'dark:focus', 'dark:hover'],
+    divideColor: ['dark'],
+    boxShadow: ['focus', 'dark:focus'],
+  },
   plugins: [
     // eslint-disable-next-line no-undef
     require("flowbite/plugin"),
+    // eslint-disable-next-line no-undef
+    // require('tailwindcss-multi-theme'),
+    // eslint-disable-next-line no-undef
+    // require('@tailwindcss/custom-forms'),
+    // plugin(({ addUtilities, e, theme, variants }) => {
+    //   const newUtilities = {}
+    //   Object.entries(theme('colors')).map(([name, value]) => {
+    //     if (name === 'transparent' || name === 'current') return
+    //     const color = value[300] ? value[300] : value
+    //     const hsla = Color(color).alpha(0.45).hsl().string()
+    //
+    //     newUtilities[`.shadow-outline-${name}`] = {
+    //       'box-shadow': `0 0 0 3px ${hsla}`,
+    //     }
+    //   })
+    //
+    //   addUtilities(newUtilities, variants('boxShadow'))
+    // }),
   ],
 };
