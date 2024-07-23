@@ -7,7 +7,7 @@ const Input = ({ title, v, unit, setV }) => {
     dispatch(setV(e.target.value));
   };
   return (
-    <div>
+    <div className="flex items-start">
       <div>
         <label
           htmlFor="website"

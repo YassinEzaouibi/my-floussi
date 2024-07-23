@@ -97,7 +97,7 @@ const Index = () => {
           onChange={(e, v) => handleChange(setRendBourse, v)}
         />
       </div>
-      <div className="pt-12">
+      <div>
         <Slider
           setV={setRendAutre}
           min={0}

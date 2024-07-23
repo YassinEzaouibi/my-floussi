@@ -32,21 +32,22 @@ export default function OurSlider({
   return (
     <div className="smp-Slider my-3 py-2">
       <Box sx={{ width: "100%", marginTop: 2 }}>
-        <label
-          htmlFor="website"
-          className="block mb-2 text-sm font-medium text-gray-900"
-        >
-          {title}
-        </label>
         {montant ? (
-          <div className=" text-black flex  justify-end opacity-70">
-            {/* <h6 className=' text-right'>{addSpacesToNumber(v)} {unit}</h6> */}
-            <Input unit={unit} v={v} setV={setV} />
+          <div className="flex items-center">
+            <label
+              htmlFor="website"
+              className="text-sm font-medium text-gray-900"
+            >
+              {title}
+            </label>
+            <div className="text-black flex justify-end flex-1">
+              <Input unit={unit} v={v} setV={setV} />
+            </div>
           </div>
         ) : (
           <div className=" text-black  justify-between opacity-70">
             <h6 className=" text-right">{v}%</h6>
-            {/* <h6 className=' text-right'>{100 - v}%</h6> */}
+            {/*<h6 className=' text-right'>{100 - v}%</h6>*/}
           </div>
         )}
         <Slider
