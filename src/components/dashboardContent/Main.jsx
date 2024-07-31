@@ -2,11 +2,14 @@ import { Route, Routes } from "react-router-dom";
 import CardsWithUsers from "./CardsWithUsers.jsx";
 import Admins from "./user/Admins.jsx";
 import Users from "./user/Users.jsx";
+import UserQuestionnaires from "./questionnaire/UserQuestionnaires.jsx";
+import Questionnaires from "./questionnaire/Questionnaires.jsx";
 
 const Main = () => {
   return (
     <Routes>
       <Route path="/dashboard" element={<CardsWithUsers />} />
+      <Route path="/:userId/questionnaires" element={<UserQuestionnaires />} />
       <Route
         path="/admins"
         element={
@@ -65,6 +68,7 @@ const Main = () => {
           </main>
         }
       />
+      <Route path="/questionnaires" element={<Questionnaires />} />
     </Routes>
   );
 };

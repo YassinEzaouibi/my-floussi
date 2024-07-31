@@ -4,6 +4,7 @@ import { useState } from "react";
 import logo from "../assets/imgs/logo/logo-v2.svg";
 import { loginUser } from "../services/authService.js";
 import { useAuth } from "../context/AuthContext.jsx";
+import { jwtDecode } from "jwt-decode";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,8 +12,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const { login } = useAuth();
   const navigate = useNavigate();
+  const { login, user } = useAuth();
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -56,7 +57,12 @@ const Login = () => {
       };
       const response = await loginUser(userData);
       login(response);
-      navigate("/dashboard");
+      const decodedToken = jwtDecode(response);
+      if (decodedToken.role === "admin") {
+        navigate("/dashboard");
+      } else {
+        navigate(`/${decodedToken.id}/questionnaires`);
+      }
     } catch (error) {
       console.error("login failed:", error);
       if (error.message === "Password incorrect") {

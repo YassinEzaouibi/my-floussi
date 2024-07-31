@@ -1,5 +1,4 @@
 const BASE_URL = "http://localhost:5000/api";
-// GET http://localhost:5000/api/users/role/admin
 
 // fetch all users (users or admins)
 export const fetchAllUsers = async (token) => {

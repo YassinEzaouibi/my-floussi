@@ -13,14 +13,16 @@ import RectangleStackIcon from "@heroicons/react/24/outline/esm/RectangleStackIc
 import WalletIcon from "@heroicons/react/24/outline/esm/WalletIcon.js";
 import BankNotes from "@heroicons/react/24/outline/esm/BanknotesIcon.js";
 import Logout from "@heroicons/react/24/outline/esm/ArrowLeftEndOnRectangleIcon.js";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
 
 // eslint-disable-next-line react/prop-types
 const Sidebar = ({ sidebarOpen, setSidebarOpen, userRole }) => {
   const location = useLocation();
   const currentPath = location.pathname;
-
+  const { "*": idUser } = useParams();
+  console.log("idUser");
+  console.log(idUser);
   const adminNavigation = [
     {
       name: "Dashboard",
@@ -40,17 +42,28 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, userRole }) => {
       icon: UserIcon,
       current: currentPath === "/users",
     },
+    {
+      name: "Questionnaires",
+      to: "/questionnaires",
+      icon: RectangleStackIcon,
+      current: currentPath === "/questionnaires",
+    },
     { name: "Logout", to: "/", icon: Logout, current: false },
   ];
 
   const userNavigation = [
     {
       name: "Mes Questionnaires",
-      to: "#",
+      to: "/:idUser/questionnaires",
       icon: RectangleStackIcon,
-      current: false,
+      current: currentPath === `/${idUser}`,
     },
-    { name: "Tarifs", to: "#", icon: WalletIcon, current: false },
+    {
+      name: "Tarifs",
+      to: "#",
+      icon: WalletIcon,
+      current: currentPath === "/**/questionnaires",
+    },
     { name: "Budget", to: "#", icon: BankNotes, current: false },
     { name: "Simulator", to: "#", icon: InboxIcon, current: false },
     { name: "Logout", to: "/login", icon: Logout, current: false },

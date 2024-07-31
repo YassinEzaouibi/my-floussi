@@ -18,6 +18,7 @@ const Cards = () => {
     const getQuestionsCount = async () => {
       try {
         const questionnaires = await fetchAllQuestionnaires(token);
+        console.log(token);
         setQuestionnaireCount(questionnaires.length);
       } catch (error) {
         console.error("Error in counting questionnaire:", error);

@@ -15,7 +15,6 @@ const userNavigation = [
 // eslint-disable-next-line react/prop-types
 const Header = ({ setSidebarOpen }) => {
   const { user } = useAuth();
-  console.log(user);
   return (
     <div className="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow">
       <button

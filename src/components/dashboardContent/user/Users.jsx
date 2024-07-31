@@ -19,6 +19,7 @@ const Users = () => {
 
     getUsers();
   }, [token]);
+  console.log(users);
   return <UserDisplay users={users} />;
 };
 

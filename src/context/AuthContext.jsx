@@ -14,10 +14,16 @@ export const AuthProvider = ({ children }) => {
 
   const login = (token) => {
     setIsAuthenticated(true);
-    const decodedToken = jwtDecode(token);
+    const decodedToken = tokenDecoder(token);
+    console.log("decodedToken", decodedToken);
     setUser(decodedToken);
     setToken(token);
   };
+
+  const tokenDecoder = (token) => {
+    return jwtDecode(token);
+  };
+
   const logout = () => {
     setIsAuthenticated(false);
     setUser(null);
