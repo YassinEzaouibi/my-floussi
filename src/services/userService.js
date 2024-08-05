@@ -1,5 +1,5 @@
-// const BASE_URL = "http://localhost:5000/api";
-const BASE_URL = "https://my-floussi-back.vercel.app/api";
+const BASE_URL = "http://localhost:5000/api";
+// const BASE_URL = "https://my-floussi-back.vercel.app/api";
 
 // fetch all users (users or admins)
 export const fetchAllUsers = async (token) => {

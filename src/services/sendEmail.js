@@ -1,5 +1,5 @@
-// const BASE_URL = "http://localhost:5000/api";
-const BASE_URL = "https://my-floussi-back.vercel.app/api";
+const BASE_URL = "http://localhost:5000/api";
+// const BASE_URL = "https://my-floussi-back.vercel.app/api";
 
 /**
  * Sends the questionnaire result via email.
