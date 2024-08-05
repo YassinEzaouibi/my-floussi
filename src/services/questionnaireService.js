@@ -1,4 +1,7 @@
-const BASE_URL = "http://localhost:5000/api";
+// const BASE_URL = "http://localhost:5000/api";
+const BASE_URL =
+  "https://my-floussi-back-ede2vwjrh-yassinezaouibis-projects.vercel.app/api";
+
 export const fetchAllQuestionnaires = async (token) => {
   try {
     const response = await fetch(`${BASE_URL}/questionnaires`, {
@@ -21,33 +24,33 @@ export const fetchAllQuestionnaires = async (token) => {
   }
 };
 
-export const fetchQuestionnaireById = async (token, questionnaireId) => {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/questionnaire/${questionnaireId}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      },
-    );
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(
-        errorData.error || "Failed to fetch Questionnaires for user",
-      );
-    }
-
-    console.log("questionnaires: ===>>>", response);
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching Questionnaires for user:", error);
-    throw error;
-  }
-};
+// export const fetchQuestionnaireById = async (token, questionnaireId) => {
+//   try {
+//     const response = await fetch(
+//       `${BASE_URL}/questionnaire/${questionnaireId}`,
+//       {
+//         method: "GET",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization: token,
+//         },
+//       },
+//     );
+//
+//     if (!response.ok) {
+//       const errorData = await response.json();
+//       throw new Error(
+//         errorData.error || "Failed to fetch Questionnaires for user",
+//       );
+//     }
+//
+//     console.log("questionnaires: ===>>>", response);
+//     return await response.json();
+//   } catch (error) {
+//     console.error("Error fetching Questionnaires for user:", error);
+//     throw error;
+//   }
+// };
 
 // 66a63542d850042e2c509212/questionnaires
 export const fetchAllQuestionnairesByIdUser = async (token, userId) => {

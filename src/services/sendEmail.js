@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL =
+  "https://my-floussi-back-ede2vwjrh-yassinezaouibis-projects.vercel.app/api";
 
 /**
  * Sends the questionnaire result via email.

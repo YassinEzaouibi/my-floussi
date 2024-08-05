@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL =
+  "https://my-floussi-back-ede2vwjrh-yassinezaouibis-projects.vercel.app/api";
 
 // fetch all users (users or admins)
 export const fetchAllUsers = async (token) => {

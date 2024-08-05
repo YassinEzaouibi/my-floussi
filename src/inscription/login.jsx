@@ -84,11 +84,6 @@ const Login = () => {
     }
   };
 
-  function handleGoogleLogin() {
-    // redirectToGoogleAuth();
-    window.location.href = "http://localhost:5000/auth/google";
-  }
-
   return (
     <section className="bg-white my-10">
       <div className="flex items-center justify-center min-h-screen px-6 mx-auto">
@@ -227,7 +222,7 @@ const Login = () => {
           </form>
           <div className="">
             <button
-              onClick={handleGoogleLogin}
+              disabled={true}
               className="flex items-center w-full justify-center px-6 py-3 mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg hover:bg-gray-50"
             >
               <svg className="w-6 h-6 mx-2" viewBox="0 0 40 40">
