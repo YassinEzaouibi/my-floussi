@@ -10,12 +10,18 @@ const UserDisplay = ({ users }) => {
       year: "numeric",
     });
   };
+  let n = 0;
   return (
     <tbody className="bg-white  w-full dark:divide-gray-700 dark:bg-gray-800">
       {Array.isArray(users) ? (
         // eslint-disable-next-line react/prop-types
         users.map((user) => (
           <tr className="text-gray-700 dark:text-gray-400" key={user.id}>
+            <td className="px-4 py-3 text-xs">
+              <span className="px-4 py-3 text-sm bg-gray-100 rounded-full  ">
+                {(n += 1)}
+              </span>
+            </td>
             <td className="px-4 py-3">
               <div className="flex items-center text-sm">
                 <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">

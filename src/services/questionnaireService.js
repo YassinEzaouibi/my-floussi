@@ -22,7 +22,6 @@ export const fetchAllQuestionnaires = async (token) => {
 };
 
 export const fetchQuestionnaireById = async (token, questionnaireId) => {
-  console.log("questionnaireId: ===>>>", questionnaireId);
   try {
     const response = await fetch(
       `${BASE_URL}/questionnaire/${questionnaireId}`,
@@ -71,6 +70,31 @@ export const fetchAllQuestionnairesByIdUser = async (token, userId) => {
     return await response.json();
   } catch (error) {
     console.error("Error fetching Questionnaires for user:", error);
+    throw error;
+  }
+};
+
+export const submitQuestionnaireResult = async (token, userId, score, type) => {
+  try {
+    const response = await fetch(`${BASE_URL}/${userId}/questionnaire`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify({ score, type }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(
+        errorData.error || "Failed to submit questionnaire result",
+      );
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error submitting questionnaire result:", error);
     throw error;
   }
 };

@@ -10,6 +10,7 @@ import Questionnaire from "../components/layout/questionnaire/Index.jsx";
 import Dashboard from "../components/dashboardContent/Dashboard.jsx";
 import ProtectedRoute from "./protectedRoute.jsx";
 import Home from "../components/layout/home/Home.jsx";
+import GoogleAuth from "../inscription/GoogleAuth.jsx";
 
 const RouterProvider = () => {
   return (
@@ -24,18 +25,11 @@ const RouterProvider = () => {
           <Route element={<SmProjet />} path="/simulateur_de_projet" />
           <Route element={<Login />} path="/login" />
           <Route element={<SignUp />} path="/sign-up" />
+          <Route element={<GoogleAuth />} path="/auth/google/callback" />
           <Route
             path="/*"
             element={<ProtectedRoute element={<Dashboard />} />}
           />
-          {/*<Route*/}
-          {/*  path="/admins"*/}
-          {/*  element={<ProtectedRoute element={<Admins />} />}*/}
-          {/*/>*/}
-          {/*<Route*/}
-          {/*  path="/:id/questionnaire"*/}
-          {/*  element={<ProtectedRoute element={<UserQuestionnaire />} />}*/}
-          {/*/>*/}
         </Routes>
       </Router>
     </AuthProvider>

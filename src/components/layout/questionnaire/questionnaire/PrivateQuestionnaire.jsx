@@ -8,18 +8,16 @@ import Dynamic from "../../../../assets/imgs/vectors/Dynamic.svg";
 import Agressif from "../../../../assets/imgs/vectors/Aggressive.svg";
 import DropDownDetailsCharts from "./content/DropDownDetailsCharts.jsx";
 import Cards from "./content/Cards.jsx";
-import {Button, Label, Modal, TextInput} from "flowbite-react";
-import {Link, useNavigate} from "react-router-dom";
-
-// Import the sendResultEmail function
-import {sendResultEmail} from "../../../../services/sendEmail";
+import {submitQuestionnaireResult} from "../../../../services/questionnaireService.js";
+import {useNavigate, useParams} from "react-router-dom";
 
 /**
- * @function QuestionnaireContent
+ * @function PrivateQuestionnaire
  * @description This is a functional component that renders the questionnaire content.
  * @returns {JSX.Element} The rendered component.
  */
-const QuestionnaireContent = () => {
+
+const PrivateQuestionnaire = () => {
   // State variables
   let [index, setIndex] = useState(0);
   const [question, setQuestion] = useState(data[index]);
@@ -27,21 +25,15 @@ const QuestionnaireContent = () => {
   const [score, setScore] = useState({ Prudent: 0, modere: 0, Agressif: 0 });
   const [result, setResult] = useState(false);
   const [selectedChoice, setSelectedChoice] = useState(null);
-  const [openModal, setOpenModal] = useState(false);
-  const [email, setEmail] = useState("");
-  const emailInputRef = useRef(null);
   const scoreLevel = dataUserScore(score.Prudent, score.modere, score.Agressif);
   const personType = statusCalculator(scoreLevel);
   const options = useRef([]);
   const progress = (index / data.length) * 100;
+  const { "*": fullPath } = useParams();
   const { navigate } = useNavigate();
+  const token = localStorage.getItem("token");
+  const userId = fullPath.split("/")[0];
 
-  /**
-   * @function checkAns
-   * @description This function is called when a user selects an answer. It updates the score based on the selected answer.
-   * @param {Event} e - The event object.
-   * @param {string} ans - The selected answer.
-   */
   const checkAns = (e, ans) => {
     const chosenPoints = question.points[ans];
     setScore((prev) => ({
@@ -95,31 +87,6 @@ const QuestionnaireContent = () => {
     setResult(false);
   };
 
-  /**
-   * @function handleEmailChange
-   * @description This function updates the email state when the input changes.
-   * @param {Event} e - The event object.
-   */
-  // eslint-disable-next-line no-unused-vars
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  /**
-   * @function sendEmail
-   * @description This function is called when the user confirms their email. It sends the email using the sendResultEmail function.
-   */
-  const sendEmail = () => {
-    if (!email) {
-      alert("Please enter your email address.");
-      return;
-    }
-
-    const resultData = { personType, scoreLevel };
-    sendResultEmail(email, resultData);
-    setOpenModal(false); // Close the modal after sending the email
-  };
-
   const colorTextTypePerson = {
     Prudent: "text-green-700",
     Modere: "text-cyan-600",
@@ -134,9 +101,15 @@ const QuestionnaireContent = () => {
     Agressif: Agressif,
   };
 
-  function toSignUp() {
-    navigate("/sign-up");
-  }
+  const submitQuestionnaireSimulation = async () => {
+    try {
+      await submitQuestionnaireResult(token, userId, scoreLevel, personType);
+      navigate(`/${userId}/questionnaires`);
+    } catch (error) {
+      console.error("Error submitting questionnaire simulation:", error);
+      throw error;
+    }
+  };
 
   return (
     <div className="container mx-auto text-black flex flex-col space-y-4 p-2 mt-6 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 font-poppins text-sm">
@@ -281,59 +254,13 @@ const QuestionnaireContent = () => {
             >
               Répéter la simulation
             </button>
-            <Link
-              to={"/sign-up"}
+            <button
               type="button"
+              onClick={submitQuestionnaireSimulation}
               className="w-full sm:w-1/2 flex items-center justify-center rounded-md border border-transparent bg-cyan-600 py-3 px-8 text-base font-medium text-white"
             >
               Sauvegarder ma simulation
-            </Link>
-            <button
-              type="button"
-              onClick={() => setOpenModal(true)}
-              className="w-full sm:w-1/2 flex items-center justify-center rounded-md border border-transparent bg-cyan-600 py-3 px-8 text-base font-medium text-white"
-            >
-              Envoyer par e-mail
             </button>
-
-            <Modal
-              show={openModal}
-              size="md"
-              popup
-              onClose={() => setOpenModal(false)}
-              initialFocus={emailInputRef}
-            >
-              <Modal.Header />
-              <Modal.Body>
-                <div className="space-y-6">
-                  <div>
-                    <div className="mb-2 block">
-                      <Label htmlFor="email" value="Your email" />
-                    </div>
-                    <TextInput
-                      id="email"
-                      ref={emailInputRef}
-                      placeholder="name@company.com"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </div>
-                  <div className="w-full">
-                    <Button onClick={sendEmail}>Send Results</Button>
-                  </div>
-                  <div className="flex justify-between text-sm font-medium text-gray-500 dark:text-gray-300">
-                    Not registered?&nbsp;
-                    <Link
-                      to="/sign-up"
-                      className="text-cyan-700 hover:underline dark:text-cyan-500"
-                    >
-                      Create account
-                    </Link>
-                  </div>
-                </div>
-              </Modal.Body>
-            </Modal>
           </div>
         </div>
       )}
@@ -341,4 +268,4 @@ const QuestionnaireContent = () => {
   );
 };
 
-export default QuestionnaireContent;
+export default PrivateQuestionnaire;

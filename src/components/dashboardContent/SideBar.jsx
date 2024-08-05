@@ -2,27 +2,20 @@
 import { Fragment } from "react";
 import hikmaLogo from "../../assets/imgs/logo/logo-v2.svg";
 import { Dialog, Transition } from "@headlessui/react";
-import {
-  HomeIcon,
-  InboxIcon,
-  UserIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { HomeIcon, UserIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { classNames } from "../../utils/dashUtils/classNames.js";
 import RectangleStackIcon from "@heroicons/react/24/outline/esm/RectangleStackIcon.js";
+import RectangleGroupIcon from "@heroicons/react/24/outline/esm/RectangleGroupIcon.js";
 import WalletIcon from "@heroicons/react/24/outline/esm/WalletIcon.js";
-import BankNotes from "@heroicons/react/24/outline/esm/BanknotesIcon.js";
 import Logout from "@heroicons/react/24/outline/esm/ArrowLeftEndOnRectangleIcon.js";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
 
 // eslint-disable-next-line react/prop-types
 const Sidebar = ({ sidebarOpen, setSidebarOpen, userRole }) => {
   const location = useLocation();
   const currentPath = location.pathname;
-  const { "*": idUser } = useParams();
-  console.log("idUser");
-  console.log(idUser);
+  const { logout, user } = useAuth();
   const adminNavigation = [
     {
       name: "Dashboard",
@@ -54,21 +47,24 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, userRole }) => {
   const userNavigation = [
     {
       name: "Mes Questionnaires",
-      to: "/:idUser/questionnaires",
+      to: `/${user.id}/questionnaires`,
       icon: RectangleStackIcon,
-      current: currentPath === `/${idUser}`,
+      current: currentPath === `/${user.id}/questionnaires`,
+    },
+    {
+      name: "Questionnaire",
+      to: `/${user.id}/questionnaire`,
+      icon: RectangleGroupIcon,
+      current: currentPath === `/${user.id}/questionnaire`,
     },
     {
       name: "Tarifs",
-      to: "#",
+      to: `/${user.id}/tarif`,
       icon: WalletIcon,
-      current: currentPath === "/**/questionnaires",
+      current: currentPath === `/${user.id}/tarifs`,
     },
-    { name: "Budget", to: "#", icon: BankNotes, current: false },
-    { name: "Simulator", to: "#", icon: InboxIcon, current: false },
     { name: "Logout", to: "/login", icon: Logout, current: false },
   ];
-  const { logout } = useAuth();
   const navigation = userRole === "admin" ? adminNavigation : userNavigation;
   return (
     <>

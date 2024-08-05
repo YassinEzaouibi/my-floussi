@@ -3,13 +3,16 @@ import CardsWithUsers from "./CardsWithUsers.jsx";
 import Admins from "./user/Admins.jsx";
 import Users from "./user/Users.jsx";
 import UserQuestionnaires from "./questionnaire/UserQuestionnaires.jsx";
+import PrivateQuestionnaire from "../layout/questionnaire/questionnaire/PrivateQuestionnaire.jsx";
+import Tarifs from "../layout/tarifs/main/Main.jsx";
 import Questionnaires from "./questionnaire/Questionnaires.jsx";
 
 const Main = () => {
   return (
     <Routes>
       <Route path="/dashboard" element={<CardsWithUsers />} />
-      <Route path="/:userId/questionnaires" element={<UserQuestionnaires />} />
+      <Route path="/questionnaires" element={<Questionnaires />} />
+      <Route path="/:idUser/questionnaires" element={<UserQuestionnaires />} />
       <Route
         path="/admins"
         element={
@@ -25,6 +28,7 @@ const Main = () => {
                 >
                   <thead>
                     <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                      <th className="px-4 py-3">Number</th>
                       <th className="px-4 py-3">User Name</th>
                       <th className="px-4 py-3">Role</th>
                       <th className="px-4 py-3">Date</th>
@@ -54,6 +58,7 @@ const Main = () => {
                 >
                   <thead>
                     <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                      <th className="px-4 py-3">Number</th>
                       <th className="px-4 py-3">User Name</th>
                       <th className="px-4 py-3">Role</th>
                       <th className="px-4 py-3">Date</th>
@@ -68,7 +73,8 @@ const Main = () => {
           </main>
         }
       />
-      <Route path="/questionnaires" element={<Questionnaires />} />
+      <Route path="/:idUser/questionnaire" element={<PrivateQuestionnaire />} />
+      <Route path="/:idUser/tarif" element={<Tarifs />} />
     </Routes>
   );
 };
