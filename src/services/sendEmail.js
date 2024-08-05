@@ -1,5 +1,5 @@
 const BASE_URL =
-  "https://my-floussi-back-ede2vwjrh-yassinezaouibis-projects.vercel.app/api";
+  "https://my-floussi-back-qkbltzokc-yassinezaouibis-projects.vercel.app/api";
 
 /**
  * Sends the questionnaire result via email.

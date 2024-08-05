@@ -1,4 +1,3 @@
-// src/components/layout/inscription/login/login.jsx
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import logo from "../assets/imgs/logo/logo-v2.svg";

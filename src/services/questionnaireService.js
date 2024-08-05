@@ -1,6 +1,6 @@
 // const BASE_URL = "http://localhost:5000/api";
 const BASE_URL =
-  "https://my-floussi-back-ede2vwjrh-yassinezaouibis-projects.vercel.app/api";
+  "https://my-floussi-back-qkbltzokc-yassinezaouibis-projects.vercel.app/api";
 
 export const fetchAllQuestionnaires = async (token) => {
   try {
