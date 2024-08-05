@@ -49,21 +49,21 @@ export const loginUser = async (credentials) => {
   }
 };
 
-// BASE_URL = 'http://localhost:5000/auth';
-export const redirectToGoogleAuth = async () => {
-  try {
-    const response = await fetch(`${BASE_URL}/google/callback`, {
-      method: "GET",
-      credentials: "include",
-    });
-    if (!response.ok) {
-      throw new Error("Failed to login with Google");
-    }
-    const data = await response.json();
-    localStorage.setItem("token", data.token);
-    history.push("/questionnaires");
-  } catch (error) {
-    console.log("Google authentication error:", error);
-    ``;
-  }
-};
+// // BASE_URL = 'http://localhost:5000/auth';
+// export const redirectToGoogleAuth = async () => {
+//   try {
+//     const response = await fetch(`${BASE_URL}/google/callback`, {
+//       method: "GET",
+//       credentials: "include",
+//     });
+//     if (!response.ok) {
+//       throw new Error("Failed to login with Google");
+//     }
+//     const data = await response.json();
+//     localStorage.setItem("token", data.token);
+//     history.push("/questionnaires");
+//   } catch (error) {
+//     console.log("Google authentication error:", error);
+//     ``;
+//   }
+// };
