@@ -9,7 +9,8 @@ import Agressif from "../../../../assets/imgs/vectors/Aggressive.svg";
 import DropDownDetailsCharts from "./content/DropDownDetailsCharts.jsx";
 import Cards from "./content/Cards.jsx";
 import {Button, Label, Modal, TextInput} from "flowbite-react";
-import {Link, useNavigate} from "react-router-dom";
+import {Link,} from "react-router-dom";
+import html2canvas from 'html2canvas';
 
 // Import the sendResultEmail function
 import {sendResultEmail} from "../../../../services/sendEmail";
@@ -34,7 +35,6 @@ const QuestionnaireContent = () => {
   const personType = statusCalculator(scoreLevel);
   const options = useRef([]);
   const progress = (index / data.length) * 100;
-  const { navigate } = useNavigate();
 
   /**
    * @function checkAns
@@ -109,16 +109,19 @@ const QuestionnaireContent = () => {
    * @function sendEmail
    * @description This function is called when the user confirms their email. It sends the email using the sendResultEmail function.
    */
-  const sendEmail = () => {
-    if (!email) {
-      alert("Please enter your email address.");
-      return;
-    }
+  // const sendEmail = () => {
+  //   if (!email) {
+  //     alert("Please enter your email address.");
+  //     return;
+  //   }
+  //
+  //   const resultData = { personType, scoreLevel };
+  //   sendResultEmail(email, resultData);
+  //   setOpenModal(false); // Close the modal after sending the email
+  // };
 
-    const resultData = { personType, scoreLevel };
-    sendResultEmail(email, resultData);
-    setOpenModal(false); // Close the modal after sending the email
-  };
+
+
 
   const colorTextTypePerson = {
     Prudent: "text-green-700",
@@ -134,9 +137,29 @@ const QuestionnaireContent = () => {
     Agressif: Agressif,
   };
 
-  function toSignUp() {
-    navigate("/sign-up");
-  }
+  const captureAndSendEmail = async () => {
+    if (email) {
+      const captureElement = document.querySelector('.m-2.bg-gray-50');
+
+      if (captureElement) {
+        const canvas = await html2canvas(captureElement);
+        const imageBase64 = canvas.toDataURL('image/png');
+
+        // Send the result email with the image
+        sendResultEmail(email, { personType, scoreLevel }, imageBase64);
+      } else {
+        alert("Unable to capture the report.");
+      }
+    } else {
+      alert("Please enter your email address.");
+    }
+  };
+
+  const sendEmail = () => {
+    captureAndSendEmail();
+    setOpenModal(false); // Close the modal after sending the email
+  };
+
 
   return (
     <div className="container mx-auto text-black flex flex-col space-y-4 p-2 mt-6 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 font-poppins text-sm">

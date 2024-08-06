@@ -1,5 +1,5 @@
-// const BASE_URL = "http://localhost:5000/api";
-const BASE_URL = "https://my-floussi-back.onrender.com/api";
+const BASE_URL = "http://localhost:5000/api";
+// const BASE_URL = "https://my-floussi-back.onrender.com/api";
 
 // fetch all users (users or admins)
 export const fetchAllUsers = async (token) => {

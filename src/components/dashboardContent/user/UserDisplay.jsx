@@ -12,7 +12,7 @@ const UserDisplay = ({ users }) => {
   };
   let n = 0;
   return (
-    <tbody className="bg-white  w-full dark:divide-gray-700 dark:bg-gray-800">
+    <tbody className="bg-white  min-w-full dark:divide-gray-700 dark:bg-gray-800">
       {Array.isArray(users) ? (
         // eslint-disable-next-line react/prop-types
         users.map((user) => (

@@ -8,17 +8,18 @@ const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user } = useAuth();
   return (
-    <div className="flex h-full">
-      <Sidebar
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
-        userRole={user.role}
-      />
-      <div className="flex flex-1 flex-col md:pl-64">
-        <Header setSidebarOpen={setSidebarOpen} />
-        <Main />
+      <div className="">
+          <Sidebar
+              sidebarOpen={sidebarOpen}
+              setSidebarOpen={setSidebarOpen}
+              userRole={user.role}
+          />
+          <div className="flex flex-1 flex-col md:pl-64">
+              <Header setSidebarOpen={setSidebarOpen}/>
+              <Main/>
+          </div>
       </div>
-    </div>
+
   );
 };
 
