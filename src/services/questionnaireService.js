@@ -1,4 +1,4 @@
-const BASE_URL = "http:/my-floussi-back.onrender.com/api";
+const BASE_URL = "https:/my-floussi-back.onrender.com/api";
 // const BASE_URL = "https://my-floussi-back.vercel.app/api";
 
 export const fetchAllQuestionnaires = async (token) => {

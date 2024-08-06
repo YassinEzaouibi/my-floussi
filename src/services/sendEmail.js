@@ -1,5 +1,5 @@
 // const BASE_URL = "http://localhost:5000/api";
-const BASE_URL = "http:/my-floussi-back.onrender.com/api";
+const BASE_URL = "https:/my-floussi-back.onrender.com/api";
 
 /**
  * Sends the questionnaire result via email.
