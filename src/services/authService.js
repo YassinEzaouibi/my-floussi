@@ -1,5 +1,4 @@
-const BASE_URL = "https:/my-floussi-back.onrender.com/auth";
-
+const BASE_URL = "https://my-floussi-back.onrender.com/auth";
 // Function to register a new user
 export const registerUser = async (userData) => {
     try {
