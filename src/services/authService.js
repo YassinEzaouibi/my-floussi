@@ -1,5 +1,6 @@
-const BASE_URL = "https://my-floussi-back.onrender.com/auth";
-// const BASE_URL = "http://localhost:5000/auth";
+// const BASE_URL = "https://my-floussi-back.onrender.com/auth";
+const BASE_URL = "http://localhost:5000/auth";
+
 // Function to register a new user
 export const registerUser = async (userData) => {
     try {
@@ -49,21 +50,25 @@ export const loginUser = async (credentials) => {
     }
 };
 
-// // BASE_URL = 'http://localhost:5000/auth';
-// export const redirectToGoogleAuth = async () => {
-//   try {
-//     const response = await fetch(`${BASE_URL}/google/callback`, {
-//       method: "GET",
-//       credentials: "include",
-//     });
-//     if (!response.ok) {
-//       throw new Error("Failed to login with Google");
-//     }
-//     const data = await response.json();
-//     localStorage.setItem("token", data.token);
-//     history.push("/questionnaires");
-//   } catch (error) {
-//     console.log("Google authentication error:", error);
-//     ``;
-//   }
-// };
+// services/googleAuthService.js
+export const loginWithGoogle = async (googleToken) => {
+    try {
+        const response = await fetch(`${BASE_URL}/google-login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ token: googleToken }),
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to log in with Google");
+        }
+
+        const data = await response.json();
+        return data.token;
+    } catch (error) {
+        console.error("Google login error:", error);
+        throw error;
+    }
+};

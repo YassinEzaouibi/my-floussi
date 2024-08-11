@@ -1,5 +1,5 @@
-// const BASE_URL = "http://localhost:5000/api";
-const BASE_URL = "https://my-floussi-back.onrender.com/api";
+// const BASE_URL = "https://my-floussi-back.onrender.com/api";
+const BASE_URL = "http://localhost:5000/api";
 
 // fetch all users (users or admins)
 export const fetchAllUsers = async (token) => {
@@ -69,12 +69,25 @@ export const fetchAllUsersByRoleUser = async (token) => {
   }
 };
 
-export const fetchUserCount = async (token) => {
+export const fetchAllGoogleUsers = async (token) => {
   try {
-    const users = await fetchAllUsers(token);
-    return users.length;
+    const response = await fetch(`${BASE_URL}/users/google/user`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || "Failed to fetch users");
+    }
+
+    return await response.json();
   } catch (error) {
-    console.error("Error fetching user count:", error);
+    console.error("Error fetching users:", error);
     throw error;
   }
 };
+

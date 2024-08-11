@@ -1,15 +1,15 @@
 import {useRef, useState} from "react";
-import {idaData as data} from "../../../../assets/data/ida-data.js";
-import dataUserScore from "../../../../services/dataUserScore.js";
-import statusCalculator from "../../../../services/statusCalculator.js";
-import Prudent from "../../../../assets/imgs/vectors/Prudent.svg";
-import Modere from "../../../../assets/imgs/vectors/Moderate.svg";
-import Dynamic from "../../../../assets/imgs/vectors/Dynamic.svg";
-import Agressif from "../../../../assets/imgs/vectors/Aggressive.svg";
-import DropDownDetailsCharts from "./content/DropDownDetailsCharts.jsx";
-import Cards from "./content/Cards.jsx";
-import {submitQuestionnaireResult} from "../../../../services/questionnaireService.js";
-import {useNavigate, useParams} from "react-router-dom";
+import {idaData as data} from "../../../assets/data/ida-data.js";
+import dataUserScore from "../../../services/dataUserScore.js";
+import statusCalculator from "../../../services/statusCalculator.js";
+import Prudent from "../../../assets/imgs/vectors/Prudent.svg";
+import Modere from "../../../assets/imgs/vectors/Moderate.svg";
+import Dynamic from "../../../assets/imgs/vectors/Dynamic.svg";
+import Agressif from "../../../assets/imgs/vectors/Aggressive.svg";
+import DropDownDetailsCharts from "../../layout/questionnaire/questionnaire/content/DropDownDetailsCharts.jsx";
+import Cards from "../../layout/questionnaire/questionnaire/content/Cards.jsx";
+import {submitQuestionnaireResult} from "../../../services/questionnaireService.js";
+import { useNavigate, useParams} from "react-router-dom";
 
 /**
  * @function PrivateQuestionnaire
@@ -30,8 +30,10 @@ const PrivateQuestionnaire = () => {
   const options = useRef([]);
   const progress = (index / data.length) * 100;
   const { "*": fullPath } = useParams();
-  const { navigate } = useNavigate();
-  const token = localStorage.getItem("token");
+  const navigate  = useNavigate();
+  const loginData = localStorage.getItem("loginData");
+  const parsedData = JSON.parse(loginData);
+  const token = parsedData.token;
   const userId = fullPath.split("/")[0];
 
   const checkAns = (e, ans) => {

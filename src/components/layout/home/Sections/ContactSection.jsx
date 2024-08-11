@@ -1,3 +1,29 @@
+const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  const data = Object.fromEntries(formData.entries());
+
+  try {
+    const response = await fetch('http://localhost:5000/api/email/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      alert('Message sent successfully!');
+    } else {
+      alert('Failed to send message.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('An error occurred.');
+  }
+};
+
 const ContactSection = () => {
   return (
     <div
@@ -83,8 +109,7 @@ const ContactSection = () => {
         </div>
         <div className="mt-12">
           <form
-            action="#"
-            method="POST"
+              onSubmit={handleSubmit}
             className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
           >
             <div>
@@ -152,7 +177,7 @@ const ContactSection = () => {
                   id="phone-number"
                   autoComplete="tel"
                   className="block w-full rounded-md border-gray-300 py-3 px-4 focus:border-indigo-500 focus:ring-indigo-500"
-                  placeholder="(+212) 061 234 567 8"
+                  placeholder="ex: 0612345678"
                 />
               </div>
             </div>
