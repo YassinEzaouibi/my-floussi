@@ -218,7 +218,7 @@ const Login = () => {
               <GoogleLoginButton/>
 
             </div>
-            <div className="mt-6 text-center">
+            <div className="text-center">
               <Link
                   to="/sign-up "
                   className="text-sm text-blue-500 hover:underline"
