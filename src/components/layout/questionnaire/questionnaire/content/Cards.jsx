@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { personalityAnalysis } from "../../../../../assets/data/personalityAnalysis.js";
 
 // eslint-disable-next-line react/prop-types
@@ -226,6 +226,73 @@ const Cards = ({ personType, scoreLevel }) => {
     },
   ]);
 
+  useEffect(() => {
+    setItems((prevItems) =>
+        prevItems.map((item) => {
+          let content;
+          switch (item.id) {
+            case 1:
+              content = (
+                  <p className="mb-4 pl-6 text-base underline underline-offset-2">
+                    {personalityAnalysis[personType].toleranceRisk}
+                  </p>
+              );
+              break;
+            case 2:
+              content = (
+                  <p className="mb-4 pl-6 text-base personType">
+                    {personalityAnalysis[personType].objectives}
+                  </p>
+              );
+              break;
+            case 3:
+              content = (
+                  <p className="mb-4 pl-6 text-base personType">
+                    {personalityAnalysis[personType].investmentStrategy}
+                  </p>
+              );
+              break;
+            case 4:
+              content = (
+                  <p className="mb-4 pl-6 text-base personType">
+                    {personalityAnalysis[personType].investmentHorizon}
+                  </p>
+              );
+              break;
+            case 5:
+              content = (
+                  <p className="mb-4 pl-6 text-base personType">
+                    {personalityAnalysis[personType].profile}
+                  </p>
+              );
+              break;
+            case 6:
+              content = (
+                  <div className="flex justify-center text-xl space-x-3 pb-6">
+                    <p className="text-gray-900">
+                      score: &nbsp;
+                      <i className={`${colorTextTypePerson[personType]} personType`}>
+                        {scoreLevel}
+                      </i>
+                    </p>
+                    <p className="text-gray-900">
+                      Type: &nbsp;
+                      <span className={`${colorTextTypePerson[personType]} personType`}>
+                    {personType}
+                  </span>
+                    </p>
+                  </div>
+              );
+              break;
+            default:
+              content = item.content;
+          }
+          return { ...item, content };
+        })
+    );
+  }, [personType, scoreLevel]);
+
+
   const toggleItem = (id) => {
     setItems(
       items.map((item) =>
@@ -262,3 +329,110 @@ const Cards = ({ personType, scoreLevel }) => {
   );
 };
 export default Cards;
+
+
+/*
+
+const Cards = ({ personType, scoreLevel }) => {
+
+
+
+  useEffect(() => {
+    setItems((prevItems) =>
+      prevItems.map((item) => {
+        let content;
+        switch (item.id) {
+          case 1:
+            content = (
+              <p className="mb-4 pl-6 text-base underline underline-offset-2">
+                {personalityAnalysis[personType].toleranceRisk}
+              </p>
+            );
+            break;
+          case 2:
+            content = (
+              <p className="mb-4 pl-6 text-base personType">
+                {personalityAnalysis[personType].objectives}
+              </p>
+            );
+            break;
+          case 3:
+            content = (
+              <p className="mb-4 pl-6 text-base personType">
+                {personalityAnalysis[personType].investmentStrategy}
+              </p>
+            );
+            break;
+          case 4:
+            content = (
+              <p className="mb-4 pl-6 text-base personType">
+                {personalityAnalysis[personType].investmentHorizon}
+              </p>
+            );
+            break;
+          case 5:
+            content = (
+              <p className="mb-4 pl-6 text-base personType">
+                {personalityAnalysis[personType].profile}
+              </p>
+            );
+            break;
+          case 6:
+            content = (
+              <div className="flex justify-center text-xl space-x-3 pb-6">
+                <p className="text-gray-900">
+                  score: &nbsp;
+                  <i className={`${colorTextTypePerson[personType]} personType`}>
+                    {scoreLevel}
+                  </i>
+                </p>
+                <p className="text-gray-900">
+                  Type: &nbsp;
+                  <span className={`${colorTextTypePerson[personType]} personType`}>
+                    {personType}
+                  </span>
+                </p>
+              </div>
+            );
+            break;
+          default:
+            content = item.content;
+        }
+        return { ...item, content };
+      })
+    );
+  }, [personType, scoreLevel]);
+
+
+  return (
+    <div className="bg-white col-span-2 rounded-lg shadow-lg overflow-hidden">
+      {items.map((item) => (
+        <div key={item.id} className="border-b border-gray-200">
+          <button
+            onClick={() => toggleItem(item.id)}
+            className="w-full flex items-center justify-between px-4 py-3 focus:outline-none"
+          >
+            <span className="text-lg font-semibold">{item.title}</span>
+            <svg
+              className={`w-4 h-4 transform ${item.isOpen ? "rotate-180" : "rotate-0"} transition-transform duration-200`}
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+          {item.isOpen && <div className="px-4 py-2">{item.content}</div>}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Cards;
+
+*/

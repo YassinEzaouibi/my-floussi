@@ -1,5 +1,5 @@
-const BASE_URL = "https://my-floussi-back.onrender.com/auth";
-// const BASE_URL = "http://localhost:5000/auth";
+// const BASE_URL = "https://my-floussi-back.onrender.com/auth";
+const BASE_URL = "http://localhost:5000/auth";
 // https://my-floussi-back.onrender.com
 
 // Function to register a new user

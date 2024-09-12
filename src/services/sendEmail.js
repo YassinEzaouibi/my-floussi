@@ -1,13 +1,14 @@
-const BASE_URL = "https://my-floussi-back.onrender.com/api";
-// const BASE_URL = "http://localhost:5000/api";
+// const BASE_URL = "https://my-floussi-back.onrender.com/api";
+const BASE_URL = "http://localhost:5000/api";
 
 /**
  * Sends the questionnaire result via email.
  * @param {string} email - The recipient's email address.
  * @param {object} result - The result data containing personType and scoreLevel.
+ * @param {string[]} graphs - The result data containing personType and scoreLevel.
  * @returns {Promise<void>}
  */
-export const sendResultEmail = async (email, result) => {
+export const sendResultEmail = async (email, result, graphs) => {
   try {
     const response = await fetch(`${BASE_URL}/email/send-result`, {
       method: "POST",
@@ -18,6 +19,7 @@ export const sendResultEmail = async (email, result) => {
         email: email,
         subject: "Your Questionnaire Result",
         result: result,
+        graphs: graphs,
       }),
     });
 

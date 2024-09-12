@@ -1,4 +1,4 @@
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {idaData as data} from "../../../../assets/data/ida-data.js";
 import dataUserScore from "../../../../services/dataUserScore.js";
 import statusCalculator from "../../../../services/statusCalculator.js";
@@ -10,9 +10,6 @@ import DropDownDetailsCharts from "./content/DropDownDetailsCharts.jsx";
 import Cards from "./content/Cards.jsx";
 import {Button, Label, Modal, TextInput} from "flowbite-react";
 import {Link,} from "react-router-dom";
-import html2canvas from 'html2canvas';
-
-// Import the sendResultEmail function
 import {sendResultEmail} from "../../../../services/sendEmail";
 
 /**
@@ -31,10 +28,11 @@ const QuestionnaireContent = () => {
   const [openModal, setOpenModal] = useState(false);
   const [email, setEmail] = useState("");
   const emailInputRef = useRef(null);
-  const scoreLevel = dataUserScore(score.Prudent, score.modere, score.Agressif);
-  const personType = statusCalculator(scoreLevel);
-  const options = useRef([]);
   const progress = (index / data.length) * 100;
+  const scoreLevel = dataUserScore(score.Prudent, score.modere, score.Agressif);
+  const personType = statusCalculator(scoreLevel);const options = useRef([]);
+  const [currentScoreLevel, setCurrentScoreLevel] = useState(scoreLevel);
+  const [currentPersonType, setCurrentPersonType] = useState(personType);
 
   /**
    * @function checkAns
@@ -105,22 +103,6 @@ const QuestionnaireContent = () => {
     setEmail(e.target.value);
   };
 
-  /**
-   * @function sendEmail
-   * @description This function is called when the user confirms their email. It sends the email using the sendResultEmail function.
-   */
-  // const sendEmail = () => {
-  //   if (!email) {
-  //     alert("Please enter your email address.");
-  //     return;
-  //   }
-  //
-  //   const resultData = { personType, scoreLevel };
-  //   sendResultEmail(email, resultData);
-  //   setOpenModal(false); // Close the modal after sending the email
-  // };
-
-
 
 
   const colorTextTypePerson = {
@@ -137,27 +119,20 @@ const QuestionnaireContent = () => {
     Agressif: Agressif,
   };
 
-  const captureAndSendEmail = async () => {
-    if (email) {
-      const captureElement = document.querySelector('.m-2.bg-gray-50');
+  useEffect(() => {
+    setCurrentPersonType(personType);
+    setCurrentScoreLevel(scoreLevel);
+  }, [personType, scoreLevel]);
 
-      if (captureElement) {
-        const canvas = await html2canvas(captureElement);
-        const imageBase64 = canvas.toDataURL('image/png');
+  const displayDataAndChangeIt = (newPersonType, newScoreLevel) => {
+      setCurrentPersonType(newPersonType);
+      setCurrentScoreLevel(newScoreLevel);
+   }
 
-        // Send the result email with the image
-        sendResultEmail(email, { personType, scoreLevel }, imageBase64);
-      } else {
-        alert("Unable to capture the report.");
-      }
-    } else {
-      alert("Please enter your email address.");
-    }
-  };
 
-  const sendEmail = () => {
-    captureAndSendEmail();
-    setOpenModal(false); // Close the modal after sending the email
+
+  const sendEmail = async () => {
+    sendResultEmail(email, { currentPersonType, currentScoreLevel });
   };
 
 
@@ -239,53 +214,77 @@ const QuestionnaireContent = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-2 items-center">
             <div className="lg:col-span-1 px-4 py-6 border-r border-gray-300 text-center">
               <img
-                src={personTypeImages[personType]}
-                alt={personType}
+                src={personTypeImages[currentPersonType]}
+                alt={currentPersonType}
                 className="w-36 h-36 mx-auto mb-2"
               />
               <div className="text-xl font-medium text-gray-900">
-                {personType}
+                {currentPersonType}
               </div>
             </div>
             <div className="lg:col-span-2 px-4 py-6">
               <div className="text-center">
                 <p className="text-xl font-medium text-gray-900">
                   Hikma Invest
-                  <br />
+                  <br/>
                   <i className="text-gray-700">
                     rêves, notre expertise. Investissons ensemble pour un avenir
                     réussi.
                   </i>
                 </p>
+
               </div>
               <div className="mt-6 text-xl grid grid-cols-2 font-medium text-center place-item-center">
                 <p className="text-gray-800">
                   le score: &nbsp;
                   <i
-                    className={`${colorTextTypePerson[personType]} underline underline-offset-2`}
+                      className={`${colorTextTypePerson[currentPersonType]} underline underline-offset-2`}
                   >
-                    {scoreLevel}
+                    {currentScoreLevel}
                   </i>
                 </p>
                 <p className="text-gray-800">
                   le Type: &nbsp;
                   <span
-                    className={`${colorTextTypePerson[personType]} underline underline-offset-2`}
+                      className={`${colorTextTypePerson[currentPersonType]} underline underline-offset-2`}
                   >
-                    {personType}
+                    {currentPersonType}
                   </span>
                 </p>
               </div>
+              <div className="flex mt-6 justify-center space-x-2">
+                <button type="button"
+                        onClick={() => displayDataAndChangeIt('Prudent', 5)}
+                        className={`text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800`}
+                >
+                  Prudent
+                </button>
+                <button type="button"
+                        onClick={() => displayDataAndChangeIt('Modere', 10)}
+                        className={`text-white bg-cyan-600 hover:bg-cyan-500 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-cyan-500 dark:hover:bg-cyan-600 focus:outline-none dark:focus:ring-cyan-700`}>Modere
+                </button>
+                <button type="button"
+                        onClick={() => displayDataAndChangeIt('Dynamic', 15)}
+                        className={`text-white bg-cyan-800 hover:bg-cyan-900 focus:ring-4 focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-cyan-700 dark:hover:bg-cyan-800 focus:outline-none dark:focus:ring-cyan-900`}>Dynamic
+                </button>
+                <button type="button"
+                        onClick={() => displayDataAndChangeIt('Agressif', 20)}
+                        className={`text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800`}
+                >
+                  Agressif
+                </button>
+              </div>
+
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 p-4 gap-x-4 gap-y-3">
             <h1
-              className={`text-2xl flex items-center pl-4 underline underline-offset-4 `}
+                className={`text-2xl flex items-center pl-4 underline underline-offset-4 `}
             >
               <i>Analyse de Hikma:</i>
             </h1>
-            <Cards personType={personType} scoreLevel={scoreLevel} />
+            <Cards personType={currentPersonType} scoreLevel={currentScoreLevel} />
             <div className="lg:col-span-2 ">
               <h1
                 className={`text-2xl flex items-center pl-4 pb-2 underline underline-offset-4 `}
@@ -293,7 +292,7 @@ const QuestionnaireContent = () => {
                 <i>Charts:</i>
               </h1>
             </div>
-            <DropDownDetailsCharts personType={personType} />
+            <DropDownDetailsCharts personType={currentPersonType} />
           </div>
 
           <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0 items-center justify-center px-4 sm:px-12">
@@ -305,7 +304,7 @@ const QuestionnaireContent = () => {
               Répéter la simulation
             </button>
             <Link
-              to={"/sign-up"}
+              to="/sign-up"
               type="button"
               className="w-full sm:w-1/2 flex items-center justify-center rounded-md border border-transparent bg-cyan-600 py-3 px-8 text-base font-medium text-white"
             >
